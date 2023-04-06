@@ -14,18 +14,8 @@ import static org.lwjgl.opengl.GL21.*;
 public class TexturedModel extends Model {
     private final int tId;
 
-    public TexturedModel(float[] vertices) {
+    public TexturedModel(float[] vertices, float[] texCoords) {
         super(vertices);
-
-        float[] texCoords = new float[] {
-                0, 0,
-                1, 0,
-                1, 1,
-
-                1, 1,
-                0, 1,
-                0, 0
-        };
 
         tId = glGenBuffers();
         glBindBuffer(GL_ARRAY_BUFFER, tId);
@@ -34,7 +24,6 @@ public class TexturedModel extends Model {
         glBindBuffer(GL_ARRAY_BUFFER, 0);
     }
 
-    @Override
     public void render() {
         glEnableClientState(GL_VERTEX_ARRAY);
         glEnableClientState(GL_TEXTURE_COORD_ARRAY);

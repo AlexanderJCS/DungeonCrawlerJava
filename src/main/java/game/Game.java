@@ -26,6 +26,7 @@ public class Game {
 
         glfwMakeContextCurrent(this.window);
         GL.createCapabilities();
+        glEnable(GL_TEXTURE_2D);
 
         map = new Map(0);
         player = new Player(new ScreenCoords(0, 0), 0.065f, this.window);
@@ -43,13 +44,15 @@ public class Game {
     public void run() {
         while (!glfwWindowShouldClose(this.window)) {
             glfwPollEvents();
-            glClear(GL_COLOR_BUFFER_BIT);  // make the screen white
+            glClear(GL_COLOR_BUFFER_BIT);  // make the screen black
 
             this.draw();
             this.update();
 
             glfwSwapBuffers(this.window);
         }
+
+        glfwTerminate();
     }
 
     public static void main(String[] args) {

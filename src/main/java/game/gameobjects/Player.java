@@ -4,6 +4,8 @@ import graphics.Rect;
 import game.coords.GridCoords;
 import game.coords.ScreenCoords;
 import game.coords.PixelCoords;
+import graphics.texture.Texture;
+import graphics.texture.TexturedModel;
 import helper.Consts;
 import game.Game;
 
@@ -13,6 +15,7 @@ public class Player extends GameObject {
     private final long window;
     private final float speedX;
     private final float speedY;
+    private final Texture texture;
 
     public Player(ScreenCoords coords, float speed, long window) {
         super(coords, PixelCoords.distXToScreenDist(Consts.GRID_PIXELS),
@@ -23,6 +26,7 @@ public class Player extends GameObject {
         this.window = window;
         this.speedX = GridCoords.distXToScreenCoords(speed);
         this.speedY = GridCoords.distYToScreenCoords(speed);
+        this.texture = new Texture("src/main/resources/test.png");
     }
 
     private void move() {
@@ -51,5 +55,13 @@ public class Player extends GameObject {
     public void update() {
         this.move();
         this.moveRooms();
+    }
+
+    @Override
+    public void draw() {
+        TexturedModel model = this.rect.toTexturedModel();
+
+        texture.bind();
+        model.render();
     }
 }

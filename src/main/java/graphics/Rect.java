@@ -2,6 +2,7 @@ package graphics;
 
 
 import game.coords.ScreenCoords;
+import graphics.texture.TexturedModel;
 
 public class Rect {
     public float x1, y1, x2, y2;
@@ -83,7 +84,7 @@ public class Rect {
         // y1 = 0
         // x2 = 1
         // y2 = 1
-        
+
         float[] vertices = {
                 x1, y1,  // Top left
                 x2, y1,  // Top right
@@ -95,6 +96,35 @@ public class Rect {
         };
 
         return new Model(vertices);
+    }
+
+    public TexturedModel toTexturedModel() {
+        // x1 = 0
+        // y1 = 0
+        // x2 = 1
+        // y2 = 1
+
+        float[] vertices = {
+                x1, y1,  // Top left
+                x2, y1,  // Top right
+                x2, y2,  // Bottom right
+
+                x2, y2,  // Bottom right
+                x1, y2,  // Bottom left
+                x1, y1,  // Top left
+        };
+
+        float[] texCoords = new float[] {
+                0, 1,
+                1, 1,
+                1, 0,
+
+                1, 0,
+                0, 0,
+                0, 1
+        };
+
+        return new TexturedModel(vertices, texCoords);
     }
 
     /**
