@@ -9,10 +9,15 @@ import java.util.HashMap;
  * - Reduces memory when the program is running (since all images only need to be stored in memory once).
  */
 public class TextureMap {
-    private static final String texturePath = "src/main/resources/";
+    private static final String texturePath = "src/main/resources/textures/";
 
     private static final HashMap<String, Texture> textureMap = new HashMap<>() {{
-        put("player", new Texture(texturePath + "test.png"));
+        put("playerNortheast", new Texture(texturePath + "player/northeast.png"));
+        put("playerNorthwest", new Texture(texturePath + "player/northwest.png"));
+        put("playerSoutheast", new Texture(texturePath + "player/southeast.png"));
+        put("playerSouthwest", new Texture(texturePath + "player/southwest.png"));
+
+        put("brick", new Texture(texturePath + "brick.png"));
         put("white", new Texture(texturePath + "white.png"));
     }};
 
