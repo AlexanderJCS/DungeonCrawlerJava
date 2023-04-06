@@ -21,7 +21,7 @@ public class PixelCoords extends Coords {
     }
 
     public GridCoords toGridCoords() {
-        return new GridCoords(this.x / Consts.SCREEN_WIDTH, this.y * Consts.SCREEN_HEIGHT);
+        return new GridCoords(this.x / Consts.GRID_PIXELS, this.y / Consts.GRID_PIXELS);
     }
 
     public static float distXToScreenDist(float dist) {
@@ -30,5 +30,9 @@ public class PixelCoords extends Coords {
 
     public static float distYToScreenDist(float dist) {
         return dist / Consts.SCREEN_HEIGHT * 2;
+    }
+
+    public static float distToGridDist(float dist) {
+        return dist / Consts.GRID_PIXELS;
     }
 }

@@ -51,5 +51,5 @@ public abstract class GameObject {
         return new Rect(this.rect);
     }
 
-    public abstract void update();
+    public void update() {}
 }

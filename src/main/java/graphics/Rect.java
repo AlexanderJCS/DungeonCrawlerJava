@@ -150,4 +150,16 @@ public class Rect {
                 this.pointInsideRect(new ScreenCoords(other.x2, other.y1)) ||  // Top right corner
                 this.pointInsideRect(new ScreenCoords(other.x2, other.y2));    // Bottom right corner
     }
+
+    @Override
+    public String toString() {
+        return "Rect{" +
+                "x1=" + x1 +
+                ", y1=" + y1 +
+                ", x2=" + x2 +
+                ", y2=" + y2 +
+                ", width=" + width +
+                ", height=" + height +
+                '}';
+    }
 }
