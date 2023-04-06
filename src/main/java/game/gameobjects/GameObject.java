@@ -3,16 +3,20 @@ package game.gameobjects;
 import graphics.*;
 import game.coords.PixelCoords;
 import game.coords.ScreenCoords;
+import graphics.texture.TextureMap;
 
 public abstract class GameObject {
     protected Rect rect;
+    protected String textureName;
 
-    public GameObject(ScreenCoords coords, float width, float height) {
+    public GameObject(ScreenCoords coords, float width, float height, String textureName) {
         this.rect = new Rect(coords, width, height);
+        this.textureName = textureName;
     }
 
     public void draw() {
-        this.rect.toModel().render();
+        TextureMap.get(this.textureName).bind();
+        this.rect.toTexturedModel().render();
     }
 
     public boolean collides(Rect[] colliders) {
