@@ -9,6 +9,7 @@ import java.nio.FloatBuffer;
 /**
  * Taken from:
  * <a href="https://www.youtube.com/watch?v=-6P_CkT-FlQ&list=PLILiqflMilIxta2xKk2EftiRHD4nQGW0u&index=5&ab_channel=WarmfulDevelopment">...</a>
+ * Model class, which allows a shape to be drawn to the screen using VBOs.
  */
 public class Model {
     protected final int drawCount;

@@ -8,6 +8,9 @@ import graphics.texture.TextureMap;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A TileableGameObject differs from a GameObject in that the texture given repeats every Consts.GRID_PIXELS.
+ */
 public class TileableGameObject extends GameObject {
     List<Rect> textureRects;
 

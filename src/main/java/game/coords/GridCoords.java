@@ -2,6 +2,11 @@ package game.coords;
 
 import helper.Consts;
 
+
+/**
+ * Coordinates on a grid. The grid size is equal to Consts.GRID_PIXELS, where Consts.GRID_PIXELS is in the units of
+ * pixels.
+ */
 public class GridCoords extends Coords {
     public GridCoords(float x, float y) {
         super(x, y);

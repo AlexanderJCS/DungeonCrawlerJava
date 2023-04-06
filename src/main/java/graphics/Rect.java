@@ -4,10 +4,17 @@ package graphics;
 import game.coords.ScreenCoords;
 import graphics.texture.TexturedModel;
 
+/**
+ * The "base" of every other rectangular object. Used for collision and conversion to a Model or TexturedModel class.
+ */
 public class Rect {
     public float x1, y1, x2, y2;
     public float width, height;
 
+    /**
+     * Copy constructor
+     * @param copy Other rect
+     */
     public Rect(Rect copy) {
         this.x1 = copy.x1;
         this.y1 = copy.y1;
@@ -33,6 +40,10 @@ public class Rect {
         this.height = height;
     }
 
+    /**
+     * Get the center coordinates of the rect.
+     * @return The center coordinates of the rect, type ScreenCoords
+     */
     public ScreenCoords getCenter() {
         return new ScreenCoords(
                 (this.x1 + this.x2) / 2,
@@ -40,6 +51,11 @@ public class Rect {
         );
     }
 
+    /**
+     * Set the center of the rect.
+     * @param x The x coordinate of the rect center.
+     * @param y The y coordinate of the rect center.
+     */
     public void setCenter(float x, float y) {
         float halfWidth = (x2 - x1) / 2;
         float halfHeight = (y2 - y1) / 2;
@@ -76,28 +92,9 @@ public class Rect {
     }
 
     /**
-     * Converts the vertices to a model. Used to display to the screen.
-     * @return The model.
+     * Converts the vertices of the rect into a textured model.
+     * @return A textured model.
      */
-    public Model toModel() {
-        // x1 = 0
-        // y1 = 0
-        // x2 = 1
-        // y2 = 1
-
-        float[] vertices = {
-                x1, y1,  // Top left
-                x2, y1,  // Top right
-                x2, y2,  // Bottom right
-
-                x2, y2,  // Bottom right
-                x1, y2,  // Bottom left
-                x1, y1,  // Top left
-        };
-
-        return new Model(vertices);
-    }
-
     public TexturedModel toTexturedModel() {
         // x1 = 0
         // y1 = 0

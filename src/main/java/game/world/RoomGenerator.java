@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
+/**
+ * Helper class for the Room class. Used to get an array of Walls.
+ */
 public class RoomGenerator {
     public static Wall[] generateWalls(boolean north, boolean south, boolean east, boolean west) {
         List<Wall> walls = new ArrayList<>(Arrays.asList(

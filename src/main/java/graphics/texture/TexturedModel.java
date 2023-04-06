@@ -9,7 +9,9 @@ import static org.lwjgl.opengl.GL21.*;
 
 
 /**
+ * Taken from this link:
  * <a href="https://www.youtube.com/watch?v=-6P_CkT-FlQ&list=PLILiqflMilIxta2xKk2EftiRHD4nQGW0u&index=5&ab_channel=WarmfulDevelopment">...</a>
+ * A Model class that allows textures to be drawn to it.
  */
 public class TexturedModel extends Model {
     private final int tId;

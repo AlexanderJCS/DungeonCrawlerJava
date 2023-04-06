@@ -7,6 +7,7 @@ import graphics.texture.TextureMap;
 
 public abstract class GameObject {
     protected Rect rect;
+    /** The texture name. A list of texture names can be found in the TextureMap object. */
     protected String textureName;
 
     public GameObject(ScreenCoords coords, float width, float height, String textureName) {
@@ -14,6 +15,9 @@ public abstract class GameObject {
         this.textureName = textureName;
     }
 
+    /**
+     * Draws the GameObject (including its texture) to the screen.
+     */
     public void draw() {
         TextureMap.get(this.textureName).bind();
         this.rect.toTexturedModel().render();

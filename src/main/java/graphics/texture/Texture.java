@@ -13,6 +13,7 @@ import java.nio.ByteBuffer;
 /**
  * Following a tutorial:
  * <a href="https://www.youtube.com/watch?v=crOzRjzqI-o&list=PLILiqflMilIxta2xKk2EftiRHD4nQGW0u&index=4&ab_channel=WarmfulDevelopment">...</a>
+ * Allows images to be drawn to the screen. To use it, run Texture.bind() then draw the shape you want to map it to.
  */
 public class Texture {
     private int id;
