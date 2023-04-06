@@ -31,8 +31,6 @@ public class TileableGameObject extends GameObject {
                 );
             }
         }
-
-        System.out.println(coords.x + ", " + coords.y + " | " + this.textureRects.get(0).x1 + ", " + this.textureRects.get(0).y1);
     }
 
     @Override
