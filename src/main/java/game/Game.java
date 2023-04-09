@@ -4,6 +4,7 @@ import game.coords.ScreenCoords;
 import game.gameobjects.Player;
 import game.world.Map;
 import helper.Consts;
+import helper.Keyboard;
 import org.lwjgl.opengl.GL;
 
 import static org.lwjgl.glfw.GLFW.*;
@@ -32,10 +33,15 @@ public class Game {
         glfwSwapInterval(1);  // enable vsync
         glfwMakeContextCurrent(this.window);
         GL.createCapabilities();
+
         glEnable(GL_TEXTURE_2D);
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
         map = new Map(0);
-        player = new Player(new ScreenCoords(0, 0), 0.065f, this.window);
+        player = new Player(new ScreenCoords(0, 0), 0.065f);
+
+        Keyboard.init(this.window);
     }
 
     private void update() {

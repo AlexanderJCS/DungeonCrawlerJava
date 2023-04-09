@@ -19,6 +19,8 @@ public class TextureMap {
 
         put("brick", new Texture(texturePath + "brick.png"));
         put("white", new Texture(texturePath + "white.png"));
+
+        put("transparent", new Texture(texturePath + "transparent.png"));
     }};
 
     public static Texture get(String key) throws IllegalArgumentException {

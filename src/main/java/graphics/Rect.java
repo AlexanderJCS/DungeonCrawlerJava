@@ -75,14 +75,13 @@ public class Rect {
     /**
      * Sets the coordinates to the ones given.
      *
-     * @param x, Top left corner x position
-     * @param y, Top left corner y position
+     * @param coords The new coordinates
      */
-    public void setPos(float x, float y) {
-        this.x1 = x;
-        this.y1 = y;
-        this.x2 = width;
-        this.y2 = height;
+    public void setPos(ScreenCoords coords) {
+        this.x1 = coords.x;
+        this.y1 = coords.y;
+        this.x2 = this.x1 + width;
+        this.y2 = this.y1 + height;
 
         this.model.changeVertices(this.getVertices());
     }

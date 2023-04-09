@@ -3,6 +3,9 @@ package game.gameobjects;
 import game.coords.GridCoords;
 import game.coords.ScreenCoords;
 import game.coords.PixelCoords;
+import game.inventory.Inventory;
+import game.inventory.ItemType;
+import game.inventory.UsableItem;
 import graphics.Rect;
 import helper.Consts;
 import game.Game;
@@ -15,6 +18,8 @@ public class Player extends GameObject {
     // as one ScreenCoord in the y direction.
     private final float speedX;
     private final float speedY;
+
+    private final Inventory inventory;
 
     /** Used for rendering the player direction. */
     private String lastX;
@@ -31,6 +36,9 @@ public class Player extends GameObject {
 
         this.speedX = GridCoords.distXToScreenCoords(speed);
         this.speedY = GridCoords.distYToScreenCoords(speed);
+
+        this.inventory = new Inventory();
+        this.inventory.addItem(new UsableItem(ItemType.WEAPON, "brick"));
     }
 
     private void move() {
@@ -64,7 +72,9 @@ public class Player extends GameObject {
     @Override
     public void draw() {
         this.textureName = "player" + this.lastY + this.lastX;
+
         super.draw();
+        this.inventory.draw();
     }
 
     @Override
