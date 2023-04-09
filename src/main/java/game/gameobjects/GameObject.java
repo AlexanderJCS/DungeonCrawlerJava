@@ -5,10 +5,6 @@ import game.coords.PixelCoords;
 import game.coords.ScreenCoords;
 
 public abstract class GameObject extends Image {
-    protected Rect rect;
-    /** The texture name. A list of texture names can be found in the TextureMap object. */
-    protected String textureName;
-
     public GameObject(ScreenCoords coords, float width, float height, String textureName) {
         super(coords, width, height, textureName);
     }

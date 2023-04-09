@@ -18,7 +18,7 @@ public class Image {
     }
 
     /**
-     * Draws the GameObject (including its texture) to the screen.
+     * Draws the image (including its texture) to the screen.
      */
     public void draw() {
         TextureMap.get(this.textureName).bind();
