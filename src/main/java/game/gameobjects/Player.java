@@ -6,11 +6,11 @@ import game.coords.PixelCoords;
 import graphics.Rect;
 import helper.Consts;
 import game.Game;
+import helper.Keyboard;
 
 import static org.lwjgl.glfw.GLFW.*;
 
 public class Player extends GameObject {
-    private final long window;
     // SpeedX and SpeedY need to be different because one ScreenCoord in the x direction is not always the same distance
     // as one ScreenCoord in the y direction.
     private final float speedX;
@@ -21,7 +21,7 @@ public class Player extends GameObject {
     /** Used for rendering the player direction. */
     private String lastY;
 
-    public Player(ScreenCoords coords, float speed, long window) {
+    public Player(ScreenCoords coords, float speed) {
         super(coords, PixelCoords.distXToScreenDist(Consts.GRID_PIXELS),
                 PixelCoords.distYToScreenDist(Consts.GRID_PIXELS),
                 "playerNortheast");
@@ -29,7 +29,6 @@ public class Player extends GameObject {
         this.lastY = "North";
         this.lastX = "east";
 
-        this.window = window;
         this.speedX = GridCoords.distXToScreenCoords(speed);
         this.speedY = GridCoords.distYToScreenCoords(speed);
     }
@@ -37,16 +36,16 @@ public class Player extends GameObject {
     private void move() {
         Rect[] wallRects = Game.map.getShownRoom().getWallRects();
 
-        if (glfwGetKey(window, GLFW_KEY_W) == 1) {  // Move up
+        if (Keyboard.getKeyDown(GLFW_KEY_W)) {  // Move up
             this.move(0, speedY, wallRects);
             this.lastY = "North";
-        } if (glfwGetKey(window, GLFW_KEY_S) == 1) {  // Move down
+        } if (Keyboard.getKeyDown(GLFW_KEY_S)) {  // Move down
             this.move(0, -speedY, wallRects);
             this.lastY = "South";
-        } if (glfwGetKey(window, GLFW_KEY_A) == 1) {  // Move east
+        } if (Keyboard.getKeyDown(GLFW_KEY_A)) {  // Move east
             this.move(-speedX, 0, wallRects);
             this.lastX = "west";
-        } if (glfwGetKey(window, GLFW_KEY_D) == 1) {  // Move west
+        } if (Keyboard.getKeyDown(GLFW_KEY_D)) {  // Move west
             this.move(speedX, 0, wallRects);
             this.lastX = "east";
         }
