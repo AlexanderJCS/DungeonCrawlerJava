@@ -3,24 +3,14 @@ package game.gameobjects;
 import graphics.*;
 import game.coords.PixelCoords;
 import game.coords.ScreenCoords;
-import graphics.texture.TextureMap;
 
-public abstract class GameObject {
+public abstract class GameObject extends Image {
     protected Rect rect;
     /** The texture name. A list of texture names can be found in the TextureMap object. */
     protected String textureName;
 
     public GameObject(ScreenCoords coords, float width, float height, String textureName) {
-        this.rect = new Rect(coords, width, height);
-        this.textureName = textureName;
-    }
-
-    /**
-     * Draws the GameObject (including its texture) to the screen.
-     */
-    public void draw() {
-        TextureMap.get(this.textureName).bind();
-        this.rect.drawModel();
+        super(coords, width, height, textureName);
     }
 
     /**
@@ -59,13 +49,6 @@ public abstract class GameObject {
             float moveDist = PixelCoords.distYToScreenDist(1);
             this.rect.shift(0, y > 0 ? -moveDist : moveDist);
         }
-    }
-
-    /**
-     * @return A clone of the object's rect.
-     */
-    public Rect getRect() {
-        return new Rect(this.rect);
     }
 
     /**
