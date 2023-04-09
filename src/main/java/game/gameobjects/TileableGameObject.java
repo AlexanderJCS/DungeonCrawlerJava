@@ -37,7 +37,7 @@ public class TileableGameObject extends GameObject {
     public void draw() {
         for (Rect rect : textureRects) {
             TextureMap.get(this.textureName).bind();
-            rect.toTexturedModel().render();
+            rect.drawModel();
         }
     }
 }

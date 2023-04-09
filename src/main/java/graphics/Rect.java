@@ -3,6 +3,7 @@ package graphics;
 
 import game.coords.ScreenCoords;
 import graphics.texture.TexturedModel;
+import org.w3c.dom.Text;
 
 /**
  * The "base" of every other rectangular object. Used for collision and conversion to a Model or TexturedModel class.
@@ -10,6 +11,8 @@ import graphics.texture.TexturedModel;
 public class Rect {
     public float x1, y1, x2, y2;
     public float width, height;
+
+    private Model model;
 
     /**
      * Copy constructor
@@ -23,6 +26,8 @@ public class Rect {
 
         this.width = copy.width;
         this.height = copy.height;
+
+        this.model = copy.model;
     }
 
     /**
@@ -38,6 +43,8 @@ public class Rect {
 
         this.width = width;
         this.height = height;
+
+        this.model = this.toTexturedModel();
     }
 
     /**
@@ -89,19 +96,12 @@ public class Rect {
         this.x2 += x;
         this.y1 += y;
         this.y2 += y;
+
+        this.model.changeVertices(this.getVertices());
     }
 
-    /**
-     * Converts the vertices of the rect into a textured model.
-     * @return A textured model.
-     */
-    public TexturedModel toTexturedModel() {
-        // x1 = 0
-        // y1 = 0
-        // x2 = 1
-        // y2 = 1
-
-        float[] vertices = {
+    private float[] getVertices() {
+        return new float[] {
                 x1, y1,  // Top left
                 x2, y1,  // Top right
                 x2, y2,  // Bottom right
@@ -110,6 +110,18 @@ public class Rect {
                 x1, y2,  // Bottom left
                 x1, y1,  // Top left
         };
+    }
+
+    public void drawModel() {
+        this.model.render();
+    }
+
+    /**
+     * Converts the vertices of the rect into a textured model.
+     * @return A textured model.
+     */
+    private TexturedModel toTexturedModel() {
+        float[] vertices = getVertices();
 
         float[] texCoords = new float[] {
                 0, 1,

@@ -24,6 +24,7 @@ public class Game {
                 Consts.SCREEN_WIDTH, Consts.SCREEN_HEIGHT, "Dungeon Crawler", 0, 0);
         glfwShowWindow(this.window);
 
+        glfwSwapInterval(1);  // enable vsync
         glfwMakeContextCurrent(this.window);
         GL.createCapabilities();
         glEnable(GL_TEXTURE_2D);

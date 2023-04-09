@@ -20,7 +20,7 @@ public abstract class GameObject {
      */
     public void draw() {
         TextureMap.get(this.textureName).bind();
-        this.rect.toTexturedModel().render();
+        this.rect.drawModel();
     }
 
     public boolean collides(Rect[] colliders) {
