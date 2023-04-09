@@ -9,7 +9,7 @@ import game.inventory.UsableItem;
 import graphics.Rect;
 import helper.Consts;
 import game.Game;
-import helper.Keyboard;
+import helper.input.Keyboard;
 
 import static org.lwjgl.glfw.GLFW.*;
 
