@@ -3,6 +3,7 @@ package graphics.texture;
 import static org.lwjgl.opengl.GL21.*;
 
 import graphics.Model;
+import helper.BufferManager;
 
 
 /**
@@ -22,8 +23,9 @@ public class TexturedModel extends Model {
         super(vertices);
 
         tId = glGenBuffers();
+        BufferManager.setBuffer(BufferManager.texCoordsBuffer, texCoords);
         glBindBuffer(GL_ARRAY_BUFFER, tId);
-        glBufferData(GL_ARRAY_BUFFER, createBuffer(texCoords), GL_STATIC_DRAW);
+        glBufferData(GL_ARRAY_BUFFER, texCoords, GL_STATIC_DRAW);
 
         glBindBuffer(GL_ARRAY_BUFFER, 0);
     }

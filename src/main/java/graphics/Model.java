@@ -2,9 +2,7 @@ package graphics;
 
 import static org.lwjgl.opengl.GL21.*;
 
-import org.lwjgl.BufferUtils;
-import java.nio.FloatBuffer;
-
+import helper.BufferManager;
 
 /**
  * Modified from:
@@ -15,7 +13,6 @@ public class Model {
     protected final int drawCount;
     protected final int vId;
     protected final static int DIMENSIONS = 2;
-    protected FloatBuffer vboBuffer;
 
     /**
      * Create a new model with the given vertices.
@@ -24,11 +21,11 @@ public class Model {
     public Model(float[] vertices) {
         drawCount = vertices.length / DIMENSIONS;
 
-        vboBuffer = createBuffer(vertices);
+        BufferManager.setBuffer(BufferManager.vboBuffer, vertices);
 
         vId = glGenBuffers();
         glBindBuffer(GL_ARRAY_BUFFER, vId);
-        glBufferData(GL_ARRAY_BUFFER, vboBuffer, GL_DYNAMIC_DRAW);
+        glBufferData(GL_ARRAY_BUFFER, BufferManager.vboBuffer, GL_DYNAMIC_DRAW);
         glBindBuffer(GL_ARRAY_BUFFER, 0);
     }
 
@@ -54,36 +51,8 @@ public class Model {
      */
     public void changeVertices(float[] vertices) {
         glBindBuffer(GL_ARRAY_BUFFER, vId);
-        glBufferSubData(GL_ARRAY_BUFFER, 0, updateBuffer(vboBuffer, vertices));
+        BufferManager.setBuffer(BufferManager.vboBuffer, vertices);
+        glBufferSubData(GL_ARRAY_BUFFER, 0, BufferManager.vboBuffer);
         glBindBuffer(GL_ARRAY_BUFFER, vId);
-    }
-
-    /**
-     * Adds the new vertices to the given buffer.
-     * <a href="http://forum.lwjgl.org/index.php?topic=5334.0">...</a>
-     *
-     * @param buffer The buffer to add the vertices to.
-     * @param vertices The vertices to add.
-     * @return A reference to the new FloatBuffer.
-     */
-    private static FloatBuffer updateBuffer(FloatBuffer buffer, float[] vertices) {
-        buffer.clear();
-        buffer.put(vertices);
-        buffer.flip();
-
-        return buffer;
-    }
-
-    /**
-     * Creates a new FloatBuffer.
-     * @param data The vertices data.
-     * @return The FloatBuffer containing the vertex data.
-     */
-    protected FloatBuffer createBuffer(float[] data) {
-        FloatBuffer buffer = BufferUtils.createFloatBuffer(data.length);
-        buffer.put(data);
-        buffer.flip();
-
-        return buffer;
     }
 }
