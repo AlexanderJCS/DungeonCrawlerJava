@@ -3,6 +3,7 @@ package game.gameobjects;
 import game.coords.GridCoords;
 import game.coords.ScreenCoords;
 import game.coords.PixelCoords;
+import graphics.Rect;
 import helper.Consts;
 import game.Game;
 
@@ -10,10 +11,14 @@ import static org.lwjgl.glfw.GLFW.*;
 
 public class Player extends GameObject {
     private final long window;
+    // SpeedX and SpeedY need to be different because one ScreenCoord in the x direction is not always the same distance
+    // as one ScreenCoord in the y direction.
     private final float speedX;
     private final float speedY;
 
+    /** Used for rendering the player direction. */
     private String lastX;
+    /** Used for rendering the player direction. */
     private String lastY;
 
     public Player(ScreenCoords coords, float speed, long window) {
@@ -30,17 +35,19 @@ public class Player extends GameObject {
     }
 
     private void move() {
-        if (glfwGetKey(window, GLFW_KEY_W) == 1) {
-            this.move(0, speedY, Game.map.getShownRoom().getWallRects());
+        Rect[] wallRects = Game.map.getShownRoom().getWallRects();
+
+        if (glfwGetKey(window, GLFW_KEY_W) == 1) {  // Move up
+            this.move(0, speedY, wallRects);
             this.lastY = "North";
-        } if (glfwGetKey(window, GLFW_KEY_S) == 1) {
-            this.move(0, -speedY, Game.map.getShownRoom().getWallRects());
+        } if (glfwGetKey(window, GLFW_KEY_S) == 1) {  // Move down
+            this.move(0, -speedY, wallRects);
             this.lastY = "South";
-        } if (glfwGetKey(window, GLFW_KEY_A) == 1) {
-            this.move(-speedX, 0, Game.map.getShownRoom().getWallRects());
+        } if (glfwGetKey(window, GLFW_KEY_A) == 1) {  // Move east
+            this.move(-speedX, 0, wallRects);
             this.lastX = "west";
-        } if (glfwGetKey(window, GLFW_KEY_D) == 1) {
-            this.move(speedX, 0, Game.map.getShownRoom().getWallRects());
+        } if (glfwGetKey(window, GLFW_KEY_D) == 1) {  // Move west
+            this.move(speedX, 0, wallRects);
             this.lastX = "east";
         }
     }

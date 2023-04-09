@@ -7,7 +7,7 @@ import java.nio.FloatBuffer;
 
 
 /**
- * Taken from:
+ * Modified from:
  * <a href="https://www.youtube.com/watch?v=-6P_CkT-FlQ&list=PLILiqflMilIxta2xKk2EftiRHD4nQGW0u&index=5&ab_channel=WarmfulDevelopment">...</a>
  * Model class, which allows a shape to be drawn to the screen using VBOs.
  */
@@ -17,7 +17,10 @@ public class Model {
     protected final static int DIMENSIONS = 2;
     protected FloatBuffer vboBuffer;
 
-
+    /**
+     * Create a new model with the given vertices.
+     * @param vertices The triangle vertices.
+     */
     public Model(float[] vertices) {
         drawCount = vertices.length / DIMENSIONS;
 
@@ -29,6 +32,9 @@ public class Model {
         glBindBuffer(GL_ARRAY_BUFFER, 0);
     }
 
+    /**
+     * Renders the model as a white box.
+     */
     public void render() {
         glEnableClientState(GL_VERTEX_ARRAY);
 
@@ -42,6 +48,8 @@ public class Model {
     }
 
     /**
+     * Changes the vertices to the ones given. This is a memory-safe way to do so, since creating a new
+     * Model will cause a memory leak.
      * <a href="http://forum.lwjgl.org/index.php?topic=5334.0">...</a>
      */
     public void changeVertices(float[] vertices) {
@@ -51,16 +59,26 @@ public class Model {
     }
 
     /**
+     * Adds the new vertices to the given buffer.
      * <a href="http://forum.lwjgl.org/index.php?topic=5334.0">...</a>
+     *
+     * @param buffer The buffer to add the vertices to.
+     * @param vertices The vertices to add.
+     * @return A reference to the new FloatBuffer.
      */
     private static FloatBuffer updateBuffer(FloatBuffer buffer, float[] vertices) {
-        buffer.clear();  // clear buffer (it says this doesn't delete the data in the javadoc is this still going to remove the old data?)
+        buffer.clear();
         buffer.put(vertices);
-        buffer.flip();  // flip the buffer (does buffer.clear() un-flip the buffer?, does this need to be called here still?)
+        buffer.flip();
 
         return buffer;
     }
 
+    /**
+     * Creates a new FloatBuffer.
+     * @param data The vertices data.
+     * @return The FloatBuffer containing the vertex data.
+     */
     protected FloatBuffer createBuffer(float[] data) {
         FloatBuffer buffer = BufferUtils.createFloatBuffer(data.length);
         buffer.put(data);

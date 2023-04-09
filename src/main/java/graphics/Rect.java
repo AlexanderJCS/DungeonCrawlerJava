@@ -3,7 +3,6 @@ package graphics;
 
 import game.coords.ScreenCoords;
 import graphics.texture.TexturedModel;
-import org.w3c.dom.Text;
 
 /**
  * The "base" of every other rectangular object. Used for collision and conversion to a Model or TexturedModel class.
@@ -12,7 +11,7 @@ public class Rect {
     public float x1, y1, x2, y2;
     public float width, height;
 
-    private Model model;
+    private final Model model;
 
     /**
      * Copy constructor
@@ -84,6 +83,8 @@ public class Rect {
         this.y1 = y;
         this.x2 = width;
         this.y2 = height;
+
+        this.model.changeVertices(this.getVertices());
     }
 
     /**

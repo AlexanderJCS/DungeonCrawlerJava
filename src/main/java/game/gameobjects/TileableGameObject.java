@@ -1,15 +1,16 @@
 package game.gameobjects;
 
+import graphics.texture.TextureMap;
 import game.coords.ScreenCoords;
 import game.coords.GridCoords;
 import graphics.Rect;
-import graphics.texture.TextureMap;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * A TileableGameObject differs from a GameObject in that the texture given repeats every Consts.GRID_PIXELS.
+ * This is useful for walls.
  */
 public class TileableGameObject extends GameObject {
     List<Rect> textureRects;

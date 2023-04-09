@@ -10,8 +10,13 @@ import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.glfw.GLFW.glfwMakeContextCurrent;
 import static org.lwjgl.opengl.GL11.*;
 
+/**
+ * The main class for running the game.
+ */
 public class Game {
     private final long window;
+    // These two variables need to be static because the player needs to access the map and enemies need to access
+    // the player.
     public static Map map = null;
     public static Player player = null;
 
@@ -42,6 +47,9 @@ public class Game {
         player.draw();
     }
 
+    /**
+     * The main game loop.
+     */
     public void run() {
         while (!glfwWindowShouldClose(this.window)) {
             glfwPollEvents();
@@ -56,6 +64,9 @@ public class Game {
         glfwTerminate();
     }
 
+    /**
+     * Run the game.
+     */
     public static void main(String[] args) {
         Game game = new Game();
         game.run();

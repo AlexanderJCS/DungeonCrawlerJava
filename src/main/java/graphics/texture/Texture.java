@@ -11,18 +11,25 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 
 /**
- * Following a tutorial:
+ * This class allows images to be drawn to the screen.
+ * To use it, run Texture.bind() then render the TexturedModel you want to map it to.
+ * <p>
+ * Taken from this tutorial:
  * <a href="https://www.youtube.com/watch?v=crOzRjzqI-o&list=PLILiqflMilIxta2xKk2EftiRHD4nQGW0u&index=4&ab_channel=WarmfulDevelopment">...</a>
- * This class allows images to be drawn to the screen. To use it, run Texture.bind() then draw the shape you want to map it to.
  */
 public class Texture {
     private int id;
 
-    public Texture(String filename) {
+    /**
+     * Creates a new Texture object.
+     * @param filepath The filepath of the texture.
+     */
+
+    public Texture(String filepath) {
         BufferedImage bufferedImage;
 
         try {
-            bufferedImage = ImageIO.read(new File(filename));
+            bufferedImage = ImageIO.read(new File(filepath));
             int width = bufferedImage.getWidth();
             int height = bufferedImage.getHeight();
 
@@ -55,6 +62,10 @@ public class Texture {
         }
     }
 
+    /**
+     * Run this method before running TexturedModel.draw(). This will overlay the texture
+     * on the TexturedModel.
+     */
     public void bind() {
         glBindTexture(GL_TEXTURE_2D, id);
     }

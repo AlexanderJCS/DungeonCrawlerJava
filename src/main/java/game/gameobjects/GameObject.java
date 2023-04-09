@@ -23,6 +23,10 @@ public abstract class GameObject {
         this.rect.drawModel();
     }
 
+    /**
+     * @param colliders Rectangles to collide with.
+     * @return If this is colliding with a collider inside colliders.
+     */
     public boolean collides(Rect[] colliders) {
         for (Rect collider : colliders) {
             if (collider.collidesWith(this.rect)) {
@@ -33,6 +37,12 @@ public abstract class GameObject {
         return false;
     }
 
+    /**
+     * Move an object by a certain amount while taking into account colliders.
+     * @param x The amount to shift in the x direction.
+     * @param y The amount to shift in the y direction
+     * @param colliders Objects to not collide with. Note that if the GameObject shifts too much, it can pass through the collider.
+     */
     public void move(float x, float y, Rect[] colliders) {
         this.rect.shift(x, 0);
 
@@ -51,9 +61,15 @@ public abstract class GameObject {
         }
     }
 
+    /**
+     * @return A clone of the object's rect.
+     */
     public Rect getRect() {
         return new Rect(this.rect);
     }
 
+    /**
+     * Update method that will be called once every frame. Empty by default.
+     */
     public void update() {}
 }
