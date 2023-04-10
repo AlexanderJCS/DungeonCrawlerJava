@@ -27,12 +27,14 @@ public class Game {
             throw new IllegalStateException("GLFW could not initialize");
         }
 
+        glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
         this.window = glfwCreateWindow(
                 Consts.SCREEN_WIDTH, Consts.SCREEN_HEIGHT, "Dungeon Crawler", 0, 0);
         glfwShowWindow(this.window);
 
         glfwSwapInterval(1);  // enable vsync
         glfwMakeContextCurrent(this.window);
+
         GL.createCapabilities();
 
         glEnable(GL_TEXTURE_2D);
@@ -49,7 +51,9 @@ public class Game {
     private void update() {
         player.update();
 
-        Mouse.update();  // this needs to be called as the last update method
+        // These two methods need to be called last
+        Keyboard.update();
+        Mouse.update();
     }
 
     private void draw() {
