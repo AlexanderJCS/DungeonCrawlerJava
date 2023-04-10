@@ -3,6 +3,7 @@ package helper.input;
 import game.coords.PixelCoords;
 import game.coords.ScreenCoords;
 import helper.BufferManager;
+import helper.Consts;
 
 import static org.lwjgl.glfw.GLFW.*;
 
@@ -34,7 +35,7 @@ public class Mouse {
         double x = BufferManager.mouseBuffer1.get(0);
         double y = BufferManager.mouseBuffer2.get(0);
 
-        return new PixelCoords((float) x, (float) y).toScreenCoords();
+        return new PixelCoords((float) x, (float) (Consts.SCREEN_HEIGHT - y)).toScreenCoords();
     }
 
     /**
