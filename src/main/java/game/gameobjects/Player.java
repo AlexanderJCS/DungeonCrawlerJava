@@ -3,9 +3,8 @@ package game.gameobjects;
 import game.coords.GridCoords;
 import game.coords.ScreenCoords;
 import game.coords.PixelCoords;
+import game.inventory.Heart;
 import game.inventory.Inventory;
-import game.inventory.ItemType;
-import game.inventory.UsableItem;
 import graphics.Rect;
 import helper.Consts;
 import game.Game;
@@ -38,7 +37,7 @@ public class Player extends GameObject {
         this.speedY = GridCoords.distYToScreenCoords(speed);
 
         this.inventory = new Inventory();
-        this.inventory.addItem(new UsableItem(ItemType.WEAPON, "playerNortheast"));
+        this.inventory.addItem(new Heart());
     }
 
     private void move() {

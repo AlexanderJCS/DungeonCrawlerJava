@@ -27,7 +27,7 @@ public class Game {
             throw new IllegalStateException("GLFW could not initialize");
         }
 
-        glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+        glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);  // make the window non-resizeable
         this.window = glfwCreateWindow(
                 Consts.SCREEN_WIDTH, Consts.SCREEN_HEIGHT, "Dungeon Crawler", 0, 0);
         glfwShowWindow(this.window);

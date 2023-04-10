@@ -1,9 +1,17 @@
 package game.inventory;
 
-public class UsableItem extends Item {
-    public UsableItem(ItemType type, String texture) {
+public abstract class UsableItem extends Item {
+    protected int durability;
+
+    public UsableItem(ItemType type, String texture, int durability) {
         super(type, texture);
+
+        this.durability = durability;
     }
 
-    public void use() {}
+    public int getDurability() {
+        return this.durability;
+    }
+
+    public abstract void use();
 }
