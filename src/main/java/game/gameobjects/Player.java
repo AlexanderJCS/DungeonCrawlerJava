@@ -38,7 +38,7 @@ public class Player extends GameObject {
         this.speedY = GridCoords.distYToScreenCoords(speed);
 
         this.inventory = new Inventory();
-        this.inventory.addItem(new UsableItem(ItemType.WEAPON, "brick"));
+        this.inventory.addItem(new UsableItem(ItemType.WEAPON, "playerNortheast"));
     }
 
     private void move() {
@@ -79,6 +79,8 @@ public class Player extends GameObject {
 
     @Override
     public void update() {
+        this.inventory.update();
+
         this.move();
         this.moveRooms();
     }

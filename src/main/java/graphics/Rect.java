@@ -144,7 +144,7 @@ public class Rect {
      */
     public boolean pointInsideRect(ScreenCoords coords) {
         return (coords.y > this.y1 && coords.y < this.y2) &&
-                (coords.x < this.x2 && coords.x > this.x1);
+                (coords.x > this.x1 && coords.x < this.x2);
     }
 
     /**

@@ -6,6 +6,7 @@ import game.coords.ScreenCoords;
 import game.gameobjects.Image;
 import helper.Consts;
 import helper.input.Keyboard;
+import helper.input.Mouse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,9 +22,18 @@ public class Inventory {
     private final List<UsableItem> consumables;
     private final List<UsableItem> weapons;
 
+    private UsableItem selectedItem;
+
     public Inventory() {
         this.consumables = new ArrayList<>();
         this.weapons = new ArrayList<>();
+    }
+
+    private List<UsableItem> getUsableItems() {
+        List<UsableItem> returnList = new ArrayList<>(weapons);
+        returnList.addAll(consumables);
+
+        return returnList;
     }
 
     public void addItem(Item item) {
@@ -54,12 +64,37 @@ public class Inventory {
         }
     }
 
+    private void drawSelectedItem() {
+        this.selectedItem.getRectReference().setPos(
+                new GridCoords(1, 16).toScreenCoords());
+        this.selectedItem.draw();
+    }
+
     @SuppressWarnings("unchecked")
     public void draw() {
+        if (this.selectedItem != null) {
+            this.drawSelectedItem();
+        }
+
         if (Keyboard.getKeyDown(OPEN_INVENTORY_KEY)) {  // if inventory is open
+            // draw the inventory
             transparent.draw();
             drawItemList((List<Item>)(List<?>) this.consumables, -100);
             drawItemList((List<Item>)(List<?>) this.weapons, 0);
+        }
+    }
+
+    public void update() {
+        // If the inventory is open and the user clicked
+        if (Mouse.mouseDownThisFrame() && Keyboard.getKeyDown(OPEN_INVENTORY_KEY)) {
+            ScreenCoords mousePos = Mouse.getMousePos();
+
+            for (UsableItem item : getUsableItems()) {
+                if (item.getRectReference().pointInsideRect(mousePos)) {
+                    this.selectedItem = item;
+                    System.out.println("selected");
+                }
+            }
         }
     }
 }
