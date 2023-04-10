@@ -13,7 +13,7 @@ public class Item extends Image {
         this.type = type;
     }
 
-    public Rect getRectReference() {
+    Rect getRectReference() {
         return this.rect;
     }
 }
