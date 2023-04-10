@@ -4,7 +4,8 @@ import game.coords.ScreenCoords;
 import game.gameobjects.Player;
 import game.world.Map;
 import helper.Consts;
-import helper.Keyboard;
+import helper.input.Keyboard;
+import helper.input.Mouse;
 import org.lwjgl.opengl.GL;
 
 import static org.lwjgl.glfw.GLFW.*;
@@ -42,10 +43,13 @@ public class Game {
         player = new Player(new ScreenCoords(0, 0), 0.065f);
 
         Keyboard.init(this.window);
+        Mouse.init(this.window);
     }
 
     private void update() {
         player.update();
+
+        Mouse.update();  // this needs to be called as the last update method
     }
 
     private void draw() {

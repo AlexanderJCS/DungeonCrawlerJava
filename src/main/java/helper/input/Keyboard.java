@@ -1,4 +1,4 @@
-package helper;
+package helper.input;
 
 import static org.lwjgl.glfw.GLFW.*;
 

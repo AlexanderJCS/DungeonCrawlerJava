@@ -5,7 +5,7 @@ import game.coords.PixelCoords;
 import game.coords.ScreenCoords;
 import game.gameobjects.Image;
 import helper.Consts;
-import helper.Keyboard;
+import helper.input.Keyboard;
 
 import java.util.ArrayList;
 import java.util.List;

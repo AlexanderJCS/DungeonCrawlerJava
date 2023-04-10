@@ -2,11 +2,15 @@ package helper;
 
 import org.lwjgl.BufferUtils;
 
+import java.nio.DoubleBuffer;
 import java.nio.FloatBuffer;
 
 public class BufferManager {
     public static FloatBuffer vboBuffer = BufferUtils.createFloatBuffer(1024);
     public static FloatBuffer texCoordsBuffer = BufferUtils.createFloatBuffer(1024);
+
+    public static DoubleBuffer mouseBuffer1 = BufferUtils.createDoubleBuffer(1);
+    public static DoubleBuffer mouseBuffer2 = BufferUtils.createDoubleBuffer(1);
 
     public static void setBuffer(FloatBuffer fb, float[] newData) throws IllegalArgumentException {
         if (newData.length > 1024) {
