@@ -14,22 +14,6 @@ public class Rect {
     private final Model model;
 
     /**
-     * Copy constructor
-     * @param copy Other rect
-     */
-    public Rect(Rect copy) {
-        this.x1 = copy.x1;
-        this.y1 = copy.y1;
-        this.x2 = copy.x2;
-        this.y2 = copy.y2;
-
-        this.width = copy.width;
-        this.height = copy.height;
-
-        this.model = copy.model;
-    }
-
-    /**
      * @param coords the coordinates of the rect
      * @param width Width
      * @param height Height
@@ -44,6 +28,13 @@ public class Rect {
         this.height = height;
 
         this.model = this.toTexturedModel();
+    }
+
+    public void setWidthHeight(float width, float height) {
+        this.width = width;
+        this.height = height;
+
+        this.setPos(new ScreenCoords(this.x1, this.y1));
     }
 
     /**

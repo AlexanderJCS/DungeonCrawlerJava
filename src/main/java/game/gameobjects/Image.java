@@ -10,7 +10,7 @@ import graphics.Rect;
 public class Image {
     protected Rect rect;
     /** The texture name. A list of texture names can be found in the TextureMap object. */
-    protected String textureName;
+    public String textureName;
 
     public Image(ScreenCoords coords, float width, float height, String textureName) {
         this.rect = new Rect(coords, width, height);
@@ -26,9 +26,9 @@ public class Image {
     }
 
     /**
-     * @return A clone of the object's rect.
+     * @return A reference of the image's rect.
      */
     public Rect getRect() {
-        return new Rect(this.rect);
+        return this.rect;
     }
 }

@@ -3,7 +3,6 @@ package game.inventory;
 import helper.coords.GridCoords;
 import helper.coords.ScreenCoords;
 import game.gameobjects.Image;
-import graphics.Rect;
 
 public class Item extends Image {
     public final ItemType type;
@@ -13,7 +12,7 @@ public class Item extends Image {
         this.type = type;
     }
 
-    Rect getRectReference() {
-        return this.rect;
+    public void setPos(ScreenCoords newPos) {
+        this.rect.setPos(newPos);
     }
 }

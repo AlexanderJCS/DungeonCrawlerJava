@@ -59,7 +59,7 @@ public class Inventory {
         for (int i = 0; i < items.size(); i++) {
             Item item = items.get(i);
 
-            item.getRectReference().setPos(
+            item.setPos(
                     new PixelCoords(origin.x + GridCoords.distToPixelCoords(i), origin.y).toScreenCoords()
             );
 
@@ -68,7 +68,7 @@ public class Inventory {
     }
 
     private void drawSelectedItem() {
-        this.selectedItem.getRectReference().setPos(new GridCoords(1, 16).toScreenCoords());
+        this.selectedItem.setPos(new GridCoords(1, 16).toScreenCoords());
         this.selectedItem.draw();
     }
 
@@ -91,7 +91,7 @@ public class Inventory {
         ScreenCoords mousePos = Mouse.getMousePos();
 
         for (UsableItem item : getUsableItems()) {
-            if (!item.getRectReference().pointInsideRect(mousePos)) {
+            if (!item.getRect().pointInsideRect(mousePos)) {
                 continue;
             }
 

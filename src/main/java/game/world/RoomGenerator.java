@@ -33,7 +33,7 @@ public class RoomGenerator {
         // South entrance
         if (!south) {
             walls.add(
-                    new Wall(new GridCoords(13, 0).toScreenCoords(), GridCoords.distXToScreenCoords(6), GridCoords.distYToScreenCoords(4))
+                    new Wall(new GridCoords(13, 0).toScreenCoords(), GridCoords.distXToScreenCoords(6), GridCoords.distYToScreenCoords(3))
             );
         }
 

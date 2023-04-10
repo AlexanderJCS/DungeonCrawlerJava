@@ -8,6 +8,7 @@ public class Heart extends UsableItem {
 
     @Override
     public void use() {
+        super.use();
         this.durability--;
     }
 }

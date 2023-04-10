@@ -27,8 +27,12 @@ public class TextureMap {
 
         put("sword", new Texture(texturePath + "items/sword.png"));
 
-        // -- MISCELLANEOUS --
+        // -- COLORS --
         put("white", new Texture(texturePath + "white.png"));
+        put("red", new Texture(texturePath + "red.png"));
+        put("yellow", new Texture(texturePath + "yellow.png"));
+        put("green", new Texture(texturePath + "green.png"));
+
         put("transparent", new Texture(texturePath + "transparent.png"));
     }};
 

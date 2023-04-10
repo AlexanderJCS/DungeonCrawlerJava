@@ -40,9 +40,14 @@ public class Player extends GameObject {
         this.inventory.addItem(new Heart());
     }
 
+    /**
+     * Move the player.<br>
+     * Controls: W (up), S (down), E (east), W (west)
+     */
     private void move() {
         Rect[] wallRects = Game.map.getShownRoom().getWallRects();
 
+        // Check if W, A, S, or D is pressed and move accordingly
         if (Keyboard.getKeyDown(GLFW_KEY_W)) {  // Move up
             this.move(0, speedY, wallRects);
             this.lastY = "North";
@@ -58,13 +63,21 @@ public class Player extends GameObject {
         }
     }
 
+    /**
+     * If the player's rect center moves offscreen, move rooms in that direction.
+     * For example, if the player moves offscreen to the north, move rooms in the north direction.
+     */
     private void moveRooms() {
         float rectX = this.rect.getCenter().x;
         float rectY = this.rect.getCenter().y;
 
+        // Move rooms
         if (rectX < -1 || rectX > 1 || rectY < -1 || rectY > 1) {
             Game.map.moveRooms((int) rectX, (int) rectY);
-            this.rect.setCenter(0f, 0f);
+
+            // The purpose of (int) -rectX (or rectY) is to put the player on the right side of
+            // the screen if they are on the left, and the left side if they are on the right
+            this.rect.setCenter((int) -rectX * 0.9f, (int) -rectY * 0.9f);
         }
     }
 
