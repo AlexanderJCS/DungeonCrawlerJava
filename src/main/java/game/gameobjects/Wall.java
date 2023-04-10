@@ -1,6 +1,6 @@
 package game.gameobjects;
 
-import game.coords.ScreenCoords;
+import helper.coords.ScreenCoords;
 
 public class Wall extends TileableGameObject {
     public Wall(ScreenCoords coords, float width, float height) {

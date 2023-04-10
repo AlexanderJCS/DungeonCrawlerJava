@@ -1,8 +1,8 @@
 package game.gameobjects;
 
-import game.coords.GridCoords;
-import game.coords.ScreenCoords;
-import game.coords.PixelCoords;
+import helper.coords.GridCoords;
+import helper.coords.ScreenCoords;
+import helper.coords.PixelCoords;
 import game.inventory.Heart;
 import game.inventory.Inventory;
 import graphics.Rect;

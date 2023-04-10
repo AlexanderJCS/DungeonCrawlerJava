@@ -1,8 +1,8 @@
 package game.gameobjects;
 
 import graphics.texture.TextureMap;
-import game.coords.ScreenCoords;
-import game.coords.GridCoords;
+import helper.coords.ScreenCoords;
+import helper.coords.GridCoords;
 import graphics.Rect;
 
 import java.util.ArrayList;

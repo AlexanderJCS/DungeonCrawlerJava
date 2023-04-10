@@ -1,8 +1,8 @@
 package game.inventory;
 
-import game.coords.GridCoords;
-import game.coords.PixelCoords;
-import game.coords.ScreenCoords;
+import helper.coords.GridCoords;
+import helper.coords.PixelCoords;
+import helper.coords.ScreenCoords;
 import game.gameobjects.Image;
 import helper.Consts;
 import helper.input.Keyboard;

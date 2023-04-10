@@ -1,7 +1,7 @@
 package game.gameobjects;
 
 import graphics.texture.TextureMap;
-import game.coords.ScreenCoords;
+import helper.coords.ScreenCoords;
 import graphics.Rect;
 
 /**

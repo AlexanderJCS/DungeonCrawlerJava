@@ -1,4 +1,4 @@
-package game.coords;
+package helper.coords;
 
 public abstract class Coords {
     public float x;

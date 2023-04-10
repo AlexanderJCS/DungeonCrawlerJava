@@ -1,6 +1,6 @@
 package game;
 
-import game.coords.ScreenCoords;
+import helper.coords.ScreenCoords;
 import game.gameobjects.Player;
 import game.world.Map;
 import helper.Consts;

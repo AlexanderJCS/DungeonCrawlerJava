@@ -1,7 +1,7 @@
 package game.world;
 
 import game.gameobjects.Wall;
-import game.coords.GridCoords;
+import helper.coords.GridCoords;
 
 import java.util.ArrayList;
 import java.util.Arrays;

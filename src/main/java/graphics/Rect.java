@@ -1,7 +1,7 @@
 package graphics;
 
 
-import game.coords.ScreenCoords;
+import helper.coords.ScreenCoords;
 import graphics.texture.TexturedModel;
 
 /**

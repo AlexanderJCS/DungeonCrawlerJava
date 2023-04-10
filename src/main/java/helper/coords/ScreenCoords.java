@@ -1,4 +1,4 @@
-package game.coords;
+package helper.coords;
 
 import helper.Consts;
 

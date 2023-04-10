@@ -1,8 +1,8 @@
 package game.gameobjects;
 
 import graphics.*;
-import game.coords.PixelCoords;
-import game.coords.ScreenCoords;
+import helper.coords.PixelCoords;
+import helper.coords.ScreenCoords;
 
 public abstract class GameObject extends Image {
     public GameObject(ScreenCoords coords, float width, float height, String textureName) {

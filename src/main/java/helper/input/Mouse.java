@@ -1,7 +1,7 @@
 package helper.input;
 
-import game.coords.PixelCoords;
-import game.coords.ScreenCoords;
+import helper.coords.PixelCoords;
+import helper.coords.ScreenCoords;
 import helper.BufferManager;
 import helper.Consts;
 
