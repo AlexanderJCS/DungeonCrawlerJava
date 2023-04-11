@@ -8,7 +8,7 @@ import graphics.Rect;
  * An image that can be displayed to the screen.
  */
 public class Image {
-    protected Rect rect;
+    protected final Rect rect;
     /** The texture name. A list of texture names can be found in the TextureMap object. */
     public String textureName;
 
