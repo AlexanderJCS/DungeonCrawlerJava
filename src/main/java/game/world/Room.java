@@ -1,5 +1,6 @@
 package game.world;
 
+import game.gameobjects.Enemy;
 import game.gameobjects.GameObject;
 import graphics.Rect;
 import game.gameobjects.Wall;
@@ -67,8 +68,18 @@ public class Room {
     }
 
     public void update() {
-        for (GameObject gameObject : this.gameObjects) {
+        for (int i = this.gameObjects.size() - 1; i >= 0; i--) {
+            GameObject gameObject = this.gameObjects.get(i);
             gameObject.update();
+
+            // Remove enemies if their health is below 0
+            if (gameObject.getClass() == Enemy.class) {
+                Enemy enemy = (Enemy) gameObject;
+
+                if (enemy.healthContainer.getHealth() == 0) {
+                    this.gameObjects.remove(i);
+                }
+            }
         }
     }
 }

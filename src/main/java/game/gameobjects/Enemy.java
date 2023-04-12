@@ -12,6 +12,8 @@ public class Enemy extends GameObject {
     private final float speedY;
     private int moveAwayFrames;
 
+    public final HealthContainer healthContainer;
+
     /**
      *
      * @param coords The coordinates the enemy should spawn at.
@@ -24,6 +26,7 @@ public class Enemy extends GameObject {
         this.speedY = GridCoords.distYToScreenCoords(speed);
 
         this.moveAwayFrames = 0;
+        this.healthContainer = new HealthContainer(6, 20);
     }
 
     /**
@@ -64,15 +67,24 @@ public class Enemy extends GameObject {
     }
 
     public void update() {
+        this.healthContainer.update();
 
+        // Check for collision with the player
+        // If that happens, then start moving away
         if (Game.player.getRect().collidesWith(this.rect)) {
             this.moveAwayFrames = MOVE_AWAY_FRAMES;
+            Game.player.healthContainer.takeDamage(1);
         }
 
-        if (this.moveAwayFrames > 0) {
+        // Otherwise set move away frames to invincibility frames
+        else if (this.healthContainer.getInvincibilityFrames() > 0) {
+            this.moveAwayFrames = this.healthContainer.getInvincibilityFrames();
+        }
+
+        if (this.moveAwayFrames > 0) {  // if the enemy should move away
             this.moveAway(Game.player.getRect());
             this.moveAwayFrames--;
-        } else {
+        } else {  // otherwise, move towards the player
             this.moveTowardsPlayer();
         }
     }

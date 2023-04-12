@@ -19,6 +19,7 @@ public class Player extends GameObject {
     private final float speedX;
     private final float speedY;
 
+    public HealthContainer healthContainer;
     private final Inventory inventory;
 
     /** Used for rendering the player direction. */
@@ -39,6 +40,8 @@ public class Player extends GameObject {
 
         this.inventory = new Inventory();
         this.inventory.addItem(new Heart());
+
+        this.healthContainer = new HealthContainer(10, 20);
     }
 
     /**
@@ -96,6 +99,7 @@ public class Player extends GameObject {
 
         super.draw();
         this.inventory.draw();
+        this.healthContainer.draw();
     }
 
     @Override
