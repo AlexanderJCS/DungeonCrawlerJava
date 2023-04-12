@@ -5,7 +5,7 @@ import helper.coords.PixelCoords;
 import helper.coords.ScreenCoords;
 
 /**
- * Contains health has the ability to draw it to the screen.
+ * Contains health and has the ability to draw it to the screen.
  */
 public class HealthContainer {
     private final int MAX_HEALTH;
@@ -14,6 +14,12 @@ public class HealthContainer {
     private int invincibilityFrames;
     private int health;
 
+    /**
+     * Note that 2 health = 1 heart.
+     *
+     * @param maxHealth The maximum health that can be gained
+     * @param invincibilityFrames The number invincibility frames
+     */
     public HealthContainer(int maxHealth, int invincibilityFrames) {
         this.MAX_HEALTH = maxHealth;
         this.health = maxHealth;
@@ -22,6 +28,11 @@ public class HealthContainer {
         this.invincibilityFrames = 0;
     }
 
+    /**
+     * Take damage from the health container. Note that 2 damage = 1 heart.
+     *
+     * @param damage The amount of damage to take. Negative numbers heal.
+     */
     public void takeDamage(int damage) {
         if (this.invincibilityFrames > 0 || this.health <= 0) {
             return;
