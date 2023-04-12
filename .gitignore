@@ -1,3 +1,6 @@
+# Game files
+*.dc
+
 # IntelliJ files
 .idea
 target

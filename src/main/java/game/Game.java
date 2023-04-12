@@ -8,6 +8,8 @@ import helper.input.Keyboard;
 import helper.input.Mouse;
 import org.lwjgl.opengl.GL;
 
+import java.io.*;
+
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.glfw.GLFW.glfwMakeContextCurrent;
 import static org.lwjgl.opengl.GL11.*;
@@ -15,7 +17,7 @@ import static org.lwjgl.opengl.GL11.*;
 /**
  * The main class for running the game.
  */
-public class Game {
+public class Game implements Serializable {
     private final long window;
     // These two variables need to be static because the player needs to access the map and enemies need to access
     // the player.
@@ -77,6 +79,35 @@ public class Game {
         }
 
         glfwTerminate();
+        // this.save("src/main/resources/save.dc");
+    }
+
+    /**
+     * Serializes the game
+     * @param filepath The file to serialize the game to
+     */
+    public void save(String filepath) {
+        try (ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(filepath))) {
+            output.writeObject(this);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * Deserializes the game
+     * @param filepath The file to deserialize the game from
+     */
+    public static Game load(String filepath) {
+        Game returnValue;
+
+        try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(filepath))){
+            returnValue = (Game) input.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        return returnValue;
     }
 
     /**
@@ -84,6 +115,7 @@ public class Game {
      */
     public static void main(String[] args) {
         Game game = new Game();
+//        Game game = Game.load("test");
         game.run();
     }
 }
