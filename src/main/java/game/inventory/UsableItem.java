@@ -15,7 +15,7 @@ public class UsableItem extends Item {
         this.maxDurability = durability;
         this.durability = durability;
         this.barImage = new Image(new ScreenCoords(-1, -1),
-                GridCoords.distXToScreenCoords(1), GridCoords.distYToScreenCoords(0.2f), "green");
+                GridCoords.distXToScreenCoords(1), GridCoords.distYToScreenCoords(0.1f), "green");
     }
 
     public int getDurability() {

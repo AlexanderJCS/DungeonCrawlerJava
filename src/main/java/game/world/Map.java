@@ -19,7 +19,8 @@ public class Map {
         this.random = new Random(seed);
 
         this.rooms = new ArrayList<>(List.of(
-                new Room(0, 0, true, false, false, false)
+                new Room(0, 0, true, false, false, false,
+                        RoomGenerator.generateGameObjects(this.random, 0))
         ));
 
         this.setShownRoom(0, 0);
@@ -30,6 +31,10 @@ public class Map {
      */
     public void draw() {
         this.shownRoom.draw();
+    }
+
+    public void update() {
+        this.shownRoom.update();
     }
 
     /**
@@ -122,6 +127,6 @@ public class Map {
             west = tempRoom.east;
         }
 
-        this.rooms.add(new Room(x, y, north, south, east, west));
+        this.rooms.add(new Room(x, y, north, south, east, west, RoomGenerator.generateGameObjects(this.random, dist)));
     }
 }

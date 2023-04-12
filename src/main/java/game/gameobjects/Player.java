@@ -1,5 +1,6 @@
 package game.gameobjects;
 
+import game.inventory.Item;
 import helper.coords.GridCoords;
 import helper.coords.ScreenCoords;
 import helper.coords.PixelCoords;
@@ -79,6 +80,14 @@ public class Player extends GameObject {
             // the screen if they are on the left, and the left side if they are on the right
             this.rect.setCenter((int) -rectX * 0.9f, (int) -rectY * 0.9f);
         }
+    }
+
+    /**
+     * Add an item to the player's inventory. Used for the Chest class.
+     * @param item The item to add to the inventory
+     */
+    public void addToInventory(Item item) {
+        this.inventory.addItem(item);
     }
 
     @Override

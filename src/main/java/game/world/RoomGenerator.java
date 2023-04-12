@@ -1,11 +1,13 @@
 package game.world;
 
+import game.gameobjects.Chest;
+import game.gameobjects.GameObject;
 import game.gameobjects.Wall;
+import game.inventory.Heart;
+import game.inventory.Item;
 import helper.coords.GridCoords;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * Helper class for the Room class. Used to get an array of Walls.
@@ -52,5 +54,27 @@ public class RoomGenerator {
         }
 
         return walls.toArray(Wall[]::new);
+    }
+
+    private static List<GameObject> generateChests(Random random, double dist) {
+        double chestProb = 2 / dist;
+
+        Item[] chestItems = new Item[]{
+                new Heart()
+        };
+
+        if (random.nextDouble() > chestProb) {
+            return Collections.singletonList(
+                    new Chest(
+                            new GridCoords(10, 6).toScreenCoords(),
+                            chestItems[random.nextInt(chestItems.length)]
+            ));
+        }
+
+        return new ArrayList<>();
+    }
+
+    public static List<GameObject> generateGameObjects(Random random, double dist) {
+        return generateChests(random, dist);
     }
 }

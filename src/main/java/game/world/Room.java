@@ -1,7 +1,10 @@
 package game.world;
 
+import game.gameobjects.GameObject;
 import graphics.Rect;
 import game.gameobjects.Wall;
+
+import java.util.List;
 
 /**
  * A room that the player is in.
@@ -16,6 +19,7 @@ public class Room {
     public final boolean west;
 
     private final Wall[] walls;
+    private final List<GameObject> gameObjects;
     boolean shown;
 
     /**
@@ -27,7 +31,7 @@ public class Room {
      * @param east If the room has an east entrance.
      * @param west If the room has a west entrance.
      */
-    public Room(int x, int y, boolean north, boolean south, boolean east, boolean west) {
+    public Room(int x, int y, boolean north, boolean south, boolean east, boolean west, List<GameObject> gameObjects) {
         this.shown = false;
 
         this.x = x;
@@ -39,6 +43,7 @@ public class Room {
         this.west = west;
 
         this.walls = RoomGenerator.generateWalls(north, south, east, west);
+        this.gameObjects = gameObjects;
     }
 
     public Rect[] getWallRects() {
@@ -54,6 +59,16 @@ public class Room {
     public void draw() {
         for (Wall wall : walls) {
             wall.draw();
+        }
+
+        for (GameObject gameObject : this.gameObjects) {
+            gameObject.draw();
+        }
+    }
+
+    public void update() {
+        for (GameObject gameObject : this.gameObjects) {
+            gameObject.update();
         }
     }
 }

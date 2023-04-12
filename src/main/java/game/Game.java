@@ -50,6 +50,7 @@ public class Game {
 
     private void update() {
         player.update();
+        map.update();
 
         // These two methods need to be called last
         Keyboard.update();

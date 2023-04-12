@@ -4,7 +4,7 @@ import graphics.*;
 import helper.coords.PixelCoords;
 import helper.coords.ScreenCoords;
 
-public abstract class GameObject extends Image {
+public class GameObject extends Image {
     public GameObject(ScreenCoords coords, float width, float height, String textureName) {
         super(coords, width, height, textureName);
     }
