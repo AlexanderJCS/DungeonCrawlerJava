@@ -1,13 +1,16 @@
 package game.world;
 
 import game.gameobjects.Chest;
+import game.gameobjects.Enemy;
 import game.gameobjects.GameObject;
 import game.gameobjects.Wall;
-import game.inventory.Heart;
-import game.inventory.Item;
+import game.inventory.items.Heart;
+import game.inventory.items.Item;
 import helper.coords.GridCoords;
+import helper.coords.ScreenCoords;
 
 import java.util.*;
+import java.util.stream.Stream;
 
 /**
  * Helper class for the Room class. Used to get an array of Walls.
@@ -74,7 +77,23 @@ public class RoomGenerator {
         return new ArrayList<>();
     }
 
+    private static List<GameObject> generateEnemies(Random random, double dist) {
+        double enemyProb = 1 / dist;
+
+        if (random.nextDouble() > enemyProb) {
+            return Collections.singletonList(
+                    new Enemy(new ScreenCoords(0, 0), 0.03f)
+            );
+        }
+
+        return new ArrayList<>();
+    }
+
     public static List<GameObject> generateGameObjects(Random random, double dist) {
-        return generateChests(random, dist);
+        // For future reference: https://stackoverflow.com/questions/189559/how-do-i-join-two-lists-in-java
+        return Stream.concat(
+                generateChests(random, dist).stream(),
+                generateEnemies(random, dist).stream()
+        ).toList();
     }
 }

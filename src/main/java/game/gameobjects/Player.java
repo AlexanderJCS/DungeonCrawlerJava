@@ -1,10 +1,10 @@
 package game.gameobjects;
 
-import game.inventory.Item;
+import game.inventory.items.Item;
 import helper.coords.GridCoords;
 import helper.coords.ScreenCoords;
 import helper.coords.PixelCoords;
-import game.inventory.Heart;
+import game.inventory.items.Heart;
 import game.inventory.Inventory;
 import graphics.Rect;
 import helper.Consts;

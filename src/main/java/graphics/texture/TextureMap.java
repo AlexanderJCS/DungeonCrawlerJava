@@ -23,6 +23,8 @@ public class TextureMap {
         put("chestClosed", new Texture(texturePath + "gameObjects/chestClosed.png"));
         put("chestOpen", new Texture(texturePath + "gameObjects/chestOpen.png"));
 
+        put("enemy", new Texture(texturePath + "gameObjects/enemy.png"));
+
         // -- ITEMS --
         put("heart", new Texture(texturePath + "items/heart.png"));
         put("halfHeart", new Texture(texturePath + "items/halfHeart.png"));

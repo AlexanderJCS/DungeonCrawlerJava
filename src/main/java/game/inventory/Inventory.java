@@ -1,5 +1,8 @@
 package game.inventory;
 
+import game.inventory.items.Item;
+import game.inventory.items.ItemType;
+import game.inventory.items.UsableItem;
 import helper.coords.GridCoords;
 import helper.coords.PixelCoords;
 import helper.coords.ScreenCoords;

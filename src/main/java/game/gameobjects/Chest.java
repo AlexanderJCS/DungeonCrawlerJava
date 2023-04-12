@@ -1,7 +1,7 @@
 package game.gameobjects;
 
 import game.Game;
-import game.inventory.Item;
+import game.inventory.items.Item;
 import helper.coords.GridCoords;
 import helper.coords.ScreenCoords;
 

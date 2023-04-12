@@ -1,4 +1,4 @@
-package game.inventory;
+package game.inventory.items;
 
 public class Heart extends UsableItem {
     public Heart() {

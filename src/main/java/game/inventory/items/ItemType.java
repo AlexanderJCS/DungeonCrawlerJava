@@ -1,4 +1,4 @@
-package game.inventory;
+package game.inventory.items;
 
 public enum ItemType {
     CONSUMABLE,

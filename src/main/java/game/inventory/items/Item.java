@@ -1,4 +1,4 @@
-package game.inventory;
+package game.inventory.items;
 
 import graphics.Rect;
 import helper.coords.GridCoords;
