@@ -112,9 +112,8 @@ public class Inventory {
         if (this.selectedItem.getDurability() <= 0) {
             this.weapons.remove(this.selectedItem);
             this.consumables.remove(this.selectedItem);
+            this.selectedItem = null;
         }
-
-        this.selectedItem = null;
     }
 
     public void update() {

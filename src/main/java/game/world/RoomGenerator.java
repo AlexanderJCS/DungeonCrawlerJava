@@ -6,6 +6,7 @@ import game.gameobjects.GameObject;
 import game.gameobjects.Wall;
 import game.inventory.items.Heart;
 import game.inventory.items.Item;
+import game.inventory.items.Sword;
 import helper.coords.GridCoords;
 import helper.coords.ScreenCoords;
 
@@ -63,14 +64,15 @@ public class RoomGenerator {
         double chestProb = 2 / dist;
 
         Item[] chestItems = new Item[]{
-                new Heart()
+                new Heart(),
+                new Sword()
         };
 
         if (random.nextDouble() > chestProb) {
-            return Collections.singletonList(
+            return new ArrayList<>(List.of(
                     new Chest(
                             new GridCoords(10, 6).toScreenCoords(),
-                            chestItems[random.nextInt(chestItems.length)]
+                            chestItems[random.nextInt(chestItems.length)])
             ));
         }
 
@@ -81,16 +83,15 @@ public class RoomGenerator {
         double enemyProb = 1 / dist;
 
         if (random.nextDouble() > enemyProb) {
-            return Collections.singletonList(
+            return new ArrayList<>(List.of(
                     new Enemy(new ScreenCoords(0, 0), 0.03f)
-            );
+            ));
         }
 
         return new ArrayList<>();
     }
 
     public static List<GameObject> generateGameObjects(Random random, double dist) {
-        // For future reference: https://stackoverflow.com/questions/189559/how-do-i-join-two-lists-in-java
         return Stream.concat(
                 generateChests(random, dist).stream(),
                 generateEnemies(random, dist).stream()

@@ -23,17 +23,17 @@ public class Player extends GameObject {
     private final Inventory inventory;
 
     /** Used for rendering the player direction. */
-    private String lastX;
+    private short lastX;
     /** Used for rendering the player direction. */
-    private String lastY;
+    private short lastY;
 
     public Player(ScreenCoords coords, float speed) {
         super(coords, PixelCoords.distXToScreenDist(Consts.GRID_PIXELS),
                 PixelCoords.distYToScreenDist(Consts.GRID_PIXELS),
                 "playerNortheast");
 
-        this.lastY = "North";
-        this.lastX = "east";
+        this.lastY = 1;
+        this.lastX = 1;
 
         this.speedX = GridCoords.distXToScreenCoords(speed);
         this.speedY = GridCoords.distYToScreenCoords(speed);
@@ -54,16 +54,16 @@ public class Player extends GameObject {
         // Check if W, A, S, or D is pressed and move accordingly
         if (Keyboard.getKeyDown(GLFW_KEY_W)) {  // Move up
             this.move(0, speedY, wallRects);
-            this.lastY = "North";
+            this.lastY = 1;
         } if (Keyboard.getKeyDown(GLFW_KEY_S)) {  // Move down
             this.move(0, -speedY, wallRects);
-            this.lastY = "South";
+            this.lastY = -1;
         } if (Keyboard.getKeyDown(GLFW_KEY_A)) {  // Move east
             this.move(-speedX, 0, wallRects);
-            this.lastX = "west";
+            this.lastX = -1;
         } if (Keyboard.getKeyDown(GLFW_KEY_D)) {  // Move west
             this.move(speedX, 0, wallRects);
-            this.lastX = "east";
+            this.lastX = 1;
         }
     }
 
@@ -93,9 +93,18 @@ public class Player extends GameObject {
         this.inventory.addItem(item);
     }
 
+    /**
+     * Note that the return units (in this case ScreenCoords) does not mean anything.
+     * @return The direction where positive x is east and positive y is north.
+     */
+    public ScreenCoords getDir() {
+        return new ScreenCoords(this.lastX, this.lastY);
+    }
+
     @Override
     public void draw() {
-        this.textureName = "player" + this.lastY + this.lastX;
+        this.textureName = "player" + (this.lastY == 1 ? "North" : "South") +
+                (this.lastX == 1 ? "east" : "west");
 
         super.draw();
         this.inventory.draw();
@@ -105,6 +114,7 @@ public class Player extends GameObject {
     @Override
     public void update() {
         this.inventory.update();
+        this.healthContainer.update();
 
         this.move();
         this.moveRooms();

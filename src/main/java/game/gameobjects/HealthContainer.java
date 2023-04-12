@@ -74,7 +74,7 @@ public class HealthContainer {
     }
 
     public void update() {
-        if (this.invincibilityFrames > 1) {
+        if (this.invincibilityFrames > 0) {
             this.invincibilityFrames--;
         }
     }

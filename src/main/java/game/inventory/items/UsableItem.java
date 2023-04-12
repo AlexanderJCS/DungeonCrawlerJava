@@ -35,6 +35,7 @@ public class UsableItem extends Item {
     }
 
     public void use() {
+        this.durability--;
         float durabilityLevel = (float) this.durability / this.maxDurability;
         this.barImage.getRect().setWidthHeight(
                 GridCoords.distXToScreenCoords(durabilityLevel), this.barImage.getRect().height

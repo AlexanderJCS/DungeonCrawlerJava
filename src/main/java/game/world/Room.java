@@ -5,6 +5,7 @@ import game.gameobjects.GameObject;
 import graphics.Rect;
 import game.gameobjects.Wall;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,7 +21,7 @@ public class Room {
     public final boolean west;
 
     private final Wall[] walls;
-    private final List<GameObject> gameObjects;
+    public final List<GameObject> gameObjects;
     boolean shown;
 
     /**
@@ -44,7 +45,8 @@ public class Room {
         this.west = west;
 
         this.walls = RoomGenerator.generateWalls(north, south, east, west);
-        this.gameObjects = gameObjects;
+        // because for some reason it's an abstract immutable list otherwise, you need to init it as an arraylist
+        this.gameObjects = new ArrayList<>(gameObjects);
     }
 
     public Rect[] getWallRects() {

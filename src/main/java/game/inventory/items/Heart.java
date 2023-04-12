@@ -11,7 +11,6 @@ public class Heart extends UsableItem {
     @Override
     public void use() {
         super.use();
-        this.durability--;
         Game.player.healthContainer.takeDamage(-2);  // health the player by 2 HP
     }
 }
