@@ -1,6 +1,7 @@
 package game.gameobjects;
 
 import game.inventory.items.Item;
+import helper.coords.Cardinal;
 import helper.coords.GridCoords;
 import helper.coords.ScreenCoords;
 import helper.coords.PixelCoords;
@@ -21,6 +22,9 @@ public class Player extends GameObject {
 
     public HealthContainer healthContainer;
     private final Inventory inventory;
+
+    /** Used for sword */
+    private Cardinal lastDir;
 
     /** Used for rendering the player direction. */
     private short lastX;
@@ -55,15 +59,19 @@ public class Player extends GameObject {
         if (Keyboard.getKeyDown(GLFW_KEY_W)) {  // Move up
             this.move(0, speedY, wallRects);
             this.lastY = 1;
+            this.lastDir = Cardinal.NORTH;
         } if (Keyboard.getKeyDown(GLFW_KEY_S)) {  // Move down
             this.move(0, -speedY, wallRects);
             this.lastY = -1;
+            this.lastDir = Cardinal.SOUTH;
         } if (Keyboard.getKeyDown(GLFW_KEY_A)) {  // Move east
             this.move(-speedX, 0, wallRects);
             this.lastX = -1;
+            this.lastDir = Cardinal.WEST;
         } if (Keyboard.getKeyDown(GLFW_KEY_D)) {  // Move west
             this.move(speedX, 0, wallRects);
             this.lastX = 1;
+            this.lastDir = Cardinal.EAST;
         }
     }
 
@@ -97,8 +105,8 @@ public class Player extends GameObject {
      * Note that the return units (in this case ScreenCoords) does not mean anything.
      * @return The direction where positive x is east and positive y is north.
      */
-    public ScreenCoords getDir() {
-        return new ScreenCoords(this.lastX, this.lastY);
+    public Cardinal getLastDir() {
+        return this.lastDir;
     }
 
     @Override

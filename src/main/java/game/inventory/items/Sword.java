@@ -4,6 +4,7 @@ import game.Game;
 import game.gameobjects.Enemy;
 import game.gameobjects.GameObject;
 import graphics.Rect;
+import helper.coords.Cardinal;
 import helper.coords.GridCoords;
 import helper.coords.ScreenCoords;
 
@@ -15,14 +16,14 @@ public class Sword extends UsableItem {
     @Override
     public void use() {
         Rect playerRect = Game.player.getRect();
-        ScreenCoords playerDir = Game.player.getDir();
+        ScreenCoords playerDir = Cardinal.cardinalToDir(Game.player.getLastDir());
 
         Rect damageRect = new Rect(
                 new ScreenCoords(
                         playerRect.x1 + GridCoords.distXToScreenCoords(playerDir.x),
-                        playerRect.y1 + -1 * GridCoords.distYToScreenCoords(playerDir.y)
+                        playerRect.y1 + GridCoords.distYToScreenCoords(playerDir.y)
                 ),
-                GridCoords.distXToScreenCoords(1),
+                GridCoords.distXToScreenCoords(1) ,
                 GridCoords.distYToScreenCoords(1)
         );
 
