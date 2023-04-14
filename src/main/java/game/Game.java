@@ -1,5 +1,6 @@
 package game;
 
+import helper.Clock;
 import helper.coords.ScreenCoords;
 import game.gameobjects.Player;
 import game.world.Map;
@@ -32,7 +33,6 @@ public class Game {
                 Consts.SCREEN_WIDTH, Consts.SCREEN_HEIGHT, "Dungeon Crawler", 0, 0);
         glfwShowWindow(this.window);
 
-        glfwSwapInterval(1);  // enable vsync
         glfwMakeContextCurrent(this.window);
 
         GL.createCapabilities();
@@ -74,6 +74,7 @@ public class Game {
             this.update();
 
             glfwSwapBuffers(this.window);
+            Clock.busyTick(60);
         }
 
         glfwTerminate();
