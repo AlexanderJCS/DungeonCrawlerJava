@@ -41,8 +41,8 @@ public class Inventory {
         return returnList;
     }
 
-    public void addItem(Item item) throws IllegalArgumentException {
-        boolean usableItem = item.getClass() == UsableItem.class;
+    public void addItem(Item item) {
+        boolean usableItem = UsableItem.class.isAssignableFrom(item.getClass());
 
         if (item.type == ItemType.WEAPON && usableItem) {
             this.weapons.add((UsableItem) item);
