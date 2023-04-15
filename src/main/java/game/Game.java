@@ -1,5 +1,6 @@
 package game;
 
+import graphics.Window;
 import helper.time.Clock;
 import helper.coords.ScreenCoords;
 import game.gameobjects.Player;
@@ -7,48 +8,29 @@ import game.world.Map;
 import helper.Consts;
 import helper.input.Keyboard;
 import helper.input.Mouse;
-import org.lwjgl.opengl.GL;
 
 import static org.lwjgl.glfw.GLFW.*;
-import static org.lwjgl.glfw.GLFW.glfwMakeContextCurrent;
 import static org.lwjgl.opengl.GL11.*;
 
 /**
  * The main class for running the game.
  */
 public class Game {
-    private final long window;
     // These two variables need to be static because the player needs to access the map and enemies need to access
     // the player.
     public static Map map = null;
     public static Player player = null;
 
-    public Game() throws IllegalStateException {
-        if (!glfwInit()) {
-            throw new IllegalStateException("GLFW could not initialize");
-        }
-
-        glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);  // make the window non-resizeable
-        this.window = glfwCreateWindow(
-                Consts.SCREEN_WIDTH, Consts.SCREEN_HEIGHT, "Dungeon Crawler", 0, 0);
-        glfwShowWindow(this.window);
-
-        glfwMakeContextCurrent(this.window);
-
-        GL.createCapabilities();
-
-        glEnable(GL_TEXTURE_2D);
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-        map = new Map(0);
-        player = new Player(new ScreenCoords(0, 0), 9f);
-
-        Keyboard.init(this.window);
-        Mouse.init(this.window);
+    public static void init() throws IllegalStateException {
+        Game.reset();
     }
 
-    private void update() {
+    public static void reset() {
+        map = new Map(0);
+        player = new Player(new ScreenCoords(0, 0), 9f);
+    }
+
+    private static void update() {
         player.update();
         map.update();
 
@@ -57,7 +39,7 @@ public class Game {
         Mouse.update();
     }
 
-    private void draw() {
+    private static void draw() {
         map.draw();
         player.draw();
     }
@@ -65,15 +47,20 @@ public class Game {
     /**
      * The main game loop.
      */
-    public void run() {
-        while (!glfwWindowShouldClose(this.window)) {
+    public static void run() {
+        while (!glfwWindowShouldClose(Window.window)) {
             glfwPollEvents();
             glClear(GL_COLOR_BUFFER_BIT);  // make the screen black
 
-            this.draw();
-            this.update();
+            draw();
+            update();
 
-            glfwSwapBuffers(this.window);
+            // Exit the current game if the player lost
+            if (player.healthContainer.getHealth() <= 0) {
+                return;
+            }
+
+            glfwSwapBuffers(Window.window);
             Clock.busyTick(Consts.FPS);
         }
 
@@ -84,7 +71,14 @@ public class Game {
      * Run the game.
      */
     public static void main(String[] args) {
-        Game game = new Game();
-        game.run();
+        Keyboard.init();
+        Mouse.init();
+        Window.init();
+        Game.init();
+
+        while (true) {
+            Game.run();
+            Game.reset();
+        }
     }
 }

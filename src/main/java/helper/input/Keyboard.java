@@ -1,21 +1,31 @@
 package helper.input;
 
+import graphics.Window;
+
 import static org.lwjgl.glfw.GLFW.*;
 
 /**
  *
  */
 public class Keyboard {
-    private static long window;
     private static boolean spacePressedLastFrame;
+    private static boolean initialized = false;
 
-    public static void init(long window) {
-        Keyboard.window = window;
+    public static void init() {
+        if (getInit()) {
+            return;
+        }
+
+        initialized = true;
         Keyboard.spacePressedLastFrame = false;
     }
 
+    public static boolean getInit() {
+        return initialized;
+    }
+
     public static boolean getKeyDown(int glfwKey) {
-        return glfwGetKey(window, glfwKey) == 1;
+        return glfwGetKey(Window.window, glfwKey) == 1;
     }
 
     /**

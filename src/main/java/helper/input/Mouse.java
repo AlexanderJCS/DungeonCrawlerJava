@@ -1,5 +1,6 @@
 package helper.input;
 
+import graphics.Window;
 import helper.coords.PixelCoords;
 import helper.coords.ScreenCoords;
 import helper.BufferManager;
@@ -8,12 +9,20 @@ import helper.Consts;
 import static org.lwjgl.glfw.GLFW.*;
 
 public class Mouse {
-    private static long window;
     private static boolean mouseDownLastFrame;
+    private static boolean initialized = false;
 
-    public static void init(long window) {
-        Mouse.window = window;
+    public static void init() {
+        if (getInit()) {
+            return;
+        }
+
+        initialized = true;
         Mouse.mouseDownLastFrame = false;
+    }
+
+    public static boolean getInit() {
+        return initialized;
     }
 
     /**
@@ -31,7 +40,7 @@ public class Mouse {
      */
     public static ScreenCoords getMousePos() {
         // https://stackoverflow.com/questions/33592499/lwjgl-3-get-cursor-position
-        glfwGetCursorPos(window, BufferManager.mouseBuffer1, BufferManager.mouseBuffer2);
+        glfwGetCursorPos(Window.window, BufferManager.mouseBuffer1, BufferManager.mouseBuffer2);
         double x = BufferManager.mouseBuffer1.get(0);
         double y = BufferManager.mouseBuffer2.get(0);
 
@@ -43,7 +52,7 @@ public class Mouse {
      * @return returns true if the mouse is down.
      */
     public static boolean mouseDown(int button) {
-        return glfwGetMouseButton(window, button) == GLFW_PRESS;
+        return glfwGetMouseButton(Window.window, button) == GLFW_PRESS;
     }
 
     /**
