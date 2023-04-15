@@ -45,31 +45,31 @@ public class Player extends GameObject {
         this.inventory = new Inventory();
         this.inventory.addItem(new Heart());
 
-        this.healthContainer = new HealthContainer(10, 20);
+        this.healthContainer = new HealthContainer(10, 0.5);
     }
 
     /**
      * Move the player.<br>
      * Controls: W (up), S (down), E (east), W (west)
      */
-    private void move() {
+    private void moveToInput() {
         Rect[] wallRects = Game.map.getShownRoom().getWallRects();
 
         // Check if W, A, S, or D is pressed and move accordingly
         if (Keyboard.getKeyDown(GLFW_KEY_W)) {  // Move up
-            this.move(0, speedY, wallRects);
+            this.fixedMove(0, speedY, wallRects);
             this.lastY = 1;
             this.lastDir = Cardinal.NORTH;
         } if (Keyboard.getKeyDown(GLFW_KEY_S)) {  // Move down
-            this.move(0, -speedY, wallRects);
+            this.fixedMove(0, -speedY, wallRects);
             this.lastY = -1;
             this.lastDir = Cardinal.SOUTH;
         } if (Keyboard.getKeyDown(GLFW_KEY_A)) {  // Move east
-            this.move(-speedX, 0, wallRects);
+            this.fixedMove(-speedX, 0, wallRects);
             this.lastX = -1;
             this.lastDir = Cardinal.WEST;
         } if (Keyboard.getKeyDown(GLFW_KEY_D)) {  // Move west
-            this.move(speedX, 0, wallRects);
+            this.fixedMove(speedX, 0, wallRects);
             this.lastX = 1;
             this.lastDir = Cardinal.EAST;
         }
@@ -124,7 +124,7 @@ public class Player extends GameObject {
         this.inventory.update();
         this.healthContainer.update();
 
-        this.move();
+        this.moveToInput();
         this.moveRooms();
     }
 }

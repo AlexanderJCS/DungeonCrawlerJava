@@ -1,6 +1,6 @@
 package game;
 
-import helper.Clock;
+import helper.time.Clock;
 import helper.coords.ScreenCoords;
 import game.gameobjects.Player;
 import game.world.Map;
@@ -42,7 +42,7 @@ public class Game {
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
         map = new Map(0);
-        player = new Player(new ScreenCoords(0, 0), 0.065f);
+        player = new Player(new ScreenCoords(0, 0), 8f);
 
         Keyboard.init(this.window);
         Mouse.init(this.window);
@@ -74,7 +74,7 @@ public class Game {
             this.update();
 
             glfwSwapBuffers(this.window);
-            Clock.busyTick(60);
+            Clock.busyTick(Consts.FPS);
         }
 
         glfwTerminate();

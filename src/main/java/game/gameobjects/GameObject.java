@@ -3,6 +3,7 @@ package game.gameobjects;
 import graphics.*;
 import helper.coords.PixelCoords;
 import helper.coords.ScreenCoords;
+import helper.time.Clock;
 
 public class GameObject extends Image {
     public GameObject(ScreenCoords coords, float width, float height, String textureName) {
@@ -45,6 +46,17 @@ public class GameObject extends Image {
             float moveDist = PixelCoords.distYToScreenDist(1);
             this.rect.shift(0, y > 0 ? -moveDist : moveDist);
         }
+    }
+
+    /**
+     * Movement is framerate independent. In order words, an application running at 20 fps will have the same movement
+     * speed as an application running at 100 fps.
+     * <p>
+     * Note that speed values may need to be adjusted when switching from move() to fixedMove().
+     */
+    public void fixedMove(float x, float y, Rect[] colliders) {
+        float moveMultiplier = (float) Clock.getTimeDelta();
+        this.move(x * moveMultiplier, y * moveMultiplier, colliders);
     }
 
     /**

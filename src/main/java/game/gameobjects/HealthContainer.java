@@ -3,29 +3,30 @@ package game.gameobjects;
 import helper.coords.GridCoords;
 import helper.coords.PixelCoords;
 import helper.coords.ScreenCoords;
+import helper.time.Clock;
 
 /**
  * Contains health and has the ability to draw it to the screen.
  */
 public class HealthContainer {
     private final int MAX_HEALTH;
-    private final int MAX_INVINCIBILITY_FRAMES;
+    private final double MAX_INVINCIBILITY_TIME;
 
-    private int invincibilityFrames;
+    private double invincibilityTime;
     private int health;
 
     /**
      * Note that 2 health = 1 heart.
      *
      * @param maxHealth The maximum health that can be gained
-     * @param invincibilityFrames The number invincibility frames
+     * @param invincibilityTime The number of seconds to be invincible after being hit
      */
-    public HealthContainer(int maxHealth, int invincibilityFrames) {
+    public HealthContainer(int maxHealth, double invincibilityTime) {
         this.MAX_HEALTH = maxHealth;
         this.health = maxHealth;
 
-        this.MAX_INVINCIBILITY_FRAMES = invincibilityFrames;
-        this.invincibilityFrames = 0;
+        this.MAX_INVINCIBILITY_TIME = invincibilityTime;
+        this.invincibilityTime = 0;
     }
 
     /**
@@ -34,11 +35,11 @@ public class HealthContainer {
      * @param damage The amount of damage to take. Negative numbers heal.
      */
     public void takeDamage(int damage) {
-        if (this.invincibilityFrames > 0 || this.health <= 0) {
+        if (this.invincibilityTime > 0 || this.health <= 0) {
             return;
         }
 
-        this.invincibilityFrames = this.MAX_INVINCIBILITY_FRAMES;
+        this.invincibilityTime = this.MAX_INVINCIBILITY_TIME;
         this.health -= damage;
 
         // Make sure health doesn't go below 0 or above this.MAX_HEALTH
@@ -74,16 +75,16 @@ public class HealthContainer {
     }
 
     public void update() {
-        if (this.invincibilityFrames > 0) {
-            this.invincibilityFrames--;
-        }
+        this.invincibilityTime = Math.max(
+                this.invincibilityTime - Clock.getTimeDelta(), 0
+        );
     }
 
     public int getHealth() {
         return health;
     }
 
-    public int getInvincibilityFrames() {
-        return invincibilityFrames;
+    public double getInvincibilityTime() {
+        return invincibilityTime;
     }
 }

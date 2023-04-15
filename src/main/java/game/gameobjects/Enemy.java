@@ -5,12 +5,13 @@ import graphics.Rect;
 import helper.coords.GridCoords;
 import helper.coords.PixelCoords;
 import helper.coords.ScreenCoords;
+import helper.time.Clock;
 
 public class Enemy extends GameObject {
-    private static final int MOVE_AWAY_FRAMES = 40;
+    private static final double MOVE_AWAY_TIME = 0.3;
     private final float speedX;
     private final float speedY;
-    private int moveAwayFrames;
+    private double moveAwayTime;
 
     public final HealthContainer healthContainer;
 
@@ -25,7 +26,7 @@ public class Enemy extends GameObject {
         this.speedX = GridCoords.distXToScreenCoords(speed);
         this.speedY = GridCoords.distYToScreenCoords(speed);
 
-        this.moveAwayFrames = 0;
+        this.moveAwayTime = 0;
         this.healthContainer = new HealthContainer(6, 20);
     }
 
@@ -35,10 +36,10 @@ public class Enemy extends GameObject {
     private void moveTowardsPlayer() {
         Rect playerRect = Game.player.getRect();
 
-        float distX = this.rect.x1 < playerRect.x1 ? 1 : -1;
-        float distY = this.rect.y1 < playerRect.y1 ? 1 : -1;
+        float dirX = this.rect.x1 < playerRect.x1 ? 1 : -1;
+        float dirY = this.rect.y1 < playerRect.y1 ? 1 : -1;
 
-        this.move(distX * this.speedX, distY * this.speedY, Game.map.getShownRoom().getWallRects());
+        this.fixedMove(dirX * this.speedX, dirY * this.speedY, Game.map.getShownRoom().getWallRects());
     }
 
     /**
@@ -48,7 +49,7 @@ public class Enemy extends GameObject {
      */
     private void moveAway(Rect moveAwayRect) {
         // How far the player should go in this frame
-        double mag = this.moveAwayFrames / 4.0;
+        double mag = 5000 * this.moveAwayTime;
 
         // Do a bit of trig to calculate the x and y components
         double adj = this.rect.x1 - moveAwayRect.x1;
@@ -59,7 +60,7 @@ public class Enemy extends GameObject {
         double sin = opp / hyp;
         double cos = adj / hyp;
 
-        this.move(
+        this.fixedMove(
                 PixelCoords.distXToScreenDist((float) (cos * mag)),  // x direction
                 PixelCoords.distYToScreenDist((float) (sin * mag)),  // y direction
                 Game.map.getShownRoom().getWallRects()
@@ -72,18 +73,18 @@ public class Enemy extends GameObject {
         // Check for collision with the player
         // If that happens, then start moving away
         if (Game.player.getRect().collidesWith(this.rect)) {
-            this.moveAwayFrames = MOVE_AWAY_FRAMES;
+            this.moveAwayTime = MOVE_AWAY_TIME;
             Game.player.healthContainer.takeDamage(1);
         }
 
         // Otherwise set move away frames to invincibility frames
-        else if (this.healthContainer.getInvincibilityFrames() > 0) {
-            this.moveAwayFrames = this.healthContainer.getInvincibilityFrames();
+        else if (this.healthContainer.getInvincibilityTime() > 0) {
+            this.moveAwayTime = this.healthContainer.getInvincibilityTime();
         }
 
-        if (this.moveAwayFrames > 0) {  // if the enemy should move away
+        if (this.moveAwayTime > 0) {  // if the enemy should move away
             this.moveAway(Game.player.getRect());
-            this.moveAwayFrames--;
+            this.moveAwayTime = Math.max(this.moveAwayTime - Clock.getTimeDelta(), 0);
         } else {  // otherwise, move towards the player
             this.moveTowardsPlayer();
         }

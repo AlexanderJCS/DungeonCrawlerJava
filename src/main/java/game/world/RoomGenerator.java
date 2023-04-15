@@ -84,7 +84,7 @@ public class RoomGenerator {
 
         if (random.nextDouble() > enemyProb) {
             return new ArrayList<>(List.of(
-                    new Enemy(new ScreenCoords(0, 0), 0.03f)
+                    new Enemy(new ScreenCoords(0, 0), 4.5f)
             ));
         }
 
