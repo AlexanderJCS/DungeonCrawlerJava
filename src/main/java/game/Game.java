@@ -46,8 +46,10 @@ public class Game {
 
     /**
      * The main game loop.
+     *
+     * @return Whether the player wants to exit the application.
      */
-    public static void run() {
+    public static boolean run() {
         while (!glfwWindowShouldClose(Window.window)) {
             glfwPollEvents();
             glClear(GL_COLOR_BUFFER_BIT);  // make the screen black
@@ -57,14 +59,14 @@ public class Game {
 
             // Exit the current game if the player lost
             if (player.healthContainer.getHealth() <= 0) {
-                return;
+                return false;
             }
 
             glfwSwapBuffers(Window.window);
             Clock.busyTick(Consts.FPS);
         }
 
-        glfwTerminate();
+        return true;
     }
 
     /**
@@ -76,11 +78,11 @@ public class Game {
         Window.init();
         Game.init();
 
-        while (true) {
-            Game.run();
+        // While the player wants to play the game
+        while (!Game.run()) {
             Game.reset();
         }
 
-        // glfwTerminate();
+        glfwTerminate();
     }
 }
