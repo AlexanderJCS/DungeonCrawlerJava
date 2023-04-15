@@ -24,11 +24,11 @@ public class GridCoords extends Coords {
         return dist * Consts.GRID_PIXELS;
     }
 
-    public static float distXToScreenCoords(float dist) {
+    public static float distXToScreenDist(float dist) {
         return PixelCoords.distXToScreenDist(distToPixelCoords(dist));
     }
 
-    public static float distYToScreenCoords(float dist) {
+    public static float distYToScreenDist(float dist) {
         return PixelCoords.distYToScreenDist(distToPixelCoords(dist));
     }
 }

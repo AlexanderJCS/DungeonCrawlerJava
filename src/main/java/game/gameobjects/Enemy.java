@@ -21,13 +21,13 @@ public class Enemy extends GameObject {
      * @param speed The speed of the enemy in grid coords per frame.
      */
     public Enemy(ScreenCoords coords, float speed) {
-        super(coords, GridCoords.distXToScreenCoords(1), GridCoords.distYToScreenCoords(1), "enemy");
+        super(coords, GridCoords.distXToScreenDist(1), GridCoords.distYToScreenDist(1), "enemy");
 
-        this.speedX = GridCoords.distXToScreenCoords(speed);
-        this.speedY = GridCoords.distYToScreenCoords(speed);
+        this.speedX = GridCoords.distXToScreenDist(speed);
+        this.speedY = GridCoords.distYToScreenDist(speed);
 
         this.moveAwayTime = 0;
-        this.healthContainer = new HealthContainer(6, 20);
+        this.healthContainer = new HealthContainer(6, 0.3);
     }
 
     /**

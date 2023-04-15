@@ -39,8 +39,8 @@ public class Player extends GameObject {
         this.lastY = 1;
         this.lastX = 1;
 
-        this.speedX = GridCoords.distXToScreenCoords(speed);
-        this.speedY = GridCoords.distYToScreenCoords(speed);
+        this.speedX = GridCoords.distXToScreenDist(speed);
+        this.speedY = GridCoords.distYToScreenDist(speed);
 
         this.inventory = new Inventory();
         this.inventory.addItem(new Heart());

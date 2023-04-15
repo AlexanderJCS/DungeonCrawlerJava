@@ -20,40 +20,40 @@ public class RoomGenerator {
     public static Wall[] generateWalls(boolean north, boolean south, boolean east, boolean west) {
         List<Wall> walls = new ArrayList<>(Arrays.asList(
                 // Northwest wall
-                new Wall(new GridCoords(0, 0).toScreenCoords(), GridCoords.distXToScreenCoords(13), GridCoords.distYToScreenCoords(6)),
+                new Wall(new GridCoords(0, 0).toScreenCoords(), GridCoords.distXToScreenDist(13), GridCoords.distYToScreenDist(6)),
                 // Northeast wall
-                new Wall(new GridCoords(19, 0).toScreenCoords(), GridCoords.distXToScreenCoords(13), GridCoords.distYToScreenCoords(6)),
+                new Wall(new GridCoords(19, 0).toScreenCoords(), GridCoords.distXToScreenDist(13), GridCoords.distYToScreenDist(6)),
                 // Southwest wall
-                new Wall(new GridCoords(0, 12).toScreenCoords(), GridCoords.distXToScreenCoords(13), GridCoords.distYToScreenCoords(6)),
+                new Wall(new GridCoords(0, 12).toScreenCoords(), GridCoords.distXToScreenDist(13), GridCoords.distYToScreenDist(6)),
                 // Southeast wall
-                new Wall(new GridCoords(19, 12).toScreenCoords(), GridCoords.distXToScreenCoords(13), GridCoords.distYToScreenCoords(6))
+                new Wall(new GridCoords(19, 12).toScreenCoords(), GridCoords.distXToScreenDist(13), GridCoords.distYToScreenDist(6))
         ));
 
         // North entrance
         if (!north) {
             walls.add(
-                    new Wall(new GridCoords(13, 15).toScreenCoords(), GridCoords.distXToScreenCoords(6), GridCoords.distYToScreenCoords(4))
+                    new Wall(new GridCoords(13, 15).toScreenCoords(), GridCoords.distXToScreenDist(6), GridCoords.distYToScreenDist(4))
             );
         }
 
         // South entrance
         if (!south) {
             walls.add(
-                    new Wall(new GridCoords(13, 0).toScreenCoords(), GridCoords.distXToScreenCoords(6), GridCoords.distYToScreenCoords(3))
+                    new Wall(new GridCoords(13, 0).toScreenCoords(), GridCoords.distXToScreenDist(6), GridCoords.distYToScreenDist(3))
             );
         }
 
         // East entrance
         if (!east) {
             walls.add(
-                    new Wall(new GridCoords(22, 6).toScreenCoords(), GridCoords.distXToScreenCoords(10), GridCoords.distYToScreenCoords(6))
+                    new Wall(new GridCoords(22, 6).toScreenCoords(), GridCoords.distXToScreenDist(10), GridCoords.distYToScreenDist(6))
             );
         }
 
         // West entrance
         if (!west) {
             walls.add(
-                    new Wall(new GridCoords(0, 6).toScreenCoords(), GridCoords.distXToScreenCoords(10), GridCoords.distYToScreenCoords(6))
+                    new Wall(new GridCoords(0, 6).toScreenCoords(), GridCoords.distXToScreenDist(10), GridCoords.distYToScreenDist(6))
             );
         }
 

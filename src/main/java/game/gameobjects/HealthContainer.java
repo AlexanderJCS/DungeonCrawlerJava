@@ -51,14 +51,14 @@ public class HealthContainer {
         ScreenCoords origin = new PixelCoords(10, 10).toScreenCoords();
 
         int healthNum = this.health;
-        float width = GridCoords.distXToScreenCoords(1);
-        float height = GridCoords.distYToScreenCoords(1);
+        float width = GridCoords.distXToScreenDist(1);
+        float height = GridCoords.distYToScreenDist(1);
 
         // Draw the moving right from the origin
         for (int i = 0; i < this.MAX_HEALTH / 2; i++) {
             // The coordinates of the heart to draw
             ScreenCoords coords = new ScreenCoords(
-                    origin.x + GridCoords.distXToScreenCoords(1.1f * i), origin.y
+                    origin.x + GridCoords.distXToScreenDist(1.1f * i), origin.y
             );
 
             // Determine if it is a full heart, half heart, etc. and draw it

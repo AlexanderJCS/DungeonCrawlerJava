@@ -20,7 +20,7 @@ public class Inventory {
     private static final Image transparent = new Image(new ScreenCoords(-1, -1), 2, 2,
             "transparent");
     private static final Image selectedItemBg = new Image(new GridCoords(0.75f, 15f).toScreenCoords(),
-            GridCoords.distXToScreenCoords(1.5f), GridCoords.distYToScreenCoords(2.5f), "transparent");
+            GridCoords.distXToScreenDist(1.5f), GridCoords.distYToScreenDist(2.5f), "transparent");
 
     private static final int OPEN_INVENTORY_KEY = GLFW_KEY_TAB;
 

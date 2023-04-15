@@ -9,7 +9,7 @@ public class Chest extends GameObject {
     private Item item;
 
     public Chest(ScreenCoords coords, Item item) {
-        super(coords, GridCoords.distXToScreenCoords(1), GridCoords.distYToScreenCoords(1), "chestClosed");
+        super(coords, GridCoords.distXToScreenDist(1), GridCoords.distYToScreenDist(1), "chestClosed");
         this.item = item;
     }
 

@@ -15,7 +15,7 @@ public class UsableItem extends Item {
         this.maxDurability = durability;
         this.durability = durability;
         this.barImage = new Image(new ScreenCoords(-1, -1),
-                GridCoords.distXToScreenCoords(1), GridCoords.distYToScreenCoords(0.1f), "green");
+                GridCoords.distXToScreenDist(1), GridCoords.distYToScreenDist(0.1f), "green");
     }
 
     public int getDurability() {
@@ -31,14 +31,14 @@ public class UsableItem extends Item {
     @Override
     public void setPos(ScreenCoords newPos) {
         super.setPos(newPos);
-        this.barImage.getRect().setPos(new ScreenCoords(newPos.x, newPos.y + GridCoords.distYToScreenCoords(-0.4f)));
+        this.barImage.getRect().setPos(new ScreenCoords(newPos.x, newPos.y + GridCoords.distYToScreenDist(-0.4f)));
     }
 
     public void use() {
         this.durability--;
         float durabilityLevel = (float) this.durability / this.maxDurability;
         this.barImage.getRect().setWidthHeight(
-                GridCoords.distXToScreenCoords(durabilityLevel), this.barImage.getRect().height
+                GridCoords.distXToScreenDist(durabilityLevel), this.barImage.getRect().height
         );
 
         if (durabilityLevel >= 0.667) {

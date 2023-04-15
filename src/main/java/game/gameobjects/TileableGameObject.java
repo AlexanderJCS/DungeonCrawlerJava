@@ -27,7 +27,7 @@ public class TileableGameObject extends GameObject {
                 this.textureRects.add(
                         new Rect(
                                 new GridCoords(gridCoords.x + i, gridCoords.y + j).toScreenCoords(),
-                                GridCoords.distXToScreenCoords(1), GridCoords.distYToScreenCoords(1)
+                                GridCoords.distXToScreenDist(1), GridCoords.distYToScreenDist(1)
                         )
                 );
             }

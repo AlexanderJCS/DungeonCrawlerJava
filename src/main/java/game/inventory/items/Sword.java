@@ -20,11 +20,11 @@ public class Sword extends UsableItem {
 
         Rect damageRect = new Rect(
                 new ScreenCoords(
-                        playerRect.x1 + GridCoords.distXToScreenCoords(playerDir.x),
-                        playerRect.y1 + GridCoords.distYToScreenCoords(playerDir.y)
+                        playerRect.x1 + GridCoords.distXToScreenDist(playerDir.x),
+                        playerRect.y1 + GridCoords.distYToScreenDist(playerDir.y)
                 ),
-                GridCoords.distXToScreenCoords(1) ,
-                GridCoords.distYToScreenCoords(1)
+                GridCoords.distXToScreenDist(1) ,
+                GridCoords.distYToScreenDist(1)
         );
 
         for (GameObject gameObject : Game.map.getShownRoom().gameObjects) {

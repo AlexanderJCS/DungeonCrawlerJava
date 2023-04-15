@@ -12,8 +12,8 @@ public class Item {
     public Item(ItemType type, String texture) {
         this.image = new Image(
                 new ScreenCoords(-1, -1),
-                GridCoords.distXToScreenCoords(1),
-                GridCoords.distYToScreenCoords(1),
+                GridCoords.distXToScreenDist(1),
+                GridCoords.distYToScreenDist(1),
                 texture
         );
 
