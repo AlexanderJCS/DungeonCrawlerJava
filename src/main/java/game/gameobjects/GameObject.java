@@ -5,6 +5,9 @@ import helper.coords.PixelCoords;
 import helper.coords.ScreenCoords;
 import helper.time.Clock;
 
+/**
+ * The GameObject class, which is used to hold everything "physical" (i.e. everything except items).
+ */
 public class GameObject extends Image {
     public GameObject(ScreenCoords coords, float width, float height, String textureName) {
         super(coords, width, height, textureName);
@@ -28,7 +31,8 @@ public class GameObject extends Image {
      * Move an object by a certain amount while taking into account colliders.
      * @param x The amount to shift in the x direction.
      * @param y The amount to shift in the y direction
-     * @param colliders Objects to not collide with. Note that if the GameObject shifts too much, it can pass through the collider.
+     * @param colliders Objects to not collide with. Note that if the GameObject shifts too much,
+     *                  it can pass through the collider.
      */
     public void move(float x, float y, Rect[] colliders) {
         this.rect.shift(x, 0);

@@ -4,6 +4,9 @@ import game.gameobjects.Image;
 import helper.coords.GridCoords;
 import helper.coords.ScreenCoords;
 
+/**
+ * An Item that can has a use() method.
+ */
 public class UsableItem extends Item {
     protected int durability;
     private final int maxDurability;

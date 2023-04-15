@@ -49,9 +49,10 @@ public class Mouse {
     /**
      * Requires the update Mouse.update() method to be called in order to function correctly. Note that
      * Mouse.update() needs to be called as the last update method in the game loop, otherwise this
-     * function will always return false.
+     * method will always return false.
      *
-     * @return true if the left mouse button has been pressed this frame.
+     * @return True if the left mouse button has been pressed this frame.
+     *         False if it has been held down for more than one frame.
      */
     public static boolean mouseDownThisFrame() {
         return (!mouseDownLastFrame && mouseDown(GLFW_MOUSE_BUTTON_LEFT));

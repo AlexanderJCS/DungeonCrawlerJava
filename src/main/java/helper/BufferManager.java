@@ -5,6 +5,10 @@ import org.lwjgl.BufferUtils;
 import java.nio.DoubleBuffer;
 import java.nio.FloatBuffer;
 
+/**
+ * Keeps four buffers for the entire program. This is important since if buffers just keep being created,
+ * there will be a memory leak.
+ */
 public class BufferManager {
     public static FloatBuffer vboBuffer = BufferUtils.createFloatBuffer(1024);
     public static FloatBuffer texCoordsBuffer = BufferUtils.createFloatBuffer(1024);

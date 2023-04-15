@@ -1,5 +1,8 @@
 package helper.coords;
 
+/**
+ * An enum of the cardinal directions.
+ */
 public enum Cardinal {
     NORTH,
     SOUTH,

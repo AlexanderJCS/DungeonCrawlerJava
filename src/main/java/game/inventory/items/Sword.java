@@ -8,6 +8,9 @@ import helper.coords.Cardinal;
 import helper.coords.GridCoords;
 import helper.coords.ScreenCoords;
 
+/**
+ * Damages an enemy upon hitting it.
+ */
 public class Sword extends UsableItem {
     public Sword() {
         super(ItemType.WEAPON, "sword", 3);
@@ -18,6 +21,7 @@ public class Sword extends UsableItem {
         Rect playerRect = Game.player.getRect();
         ScreenCoords playerDir = Cardinal.cardinalToDir(Game.player.getLastDir());
 
+        // Get a rect of the area that the sword will apply damage to.
         Rect damageRect = new Rect(
                 new ScreenCoords(
                         playerRect.x1 + GridCoords.distXToScreenDist(playerDir.x),
@@ -27,6 +31,7 @@ public class Sword extends UsableItem {
                 GridCoords.distYToScreenDist(1)
         );
 
+        // Damage all enemies that it hit
         for (GameObject gameObject : Game.map.getShownRoom().gameObjects) {
             if (gameObject.getClass() != Enemy.class) {
                 continue;

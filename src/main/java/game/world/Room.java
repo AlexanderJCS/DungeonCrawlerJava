@@ -25,13 +25,13 @@ public class Room {
     boolean shown;
 
     /**
-     *
      * @param x x coordinate of the room (room coordinate, which is NOT the same thing as a screen coordinate used to draw).
      * @param y y coordinate of the room (room coordinate, which is NOT the same thing as a screen coordinate used to draw).
      * @param north If the room has a north entrance.
      * @param south If the room has a south entrance.
      * @param east If the room has an east entrance.
      * @param west If the room has a west entrance.
+     * @param gameObjects A list of GameObjects inside the room.
      */
     public Room(int x, int y, boolean north, boolean south, boolean east, boolean west, List<GameObject> gameObjects) {
         this.shown = false;
@@ -49,6 +49,9 @@ public class Room {
         this.gameObjects = new ArrayList<>(gameObjects);
     }
 
+    /**
+     * @return A list of wall rects. This is useful for wall collision.
+     */
     public Rect[] getWallRects() {
         Rect[] returnArray = new Rect[walls.length];
 
@@ -69,6 +72,9 @@ public class Room {
         }
     }
 
+    /**
+     * Update all GameObjects inside
+     */
     public void update() {
         for (int i = this.gameObjects.size() - 1; i >= 0; i--) {
             GameObject gameObject = this.gameObjects.get(i);

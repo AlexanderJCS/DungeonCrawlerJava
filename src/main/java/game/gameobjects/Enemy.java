@@ -16,7 +16,6 @@ public class Enemy extends GameObject {
     public final HealthContainer healthContainer;
 
     /**
-     *
      * @param coords The coordinates the enemy should spawn at.
      * @param speed The speed of the enemy in grid coords per frame.
      */
@@ -30,9 +29,6 @@ public class Enemy extends GameObject {
         this.healthContainer = new HealthContainer(6, 0.3);
     }
 
-    /**
-     * Move towards the player to attack the player when the player is hit.
-     */
     private void moveTowardsPlayer() {
         Rect playerRect = Game.player.getRect();
 
@@ -43,8 +39,8 @@ public class Enemy extends GameObject {
     }
 
     /**
-     * Move away from the given rect.<br>
-     * Precondition: this.moveAwayFrames > 0
+     * Move away from the given rect. If this.moveAwayTime == 0, the enemy will not move due to this method.
+     *
      * @param moveAwayRect The rect to move away from
      */
     private void moveAway(Rect moveAwayRect) {
@@ -67,6 +63,7 @@ public class Enemy extends GameObject {
         );
     }
 
+    @Override
     public void update() {
         this.healthContainer.update();
 

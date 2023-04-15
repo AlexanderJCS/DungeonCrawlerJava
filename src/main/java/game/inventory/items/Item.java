@@ -5,6 +5,9 @@ import helper.coords.GridCoords;
 import helper.coords.ScreenCoords;
 import game.gameobjects.Image;
 
+/**
+ * The basic item class. This can be held in the inventory or be drawn to the screen.
+ */
 public class Item {
     private final Image image;
     public final ItemType type;

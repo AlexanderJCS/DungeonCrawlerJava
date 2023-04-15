@@ -2,6 +2,9 @@ package game.inventory.items;
 
 import game.Game;
 
+/**
+ * Heals the player when used.
+ */
 public class Heart extends UsableItem {
     public Heart() {
         // ItemType.WEAPON is temporary until the bug where ItemType.CONSUMABLES isn't being drawn is fixed

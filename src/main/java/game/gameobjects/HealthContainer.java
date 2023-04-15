@@ -6,7 +6,8 @@ import helper.coords.ScreenCoords;
 import helper.time.Clock;
 
 /**
- * Contains health and has the ability to draw it to the screen.
+ * Contains health and has the ability to draw it to the screen. Useful for GameObjects that have health, such as
+ * Player and Enemy.
  */
 public class HealthContainer {
     private final int MAX_HEALTH;

@@ -2,6 +2,9 @@ package helper.time;
 
 import static org.lwjgl.glfw.GLFW.glfwGetTime;
 
+/**
+ * A utility class to handle different time-related tasks.
+ */
 public class Clock {
     /** Second to last tick is used for getTimeDelta() */
     private static double secondToLastTick = 0;

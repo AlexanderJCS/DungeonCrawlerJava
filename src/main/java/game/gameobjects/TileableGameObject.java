@@ -10,11 +10,17 @@ import java.util.List;
 
 /**
  * A TileableGameObject differs from a GameObject in that the texture given repeats every Consts.GRID_PIXELS.
- * This is useful for walls.
+ * This is useful for walls and anything else that may need tiling (such as a floor).
  */
 public class TileableGameObject extends GameObject {
-    List<Rect> textureRects;
+    /** A list of rects to render the current texture to. */
+    private final List<Rect> textureRects;
 
+    /**
+     * @param coords The top left corner of the wall.
+     * @param width The width in ScreenCoords
+     * @param height The height in ScreenCoords
+     */
     public TileableGameObject(ScreenCoords coords, float width, float height, String texture) {
         super(coords, width, height, texture);
 
@@ -36,6 +42,7 @@ public class TileableGameObject extends GameObject {
 
     @Override
     public void draw() {
+        // Draw each rect manually
         for (Rect rect : textureRects) {
             TextureMap.get(this.textureName).bind();
             rect.drawModel();

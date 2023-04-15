@@ -36,6 +36,7 @@ public class Texture {
             int[] pixels_raw;
             pixels_raw = bufferedImage.getRGB(0, 0, width, height, null, 0, width);
 
+            // Create the pixel buffer
             ByteBuffer pixels = BufferUtils.createByteBuffer(width * height * 4);
 
             for (int i = 0; i < width; i++) {
