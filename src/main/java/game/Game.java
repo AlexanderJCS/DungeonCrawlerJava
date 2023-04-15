@@ -26,7 +26,7 @@ public class Game {
     }
 
     public static void reset() {
-        map = new Map(0);
+        map = new Map();
         player = new Player(new ScreenCoords(0, 0), 9f);
     }
 

@@ -1,5 +1,7 @@
 package game.world;
 
+import helper.Consts;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -12,11 +14,8 @@ public class Map {
     private Room shownRoom;
     private final Random random;
 
-    /**
-     * @param seed Random number generator seed
-     */
-    public Map(int seed) {
-        this.random = new Random(seed);
+    public Map() {
+        this.random = new Random(Consts.SEED);
 
         this.rooms = new ArrayList<>(List.of(
                 new Room(0, 0, true, false, false, false,
