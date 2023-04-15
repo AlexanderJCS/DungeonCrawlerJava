@@ -1,13 +1,13 @@
 package game;
 
-import graphics.Window;
+import helper.glfw.Window;
 import helper.time.Clock;
 import helper.coords.ScreenCoords;
 import game.gameobjects.Player;
 import game.world.Map;
 import helper.Consts;
-import helper.input.Keyboard;
-import helper.input.Mouse;
+import helper.glfw.Keyboard;
+import helper.glfw.Mouse;
 
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
@@ -80,5 +80,7 @@ public class Game {
             Game.run();
             Game.reset();
         }
+
+        // glfwTerminate();
     }
 }

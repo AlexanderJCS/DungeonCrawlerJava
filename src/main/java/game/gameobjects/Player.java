@@ -10,7 +10,7 @@ import game.inventory.Inventory;
 import graphics.Rect;
 import helper.Consts;
 import game.Game;
-import helper.input.Keyboard;
+import helper.glfw.Keyboard;
 
 import static org.lwjgl.glfw.GLFW.*;
 

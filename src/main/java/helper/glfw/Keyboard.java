@@ -1,6 +1,4 @@
-package helper.input;
-
-import graphics.Window;
+package helper.glfw;
 
 import static org.lwjgl.glfw.GLFW.*;
 

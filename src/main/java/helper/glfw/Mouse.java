@@ -1,6 +1,5 @@
-package helper.input;
+package helper.glfw;
 
-import graphics.Window;
 import helper.coords.PixelCoords;
 import helper.coords.ScreenCoords;
 import helper.BufferManager;

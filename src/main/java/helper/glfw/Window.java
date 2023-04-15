@@ -1,4 +1,4 @@
-package graphics;
+package helper.glfw;
 
 import helper.Consts;
 import org.lwjgl.opengl.GL;

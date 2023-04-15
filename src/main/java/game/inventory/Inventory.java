@@ -8,8 +8,8 @@ import helper.coords.PixelCoords;
 import helper.coords.ScreenCoords;
 import game.gameobjects.Image;
 import helper.Consts;
-import helper.input.Keyboard;
-import helper.input.Mouse;
+import helper.glfw.Keyboard;
+import helper.glfw.Mouse;
 
 import java.util.ArrayList;
 import java.util.List;
