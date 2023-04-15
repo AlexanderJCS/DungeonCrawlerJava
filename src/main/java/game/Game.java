@@ -63,7 +63,7 @@ public class Game {
             }
 
             glfwSwapBuffers(Window.window);
-            Clock.busyTick(Consts.FPS);
+            Clock.busyTick(Consts.FPS_LIMIT);
         }
 
         return true;

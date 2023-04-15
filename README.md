@@ -15,6 +15,15 @@ You can install the game by:
 5. Wait for the project to index. This may take some time.
 6. Run Game.java to run the game. Refer to the "Game Information" section of this README to learn about controls,  items and objects in the game.
 
+# Configuring the game
+To configure the game, modify the [Consts.java file](src/main/java/helper/Consts.java). This file contains information such as the world seed, screen dimensions, and FPS limiter.
+
+## Modifying screen size
+If the window is too small or large, you can change the dimensions by modifying `SCREEN_WIDTH` to a more appropriate value. Note that `SCREEN_WIDTH` must be divisible by 9 / 16 for the screen to render properly. Aspect ratios other than 16:9 are not supported.
+
+## Modifying the world seed
+To modify the world seed, set `SEED` to any integer. This will create a different world when running the game.
+
 # Game Information
 ## Controls
 ### Movement
@@ -24,6 +33,7 @@ You can install the game by:
 | A       | Move left  |
 | S       | Move down  |
 | D       | Move right |
+
 ### Inventory
 
 | Control                                             | Action           |
