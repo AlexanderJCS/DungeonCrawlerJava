@@ -41,15 +41,17 @@ public class Inventory {
         return returnList;
     }
 
-    public void addItem(Item item) {
-        try {
-            if (item.type == ItemType.WEAPON) {
-                this.weapons.add((UsableItem) item);
-            } else if (item.type == ItemType.CONSUMABLE) {
-                this.consumables.add((UsableItem) item);
-            }
-        } catch (RuntimeException e) {  // if the item could not be cast to UsableItem
-            throw new IllegalArgumentException("Could not cast type Item to type UsableItem", e);
+    public void addItem(Item item) throws IllegalArgumentException {
+        boolean usableItem = item.getClass() == UsableItem.class;
+
+        if (item.type == ItemType.WEAPON && usableItem) {
+            this.weapons.add((UsableItem) item);
+        } else if (item.type == ItemType.CONSUMABLE && usableItem) {
+            this.consumables.add((UsableItem) item);
+        }
+
+        if (usableItem && this.selectedItem == null) {
+            this.selectedItem = (UsableItem) item;
         }
     }
 
