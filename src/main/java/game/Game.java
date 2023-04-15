@@ -42,7 +42,7 @@ public class Game {
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
         map = new Map(0);
-        player = new Player(new ScreenCoords(0, 0), 8f);
+        player = new Player(new ScreenCoords(0, 0), 9f);
 
         Keyboard.init(this.window);
         Mouse.init(this.window);
