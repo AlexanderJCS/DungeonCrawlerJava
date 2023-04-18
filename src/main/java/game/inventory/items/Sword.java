@@ -39,7 +39,7 @@ public class Sword extends UsableItem {
 
             Enemy enemy = (Enemy) gameObject;
 
-            if (damageRect.collidesWith(enemy.getRect())) {
+            if (damageRect.otherRectInside(enemy.getRect())) {
                 enemy.healthContainer.takeDamage(2);
                 super.use();  // only use durability if the sword hit an enemy
             }

@@ -25,7 +25,7 @@ public class GameObject extends Image {
      */
     public boolean collides(Rect[] colliders) {
         for (Rect collider : colliders) {
-            if (collider.collidesWith(this.rect)) {
+            if (collider.otherRectInside(this.rect)) {
                 return true;
             }
         }

@@ -139,12 +139,17 @@ public class Rect {
     }
 
     /**
-     * Check if this rect collides if another rect
+     * Check if the other rect is inside this rect. NOTE that just because the other rect is inside this rect, that
+     * doesn't mean that this rect is inside the other rect. This means that this method should always be called as:<br>
+     * largerRect.collidesWith(smallerRect)
+     * <p>
+     * If largerRect and smallerRect were reversed, collision would only occur when smallerRect touches largerRect's
+     * vertices.
      *
      * @param other The other rect
-     * @return If they are colliding
+     * @return If other is inside this rect
      */
-    public boolean collidesWith(Rect other) {
+    public boolean otherRectInside(Rect other) {
         return this.pointInsideRect(new ScreenCoords(other.x1, other.y1)) ||   // Top left corner
                 this.pointInsideRect(new ScreenCoords(other.x1, other.y2)) ||  // Bottom left corner
                 this.pointInsideRect(new ScreenCoords(other.x2, other.y1)) ||  // Top right corner

@@ -75,7 +75,7 @@ public class Enemy extends GameObject {
 
         // Check for collision with the player
         // If that happens, then start moving away
-        if (Game.player.getRect().collidesWith(this.rect)) {
+        if (Game.player.getRect().otherRectInside(this.rect)) {
             this.moveAwayTime = MOVE_AWAY_TIME;
             Game.player.healthContainer.takeDamage(1);
         }
