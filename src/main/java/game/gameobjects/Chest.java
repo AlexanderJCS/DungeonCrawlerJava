@@ -8,6 +8,10 @@ import helper.coords.ScreenCoords;
 public class Chest extends GameObject {
     private Item item;
 
+    /**
+     * @param coords The bottom left coordinate of the chest.
+     * @param item The item the chest should hold
+     */
     public Chest(ScreenCoords coords, Item item) {
         super(coords, GridCoords.distXToScreenDist(1), GridCoords.distYToScreenDist(1), "chestClosed");
         this.item = item;

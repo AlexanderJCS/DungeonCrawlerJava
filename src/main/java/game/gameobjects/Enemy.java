@@ -8,9 +8,11 @@ import helper.coords.ScreenCoords;
 import helper.time.Clock;
 
 public class Enemy extends GameObject {
+    /** The maximum time to move away for. */
     private static final double MOVE_AWAY_TIME = 0.3;
     private final float speedX;
     private final float speedY;
+    /** How long to move away for. 0 when the enemy should not move away. */
     private double moveAwayTime;
 
     public final HealthContainer healthContainer;
@@ -29,6 +31,10 @@ public class Enemy extends GameObject {
         this.healthContainer = new HealthContainer(6, 0.3);
     }
 
+    /**
+     * Moves towards the player.
+     * Note this method can cause jumping on lower frame rates when the player is in the same plane as the enemy.
+     */
     private void moveTowardsPlayer() {
         Rect playerRect = Game.player.getRect();
 

@@ -100,6 +100,8 @@ public class RoomGenerator {
     }
 
     /**
+     * Generates game objects for a room.
+     *
      * @param random The Random object
      * @param dist The distance from 0, 0
      * @return A list of GameObjects (chests, enemies, etc) to incorporate in the room. Note this does not include walls

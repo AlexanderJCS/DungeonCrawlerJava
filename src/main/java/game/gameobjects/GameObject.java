@@ -9,6 +9,12 @@ import helper.time.Clock;
  * The GameObject class, which is used to hold everything "physical" (i.e. everything except items).
  */
 public class GameObject extends Image {
+    /**
+     * @param coords The bottom left coordinate of the GameObject
+     * @param width The width of the game object in ScreenCoords
+     * @param height The height of the game object in ScreenCoords
+     * @param textureName The texture name. This is not the same as the texture path. See graphics.texture.TextureMap.
+     */
     public GameObject(ScreenCoords coords, float width, float height, String textureName) {
         super(coords, width, height, textureName);
     }

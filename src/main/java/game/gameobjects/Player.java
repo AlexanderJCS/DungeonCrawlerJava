@@ -31,6 +31,10 @@ public class Player extends GameObject {
     /** Used for rendering the player direction. */
     private short lastY;
 
+    /**
+     * @param coords The bottom left coords of the player when it spawns in.
+     * @param speed The player's speed in the units of grid coords per second.
+     */
     public Player(ScreenCoords coords, float speed) {
         super(coords, PixelCoords.distXToScreenDist(Consts.GRID_PIXELS),
                 PixelCoords.distYToScreenDist(Consts.GRID_PIXELS),
