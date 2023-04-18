@@ -4,7 +4,7 @@ package helper;
  * Constants used globally.
  */
 public class Consts {
-    /** This number must be divisible by 9/16 for the screen to render properly */
+    /** This number must be divisible by 32 for the screen to render properly */
     public static final int SCREEN_WIDTH = 1600;
     public static final int SEED = 0;
 
