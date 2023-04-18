@@ -20,7 +20,7 @@ public class Player extends GameObject {
     private final float speedX;
     private final float speedY;
     private final Inventory inventory;
-    public HealthContainer healthContainer;
+    public final HealthContainer healthContainer;
     /**
      * Used for sword
      */
