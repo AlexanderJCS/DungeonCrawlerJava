@@ -7,6 +7,7 @@ import lwjgl.graphics.Rect;
 
 /**
  * The basic item class. This can be held in the inventory or be drawn to the screen.
+ * This class is separate from UsableItem in case I want to add armor/other passive items in the future.
  */
 public class Item {
     public final ItemType type;
