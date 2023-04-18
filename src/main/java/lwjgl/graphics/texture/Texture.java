@@ -1,7 +1,5 @@
 package lwjgl.graphics.texture;
 
-import static org.lwjgl.opengl.GL21.*;
-
 import org.lwjgl.BufferUtils;
 
 import javax.imageio.ImageIO;
@@ -9,6 +7,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
+
+import static org.lwjgl.opengl.GL21.*;
 
 /**
  * This class allows images to be drawn to the screen.
@@ -22,6 +22,7 @@ public class Texture {
 
     /**
      * Creates a new Texture object.
+     *
      * @param filepath The filepath of the texture.
      */
 
@@ -42,10 +43,10 @@ public class Texture {
             for (int i = 0; i < width; i++) {
                 for (int j = 0; j < height; j++) {
                     int pixel = pixels_raw[i * width + j];
-                    pixels.put((byte)((pixel >> 16) & 0xFF));  // Red
-                    pixels.put((byte)((pixel >> 8) & 0xFF));   // Green
-                    pixels.put((byte)(pixel & 0xFF));          // Blue
-                    pixels.put((byte)((pixel >> 24) & 0xFF));  // Alpha
+                    pixels.put((byte) ((pixel >> 16) & 0xFF));  // Red
+                    pixels.put((byte) ((pixel >> 8) & 0xFF));   // Green
+                    pixels.put((byte) (pixel & 0xFF));          // Blue
+                    pixels.put((byte) ((pixel >> 24) & 0xFF));  // Alpha
                 }
             }
 

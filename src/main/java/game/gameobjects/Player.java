@@ -1,16 +1,16 @@
 package game.gameobjects;
 
+import game.Game;
+import game.inventory.Inventory;
+import game.inventory.items.Heart;
 import game.inventory.items.Item;
+import helper.Consts;
 import helper.coords.Cardinal;
 import helper.coords.GridCoords;
-import helper.coords.ScreenCoords;
 import helper.coords.PixelCoords;
-import game.inventory.items.Heart;
-import game.inventory.Inventory;
-import lwjgl.graphics.Rect;
-import helper.Consts;
-import game.Game;
+import helper.coords.ScreenCoords;
 import lwjgl.glfw.Keyboard;
+import lwjgl.graphics.Rect;
 
 import static org.lwjgl.glfw.GLFW.*;
 
@@ -19,21 +19,25 @@ public class Player extends GameObject {
     // as one ScreenCoord in the y direction.
     private final float speedX;
     private final float speedY;
-
-    public HealthContainer healthContainer;
     private final Inventory inventory;
-
-    /** Used for sword */
+    public HealthContainer healthContainer;
+    /**
+     * Used for sword
+     */
     private Cardinal lastDir;
 
-    /** Used for rendering the player direction. */
+    /**
+     * Used for rendering the player direction.
+     */
     private short lastX;
-    /** Used for rendering the player direction. */
+    /**
+     * Used for rendering the player direction.
+     */
     private short lastY;
 
     /**
      * @param coords The bottom left coords of the player when it spawns in.
-     * @param speed The player's speed in the units of grid coords per second.
+     * @param speed  The player's speed in the units of grid coords per second.
      */
     public Player(ScreenCoords coords, float speed) {
         super(coords, PixelCoords.distXToScreenDist(Consts.GRID_PIXELS),
@@ -64,15 +68,18 @@ public class Player extends GameObject {
             this.fixedMove(0, speedY, wallRects);
             this.lastY = 1;
             this.lastDir = Cardinal.NORTH;
-        } if (Keyboard.getKeyDown(GLFW_KEY_S)) {  // Move down
+        }
+        if (Keyboard.getKeyDown(GLFW_KEY_S)) {  // Move down
             this.fixedMove(0, -speedY, wallRects);
             this.lastY = -1;
             this.lastDir = Cardinal.SOUTH;
-        } if (Keyboard.getKeyDown(GLFW_KEY_A)) {  // Move east
+        }
+        if (Keyboard.getKeyDown(GLFW_KEY_A)) {  // Move east
             this.fixedMove(-speedX, 0, wallRects);
             this.lastX = -1;
             this.lastDir = Cardinal.WEST;
-        } if (Keyboard.getKeyDown(GLFW_KEY_D)) {  // Move west
+        }
+        if (Keyboard.getKeyDown(GLFW_KEY_D)) {  // Move west
             this.fixedMove(speedX, 0, wallRects);
             this.lastX = 1;
             this.lastDir = Cardinal.EAST;
@@ -99,6 +106,7 @@ public class Player extends GameObject {
 
     /**
      * Add an item to the player's inventory. Used for the Chest class.
+     *
      * @param item The item to add to the inventory
      */
     public void addToInventory(Item item) {
@@ -107,6 +115,7 @@ public class Player extends GameObject {
 
     /**
      * Note that the return units (in this case ScreenCoords) does not mean anything.
+     *
      * @return The direction where positive x is east and positive y is north.
      */
     public Cardinal getLastDir() {

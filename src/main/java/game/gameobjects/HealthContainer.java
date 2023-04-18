@@ -13,15 +13,19 @@ public class HealthContainer {
     private final int MAX_HEALTH;
     private final double MAX_INVINCIBILITY_TIME;
 
-    /** The amount of time the health container is invincible from any other attacks. 0 when not invincible. */
+    /**
+     * The amount of time the health container is invincible from any other attacks. 0 when not invincible.
+     */
     private double invincibilityTime;
-    /** 2 health = 1 heart */
+    /**
+     * 2 health = 1 heart
+     */
     private int health;
 
     /**
      * Note that 2 health = 1 heart.
      *
-     * @param maxHealth The maximum health that can be gained
+     * @param maxHealth         The maximum health that can be gained
      * @param invincibilityTime The number of seconds to be invincible after being hit
      */
     public HealthContainer(int maxHealth, double invincibilityTime) {

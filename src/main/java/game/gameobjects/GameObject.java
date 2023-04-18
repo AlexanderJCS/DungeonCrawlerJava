@@ -10,9 +10,9 @@ import lwjgl.graphics.Rect;
  */
 public class GameObject extends Image {
     /**
-     * @param coords The bottom left coordinate of the GameObject
-     * @param width The width of the game object in ScreenCoords
-     * @param height The height of the game object in ScreenCoords
+     * @param coords      The bottom left coordinate of the GameObject
+     * @param width       The width of the game object in ScreenCoords
+     * @param height      The height of the game object in ScreenCoords
      * @param textureName The texture name. This is not the same as the texture path. See graphics.texture.TextureMap.
      */
     public GameObject(ScreenCoords coords, float width, float height, String textureName) {
@@ -35,8 +35,9 @@ public class GameObject extends Image {
 
     /**
      * Move an object by a certain amount while taking into account colliders.
-     * @param x The amount to shift in the x direction.
-     * @param y The amount to shift in the y direction
+     *
+     * @param x         The amount to shift in the x direction.
+     * @param y         The amount to shift in the y direction
      * @param colliders Objects to not collide with. Note that if the GameObject shifts too much,
      *                  it can pass through the collider.
      */
@@ -72,5 +73,6 @@ public class GameObject extends Image {
     /**
      * Update method that will be called once every frame. Empty by default.
      */
-    public void update() {}
+    public void update() {
+    }
 }

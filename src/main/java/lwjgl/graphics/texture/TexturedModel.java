@@ -1,9 +1,9 @@
 package lwjgl.graphics.texture;
 
-import static org.lwjgl.opengl.GL21.*;
-
-import lwjgl.graphics.Model;
 import helper.BufferManager;
+import lwjgl.graphics.Model;
+
+import static org.lwjgl.opengl.GL21.*;
 
 
 /**
@@ -16,7 +16,7 @@ public class TexturedModel extends Model {
     private final int tId;
 
     /**
-     * @param vertices The vertices.
+     * @param vertices  The vertices.
      * @param texCoords Which corner of the texture should be mapped to what corner of the model.
      */
     public TexturedModel(float[] vertices, float[] texCoords) {

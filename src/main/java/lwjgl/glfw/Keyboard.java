@@ -1,6 +1,7 @@
 package lwjgl.glfw;
 
-import static org.lwjgl.glfw.GLFW.*;
+import static org.lwjgl.glfw.GLFW.GLFW_KEY_SPACE;
+import static org.lwjgl.glfw.GLFW.glfwGetKey;
 
 /**
  *
@@ -41,7 +42,7 @@ public class Keyboard {
      * otherwise this method will always return false.
      *
      * @return True if the space bar is pressed down this frame.
-     *         False if the space bar is held down for more than 1 frame
+     * False if the space bar is held down for more than 1 frame
      */
     public static boolean spacePressedThisFrame() {
         return (!spacePressedLastFrame && getKeyDown(GLFW_KEY_SPACE));

@@ -8,14 +8,13 @@ import lwjgl.graphics.texture.TexturedModel;
  * The "base" of every other rectangular object. Used for collision and conversion to a Model or TexturedModel class.
  */
 public class Rect {
+    private final Model model;
     public float x1, y1, x2, y2;
     public float width, height;
 
-    private final Model model;
-
     /**
      * @param coords the coordinates of the rect
-     * @param width Width
+     * @param width  Width
      * @param height Height
      */
     public Rect(ScreenCoords coords, float width, float height) {
@@ -39,6 +38,7 @@ public class Rect {
 
     /**
      * Get the center coordinates of the rect.
+     *
      * @return The center coordinates of the rect, type ScreenCoords
      */
     public ScreenCoords getCenter() {
@@ -50,6 +50,7 @@ public class Rect {
 
     /**
      * Set the center of the rect.
+     *
      * @param x The x coordinate of the rect center.
      * @param y The y coordinate of the rect center.
      */
@@ -79,6 +80,7 @@ public class Rect {
 
     /**
      * Shift the rectangle by a certain amount
+     *
      * @param x X amount to shift
      * @param y Y amount to shift
      */
@@ -92,7 +94,7 @@ public class Rect {
     }
 
     private float[] getVertices() {
-        return new float[] {
+        return new float[]{
                 x1, y1,  // Top left
                 x2, y1,  // Top right
                 x2, y2,  // Bottom right
@@ -109,12 +111,13 @@ public class Rect {
 
     /**
      * Converts the vertices of the rect into a textured model.
+     *
      * @return A textured model.
      */
     private TexturedModel toTexturedModel() {
         float[] vertices = getVertices();
 
-        float[] texCoords = new float[] {
+        float[] texCoords = new float[]{
                 0, 1,
                 1, 1,
                 1, 0,
@@ -139,8 +142,10 @@ public class Rect {
     }
 
     /**
-     * Check if the other rect is inside this rect. NOTE that just because the other rect is inside this rect, that
-     * doesn't mean that this rect is inside the other rect. This means that this method should always be called as:<br>
+     * Check if the other rect's vertices are inside this rect. NOTE that just because the other rect's vertices are
+     * inside this rect, that doesn't mean that this rect's vertices are inside the other rect. This means that this
+     * method should always be called as:
+     * <p>
      * largerRect.collidesWith(smallerRect)
      * <p>
      * If largerRect and smallerRect were reversed, collision would only occur when smallerRect touches largerRect's

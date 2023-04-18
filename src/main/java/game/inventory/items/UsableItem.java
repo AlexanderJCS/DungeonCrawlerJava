@@ -8,9 +8,9 @@ import helper.coords.ScreenCoords;
  * An Item that can has a use() method.
  */
 public class UsableItem extends Item {
-    protected int durability;
     private final int maxDurability;
     private final Image barImage;
+    protected int durability;
 
     public UsableItem(ItemType type, String texture, int durability) {
         super(type, texture);

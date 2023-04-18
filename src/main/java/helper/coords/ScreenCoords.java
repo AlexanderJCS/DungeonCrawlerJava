@@ -11,17 +11,6 @@ public class ScreenCoords extends Coords {
         super(x, y);
     }
 
-    public PixelCoords toPixelCoords() {
-        float pixCoordsX = (Consts.SCREEN_WIDTH) * (this.x + 1) / 2;
-        float pixCoordsY = (Consts.SCREEN_HEIGHT) * (this.y + 1) / 2;
-
-        return new PixelCoords(pixCoordsX, pixCoordsY);
-    }
-
-    public GridCoords toGridCoords() {
-        return this.toPixelCoords().toGridCoords();
-    }
-
     public static float distXtoPixelCoords(float dist) {
         return dist * Consts.SCREEN_WIDTH / 2;
     }
@@ -36,5 +25,16 @@ public class ScreenCoords extends Coords {
 
     public static float distYtoGridCoords(float dist) {
         return PixelCoords.distToGridDist(distYtoPixelCoords(dist));
+    }
+
+    public PixelCoords toPixelCoords() {
+        float pixCoordsX = (Consts.SCREEN_WIDTH) * (this.x + 1) / 2;
+        float pixCoordsY = (Consts.SCREEN_HEIGHT) * (this.y + 1) / 2;
+
+        return new PixelCoords(pixCoordsX, pixCoordsY);
+    }
+
+    public GridCoords toGridCoords() {
+        return this.toPixelCoords().toGridCoords();
     }
 }

@@ -1,9 +1,9 @@
 package lwjgl.glfw;
 
-import helper.coords.PixelCoords;
-import helper.coords.ScreenCoords;
 import helper.BufferManager;
 import helper.Consts;
+import helper.coords.PixelCoords;
+import helper.coords.ScreenCoords;
 
 import static org.lwjgl.glfw.GLFW.*;
 
@@ -35,6 +35,7 @@ public class Mouse {
     /**
      * Returns the mouse position in the units of ScreenCoords. It's also important to note that the coordinates
      * may be offscreen if the mouse is offscreen.
+     *
      * @return The mouse position in the units of ScreenCoords.
      */
     public static ScreenCoords getMousePos() {
@@ -60,7 +61,7 @@ public class Mouse {
      * method will always return false.
      *
      * @return True if the left mouse button has been pressed this frame.
-     *         False if it has been held down for more than one frame.
+     * False if it has been held down for more than one frame.
      */
     public static boolean mouseDownThisFrame() {
         return (!mouseDownLastFrame && mouseDown(GLFW_MOUSE_BUTTON_LEFT));

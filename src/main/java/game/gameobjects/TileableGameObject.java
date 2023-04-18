@@ -1,9 +1,9 @@
 package game.gameobjects;
 
-import lwjgl.graphics.texture.TextureMap;
-import helper.coords.ScreenCoords;
 import helper.coords.GridCoords;
+import helper.coords.ScreenCoords;
 import lwjgl.graphics.Rect;
+import lwjgl.graphics.texture.TextureMap;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,12 +13,14 @@ import java.util.List;
  * This is useful for walls and anything else that may need tiling (such as a floor).
  */
 public class TileableGameObject extends GameObject {
-    /** A list of rects to render the current texture to. */
+    /**
+     * A list of rects to render the current texture to.
+     */
     private final List<Rect> textureRects;
 
     /**
      * @param coords The top left corner of the wall.
-     * @param width The width in ScreenCoords
+     * @param width  The width in ScreenCoords
      * @param height The height in ScreenCoords
      */
     public TileableGameObject(ScreenCoords coords, float width, float height, String texture) {

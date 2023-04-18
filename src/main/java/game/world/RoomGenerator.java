@@ -10,7 +10,10 @@ import game.inventory.items.Sword;
 import helper.coords.GridCoords;
 import helper.coords.ScreenCoords;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 import java.util.stream.Stream;
 
 /**
@@ -19,10 +22,11 @@ import java.util.stream.Stream;
 public class RoomGenerator {
     /**
      * Generate the wall classes given the north, south, east, and west entrances.
+     *
      * @param north If the north entrance exists
      * @param south If the south entrance exists
-     * @param east If the east entrance exists
-     * @param west If the west entrance exists
+     * @param east  If the east entrance exists
+     * @param west  If the west entrance exists
      * @return An array of wall rects to use in the Room.
      */
     public static Wall[] generateWalls(boolean north, boolean south, boolean east, boolean west) {
@@ -103,7 +107,7 @@ public class RoomGenerator {
      * Generates game objects for a room.
      *
      * @param random The Random object
-     * @param dist The distance from 0, 0
+     * @param dist   The distance from 0, 0
      * @return A list of GameObjects (chests, enemies, etc) to incorporate in the room. Note this does not include walls
      */
     public static List<GameObject> generateGameObjects(Random random, double dist) {

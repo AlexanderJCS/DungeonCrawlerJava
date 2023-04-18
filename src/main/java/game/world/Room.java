@@ -2,8 +2,8 @@ package game.world;
 
 import game.gameobjects.Enemy;
 import game.gameobjects.GameObject;
-import lwjgl.graphics.Rect;
 import game.gameobjects.Wall;
+import lwjgl.graphics.Rect;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,18 +19,17 @@ public class Room {
     public final boolean south;
     public final boolean east;
     public final boolean west;
-
-    private final Wall[] walls;
     public final List<GameObject> gameObjects;
+    private final Wall[] walls;
     boolean shown;
 
     /**
-     * @param x x coordinate of the room (room coordinate, which is NOT the same thing as a screen coordinate used to draw).
-     * @param y y coordinate of the room (room coordinate, which is NOT the same thing as a screen coordinate used to draw).
-     * @param north If the room has a north entrance.
-     * @param south If the room has a south entrance.
-     * @param east If the room has an east entrance.
-     * @param west If the room has a west entrance.
+     * @param x           x coordinate of the room (room coordinate, which is NOT the same thing as a screen coordinate used to draw).
+     * @param y           y coordinate of the room (room coordinate, which is NOT the same thing as a screen coordinate used to draw).
+     * @param north       If the room has a north entrance.
+     * @param south       If the room has a south entrance.
+     * @param east        If the room has an east entrance.
+     * @param west        If the room has a west entrance.
      * @param gameObjects A list of GameObjects inside the room.
      */
     public Room(int x, int y, boolean north, boolean south, boolean east, boolean west, List<GameObject> gameObjects) {

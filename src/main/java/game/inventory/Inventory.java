@@ -1,20 +1,20 @@
 package game.inventory;
 
+import game.gameobjects.Image;
 import game.inventory.items.Item;
 import game.inventory.items.ItemType;
 import game.inventory.items.UsableItem;
+import helper.Consts;
 import helper.coords.GridCoords;
 import helper.coords.PixelCoords;
 import helper.coords.ScreenCoords;
-import game.gameobjects.Image;
-import helper.Consts;
 import lwjgl.glfw.Keyboard;
 import lwjgl.glfw.Mouse;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.lwjgl.glfw.GLFW.*;
+import static org.lwjgl.glfw.GLFW.GLFW_KEY_TAB;
 
 public class Inventory {
     private static final Image transparent = new Image(new ScreenCoords(-1, -1), 2, 2,
@@ -32,6 +32,23 @@ public class Inventory {
     public Inventory() {
         this.consumables = new ArrayList<>();
         this.weapons = new ArrayList<>();
+    }
+
+    private static void drawItemList(List<Item> items, float yOffset) {
+        PixelCoords origin = new PixelCoords(
+                Consts.SCREEN_WIDTH / 2f - Consts.GRID_PIXELS * 4 - Consts.GRID_PIXELS / 2f,
+                Consts.SCREEN_HEIGHT / 2f + Consts.GRID_PIXELS / 2f + yOffset
+        );
+
+        for (int i = 0; i < items.size(); i++) {
+            Item item = items.get(i);
+
+            item.setPos(
+                    new PixelCoords(origin.x + GridCoords.distToPixelCoords(i), origin.y).toScreenCoords()
+            );
+
+            item.draw();
+        }
     }
 
     private List<UsableItem> getUsableItems() {
@@ -55,23 +72,6 @@ public class Inventory {
         }
     }
 
-    private static void drawItemList(List<Item> items, float yOffset) {
-        PixelCoords origin = new PixelCoords(
-                Consts.SCREEN_WIDTH / 2f - Consts.GRID_PIXELS * 4 - Consts.GRID_PIXELS / 2f,
-                Consts.SCREEN_HEIGHT / 2f + Consts.GRID_PIXELS / 2f + yOffset
-        );
-
-        for (int i = 0; i < items.size(); i++) {
-            Item item = items.get(i);
-
-            item.setPos(
-                    new PixelCoords(origin.x + GridCoords.distToPixelCoords(i), origin.y).toScreenCoords()
-            );
-
-            item.draw();
-        }
-    }
-
     private void drawSelectedItem() {
         this.selectedItem.setPos(new GridCoords(1, 16).toScreenCoords());
         this.selectedItem.draw();
@@ -87,8 +87,8 @@ public class Inventory {
         if (Keyboard.getKeyDown(OPEN_INVENTORY_KEY)) {  // if inventory is open
             // draw the inventory
             transparent.draw();
-            drawItemList((List<Item>)(List<?>) this.consumables, 100f);
-            drawItemList((List<Item>)(List<?>) this.weapons, 0);
+            drawItemList((List<Item>) (List<?>) this.consumables, 100f);
+            drawItemList((List<Item>) (List<?>) this.weapons, 0);
         }
     }
 

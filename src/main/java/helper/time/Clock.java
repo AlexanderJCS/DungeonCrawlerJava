@@ -6,7 +6,9 @@ import static org.lwjgl.glfw.GLFW.glfwGetTime;
  * A utility class to handle different time-related tasks.
  */
 public class Clock {
-    /** Second to last tick is used for getTimeDelta() */
+    /**
+     * Second to last tick is used for getTimeDelta()
+     */
     private static double secondToLastTick = 0;
     private static double lastTick = 0;
 
@@ -23,7 +25,8 @@ public class Clock {
         double interval = 1.0 / fps;
 
         // Wait until the current time passed interval
-        while (glfwGetTime() - lastTick < interval) {}
+        while (glfwGetTime() - lastTick < interval) {
+        }
 
         secondToLastTick = lastTick;
         lastTick = glfwGetTime();

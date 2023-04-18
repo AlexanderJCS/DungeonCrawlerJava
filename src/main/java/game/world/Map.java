@@ -11,8 +11,8 @@ import java.util.Random;
  */
 public class Map {
     private final List<Room> rooms;
-    private Room shownRoom;
     private final Random random;
+    private Room shownRoom;
 
     public Map() {
         this.random = new Random(Consts.SEED);
@@ -45,6 +45,7 @@ public class Map {
 
     /**
      * Sets the shown room.
+     *
      * @param x The room coordinate x.
      * @param y The room coordinate y.
      */
@@ -65,6 +66,7 @@ public class Map {
 
     /**
      * Change the shown room number by a certain amount. Useful for a player moving to the next room.
+     *
      * @param deltaX The amount to change on the x direction.
      * @param deltaY The amount to change on the y direction.
      */
@@ -77,6 +79,7 @@ public class Map {
 
     /**
      * Returns the room at the specified coordinates. Null if no room is found at those coords.
+     *
      * @param x The x coordinate of the room
      * @param y The y coordinate of the room
      * @return The room. Null if no room is found at those coordinates.
@@ -94,6 +97,7 @@ public class Map {
     /**
      * Generate a room at a set of room coordinates. Entrances get exponentially rarer the farther away you
      * go from the origin.
+     *
      * @param x The x coordinate of the room to generate.
      * @param y The y coordinate of the room to generate.
      */

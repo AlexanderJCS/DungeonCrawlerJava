@@ -3,10 +3,10 @@ package game.inventory.items;
 import game.Game;
 import game.gameobjects.Enemy;
 import game.gameobjects.GameObject;
-import lwjgl.graphics.Rect;
 import helper.coords.Cardinal;
 import helper.coords.GridCoords;
 import helper.coords.ScreenCoords;
+import lwjgl.graphics.Rect;
 
 /**
  * Damages an enemy upon hitting it.
@@ -27,7 +27,7 @@ public class Sword extends UsableItem {
                         playerRect.x1 + GridCoords.distXToScreenDist(playerDir.x),
                         playerRect.y1 + GridCoords.distYToScreenDist(playerDir.y)
                 ),
-                GridCoords.distXToScreenDist(1) ,
+                GridCoords.distXToScreenDist(1),
                 GridCoords.distYToScreenDist(1)
         );
 

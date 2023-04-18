@@ -12,14 +12,6 @@ public class GridCoords extends Coords {
         super(x, y);
     }
 
-    public PixelCoords toPixelCoords() {
-        return new PixelCoords(this.x * Consts.GRID_PIXELS, this.y * Consts.GRID_PIXELS);
-    }
-
-    public ScreenCoords toScreenCoords() {
-        return toPixelCoords().toScreenCoords();
-    }
-
     public static float distToPixelCoords(float dist) {
         return dist * Consts.GRID_PIXELS;
     }
@@ -30,5 +22,13 @@ public class GridCoords extends Coords {
 
     public static float distYToScreenDist(float dist) {
         return PixelCoords.distYToScreenDist(distToPixelCoords(dist));
+    }
+
+    public PixelCoords toPixelCoords() {
+        return new PixelCoords(this.x * Consts.GRID_PIXELS, this.y * Consts.GRID_PIXELS);
+    }
+
+    public ScreenCoords toScreenCoords() {
+        return toPixelCoords().toScreenCoords();
     }
 }

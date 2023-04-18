@@ -1,8 +1,8 @@
 package lwjgl.graphics;
 
-import static org.lwjgl.opengl.GL21.*;
-
 import helper.BufferManager;
+
+import static org.lwjgl.opengl.GL21.*;
 
 /**
  * Modified from:
@@ -10,12 +10,13 @@ import helper.BufferManager;
  * Model class, which allows a shape to be drawn to the screen using VBOs.
  */
 public class Model {
+    protected final static int DIMENSIONS = 2;
     protected final int drawCount;
     protected final int vId;
-    protected final static int DIMENSIONS = 2;
 
     /**
      * Create a new model with the given vertices.
+     *
      * @param vertices The triangle vertices.
      */
     public Model(float[] vertices) {

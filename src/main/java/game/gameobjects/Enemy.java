@@ -1,25 +1,28 @@
 package game.gameobjects;
 
 import game.Game;
-import lwjgl.graphics.Rect;
 import helper.coords.GridCoords;
 import helper.coords.PixelCoords;
 import helper.coords.ScreenCoords;
 import helper.time.Clock;
+import lwjgl.graphics.Rect;
 
 public class Enemy extends GameObject {
-    /** The maximum time to move away for. */
+    /**
+     * The maximum time to move away for.
+     */
     private static final double MOVE_AWAY_TIME = 0.3;
+    public final HealthContainer healthContainer;
     private final float speedX;
     private final float speedY;
-    /** How long to move away for. 0 when the enemy should not move away. */
+    /**
+     * How long to move away for. 0 when the enemy should not move away.
+     */
     private double moveAwayTime;
-
-    public final HealthContainer healthContainer;
 
     /**
      * @param coords The coordinates the enemy should spawn at.
-     * @param speed The speed of the enemy in grid coords per frame.
+     * @param speed  The speed of the enemy in grid coords per frame.
      */
     public Enemy(ScreenCoords coords, float speed) {
         super(coords, GridCoords.distXToScreenDist(1), GridCoords.distYToScreenDist(1), "enemy");

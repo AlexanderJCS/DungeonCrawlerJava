@@ -1,16 +1,17 @@
 package game;
 
-import lwjgl.glfw.Window;
-import helper.time.Clock;
-import helper.coords.ScreenCoords;
 import game.gameobjects.Player;
 import game.world.Map;
 import helper.Consts;
+import helper.coords.ScreenCoords;
+import helper.time.Clock;
 import lwjgl.glfw.Keyboard;
 import lwjgl.glfw.Mouse;
+import lwjgl.glfw.Window;
 
 import static org.lwjgl.glfw.GLFW.*;
-import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.opengl.GL11.GL_COLOR_BUFFER_BIT;
+import static org.lwjgl.opengl.GL11.glClear;
 
 /**
  * The main class for running the game.
