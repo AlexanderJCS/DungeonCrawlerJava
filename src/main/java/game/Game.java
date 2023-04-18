@@ -1,13 +1,13 @@
 package game;
 
-import helper.glfw.Window;
+import lwjgl.glfw.Window;
 import helper.time.Clock;
 import helper.coords.ScreenCoords;
 import game.gameobjects.Player;
 import game.world.Map;
 import helper.Consts;
-import helper.glfw.Keyboard;
-import helper.glfw.Mouse;
+import lwjgl.glfw.Keyboard;
+import lwjgl.glfw.Mouse;
 
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;

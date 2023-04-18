@@ -1,8 +1,8 @@
 package game.gameobjects;
 
-import graphics.texture.TextureMap;
+import lwjgl.graphics.texture.TextureMap;
 import helper.coords.ScreenCoords;
-import graphics.Rect;
+import lwjgl.graphics.Rect;
 
 /**
  * An image that can be displayed to the screen.

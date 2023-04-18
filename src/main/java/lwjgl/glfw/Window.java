@@ -1,4 +1,4 @@
-package helper.glfw;
+package lwjgl.glfw;
 
 import helper.Consts;
 import org.lwjgl.opengl.GL;

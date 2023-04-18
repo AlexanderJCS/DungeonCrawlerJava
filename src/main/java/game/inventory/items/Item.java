@@ -1,6 +1,6 @@
 package game.inventory.items;
 
-import graphics.Rect;
+import lwjgl.graphics.Rect;
 import helper.coords.GridCoords;
 import helper.coords.ScreenCoords;
 import game.gameobjects.Image;

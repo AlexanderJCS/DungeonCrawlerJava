@@ -1,8 +1,8 @@
-package graphics;
+package lwjgl.graphics;
 
 
 import helper.coords.ScreenCoords;
-import graphics.texture.TexturedModel;
+import lwjgl.graphics.texture.TexturedModel;
 
 /**
  * The "base" of every other rectangular object. Used for collision and conversion to a Model or TexturedModel class.

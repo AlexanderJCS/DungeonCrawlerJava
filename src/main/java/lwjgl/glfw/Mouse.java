@@ -1,4 +1,4 @@
-package helper.glfw;
+package lwjgl.glfw;
 
 import helper.coords.PixelCoords;
 import helper.coords.ScreenCoords;

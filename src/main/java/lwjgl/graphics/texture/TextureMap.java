@@ -1,4 +1,4 @@
-package graphics.texture;
+package lwjgl.graphics.texture;
 
 import java.util.HashMap;
 

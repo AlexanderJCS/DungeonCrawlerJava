@@ -1,9 +1,9 @@
 package game.gameobjects;
 
-import graphics.texture.TextureMap;
+import lwjgl.graphics.texture.TextureMap;
 import helper.coords.ScreenCoords;
 import helper.coords.GridCoords;
-import graphics.Rect;
+import lwjgl.graphics.Rect;
 
 import java.util.ArrayList;
 import java.util.List;

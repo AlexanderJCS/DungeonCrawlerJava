@@ -1,8 +1,8 @@
-package graphics.texture;
+package lwjgl.graphics.texture;
 
 import static org.lwjgl.opengl.GL21.*;
 
-import graphics.Model;
+import lwjgl.graphics.Model;
 import helper.BufferManager;
 
 

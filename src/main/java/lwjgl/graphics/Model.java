@@ -1,4 +1,4 @@
-package graphics;
+package lwjgl.graphics;
 
 import static org.lwjgl.opengl.GL21.*;
 

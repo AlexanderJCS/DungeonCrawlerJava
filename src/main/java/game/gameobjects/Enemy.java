@@ -1,7 +1,7 @@
 package game.gameobjects;
 
 import game.Game;
-import graphics.Rect;
+import lwjgl.graphics.Rect;
 import helper.coords.GridCoords;
 import helper.coords.PixelCoords;
 import helper.coords.ScreenCoords;

@@ -2,7 +2,7 @@ package game.world;
 
 import game.gameobjects.Enemy;
 import game.gameobjects.GameObject;
-import graphics.Rect;
+import lwjgl.graphics.Rect;
 import game.gameobjects.Wall;
 
 import java.util.ArrayList;

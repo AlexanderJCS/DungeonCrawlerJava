@@ -7,10 +7,10 @@ import helper.coords.ScreenCoords;
 import helper.coords.PixelCoords;
 import game.inventory.items.Heart;
 import game.inventory.Inventory;
-import graphics.Rect;
+import lwjgl.graphics.Rect;
 import helper.Consts;
 import game.Game;
-import helper.glfw.Keyboard;
+import lwjgl.glfw.Keyboard;
 
 import static org.lwjgl.glfw.GLFW.*;
 

@@ -1,9 +1,9 @@
 package game.gameobjects;
 
-import graphics.*;
 import helper.coords.PixelCoords;
 import helper.coords.ScreenCoords;
 import helper.time.Clock;
+import lwjgl.graphics.Rect;
 
 /**
  * The GameObject class, which is used to hold everything "physical" (i.e. everything except items).

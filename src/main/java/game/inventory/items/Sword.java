@@ -3,7 +3,7 @@ package game.inventory.items;
 import game.Game;
 import game.gameobjects.Enemy;
 import game.gameobjects.GameObject;
-import graphics.Rect;
+import lwjgl.graphics.Rect;
 import helper.coords.Cardinal;
 import helper.coords.GridCoords;
 import helper.coords.ScreenCoords;
