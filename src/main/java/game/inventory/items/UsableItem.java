@@ -55,6 +55,7 @@ public class UsableItem extends Item {
         // The item should be deleted before then next frame is drawn
         if (durability <= 0) {
             this.getRect().cleanup();
+            this.barImage.getRect().cleanup();
         }
     }
 }
