@@ -2,6 +2,8 @@ package helper;
 
 import org.lwjgl.BufferUtils;
 
+import java.awt.image.BufferedImage;
+import java.nio.ByteBuffer;
 import java.nio.DoubleBuffer;
 import java.nio.FloatBuffer;
 
@@ -10,13 +12,19 @@ import java.nio.FloatBuffer;
  * there will be a memory leak.
  */
 public class BufferManager {
-    public static FloatBuffer vboBuffer = BufferUtils.createFloatBuffer(1024);
-    public static FloatBuffer texCoordsBuffer = BufferUtils.createFloatBuffer(1024);
+    private static final int MAX_FB_CAPACITY = 1024;   // max float buffer capacity
+    private static final int MAX_BB_CAPACITY = 32768;  // max byte buffer capacity
+
+    public static FloatBuffer vboBuffer = BufferUtils.createFloatBuffer(MAX_FB_CAPACITY);
+    public static FloatBuffer texCoordsBuffer = BufferUtils.createFloatBuffer(MAX_FB_CAPACITY);
 
     public static DoubleBuffer mouseBuffer1 = BufferUtils.createDoubleBuffer(1);
     public static DoubleBuffer mouseBuffer2 = BufferUtils.createDoubleBuffer(1);
+    // This buffer needs to be larger since it's containing image data
+    public static ByteBuffer byteBuffer = BufferUtils.createByteBuffer(MAX_BB_CAPACITY);
+    public static BufferedImage bufferedImage;
 
-    public static void setBuffer(FloatBuffer fb, float[] newData) throws IllegalArgumentException {
+    public static void setFloatBuffer(FloatBuffer fb, float[] newData) throws IllegalArgumentException {
         if (newData.length > 1024) {
             throw new IllegalArgumentException(
                     "newData is greater than length 1024, which will cause a buffer overflow exception");

@@ -51,5 +51,10 @@ public class UsableItem extends Item {
         } else {
             this.barImage.textureName = "red";
         }
+
+        // The item should be deleted before then next frame is drawn
+        if (durability <= 0) {
+            this.getRect().cleanup();
+        }
     }
 }

@@ -84,6 +84,7 @@ public class Room {
                 Enemy enemy = (Enemy) gameObject;
 
                 if (enemy.healthContainer.getHealth() == 0) {
+                    this.gameObjects.get(i).getRect().cleanup();
                     this.gameObjects.remove(i);
                 }
             }

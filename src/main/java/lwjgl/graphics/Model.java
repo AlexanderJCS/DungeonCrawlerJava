@@ -22,7 +22,7 @@ public class Model {
     public Model(float[] vertices) {
         drawCount = vertices.length / DIMENSIONS;
 
-        BufferManager.setBuffer(BufferManager.vboBuffer, vertices);
+        BufferManager.setFloatBuffer(BufferManager.vboBuffer, vertices);
 
         vId = glGenBuffers();
         glBindBuffer(GL_ARRAY_BUFFER, vId);
@@ -46,13 +46,22 @@ public class Model {
     }
 
     /**
+     * Clean up memory associated with glDeleteBuffers. This method is recommended to be called before the deletion
+     * of the Model. This should be inside a destructor, but there aren't any destructors in Java so there's nothing
+     * I can do
+     */
+    public void cleanup() {
+        glDeleteBuffers(vId);
+    }
+
+    /**
      * Changes the vertices to the ones given. This is a memory-safe way to do so, since creating a new
      * Model will cause a memory leak.
      * <a href="http://forum.lwjgl.org/index.php?topic=5334.0">...</a>
      */
     public void changeVertices(float[] vertices) {
         glBindBuffer(GL_ARRAY_BUFFER, vId);
-        BufferManager.setBuffer(BufferManager.vboBuffer, vertices);
+        BufferManager.setFloatBuffer(BufferManager.vboBuffer, vertices);
         glBufferSubData(GL_ARRAY_BUFFER, 0, BufferManager.vboBuffer);
         glBindBuffer(GL_ARRAY_BUFFER, vId);
     }

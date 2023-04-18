@@ -8,7 +8,7 @@ import lwjgl.graphics.texture.TexturedModel;
  * The "base" of every other rectangular object. Used for collision and conversion to a Model or TexturedModel class.
  */
 public class Rect {
-    private final Model model;
+    private final TexturedModel model;
     public float x1, y1, x2, y2;
     public float width, height;
 
@@ -171,5 +171,12 @@ public class Rect {
                 ", width=" + width +
                 ", height=" + height +
                 '}';
+    }
+
+    /**
+     * Calls the cleanup method of the model class.
+     */
+    public void cleanup() {
+        this.model.cleanup();
     }
 }

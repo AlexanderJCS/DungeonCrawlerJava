@@ -66,6 +66,8 @@ public class HealthContainer {
 
         // Draw the moving right from the origin
         for (int i = 0; i < this.MAX_HEALTH / 2; i++) {
+            Image image;
+
             // The coordinates of the heart to draw
             ScreenCoords coords = new ScreenCoords(
                     origin.x + GridCoords.distXToScreenDist(1.1f * i), origin.y
@@ -74,13 +76,19 @@ public class HealthContainer {
             // Determine if it is a full heart, half heart, etc. and draw it
             if (healthNum >= 2) {
                 healthNum -= 2;
-                new Image(coords, width, height, "heart").draw();
+                image = new Image(coords, width, height, "heart");
+                image.draw();
             } else if (healthNum == 1) {
                 healthNum -= 1;
-                new Image(coords, width, height, "halfHeart").draw();
+                image = new Image(coords, width, height, "halfHeart");
+                image.draw();
             } else {  // healthNum == 0
-                new Image(coords, width, height, "emptyHeart").draw();
+                image = new Image(coords, width, height, "emptyHeart");
+                image.draw();
+
             }
+
+            image.getRect().cleanup();
         }
     }
 

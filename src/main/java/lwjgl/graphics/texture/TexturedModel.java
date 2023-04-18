@@ -23,11 +23,16 @@ public class TexturedModel extends Model {
         super(vertices);
 
         tId = glGenBuffers();
-        BufferManager.setBuffer(BufferManager.texCoordsBuffer, texCoords);
+        BufferManager.setFloatBuffer(BufferManager.texCoordsBuffer, texCoords);
         glBindBuffer(GL_ARRAY_BUFFER, tId);
         glBufferData(GL_ARRAY_BUFFER, texCoords, GL_STATIC_DRAW);
-
         glBindBuffer(GL_ARRAY_BUFFER, 0);
+    }
+
+    @Override
+    public void cleanup() {
+        super.cleanup();
+        glDeleteBuffers(tId);
     }
 
     /**

@@ -58,7 +58,7 @@ public class Game {
             draw();
             update();
 
-            // Exit the current game if the player lost
+            // Do not exit the current game if the player lost
             if (player.healthContainer.getHealth() <= 0) {
                 return false;
             }
@@ -80,9 +80,12 @@ public class Game {
         Game.init();
 
         // While the player wants to play the game
-        while (!Game.run()) {
-            Game.reset();
-        }
+        Game.run();
+
+        // The below code is commented out until Game.reset() clears memory effectively.
+//        while (!Game.run()) {
+//            Game.reset();
+//        }
 
         glfwTerminate();
     }

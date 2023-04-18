@@ -1,12 +1,10 @@
 package lwjgl.graphics.texture;
 
-import org.lwjgl.BufferUtils;
+import helper.BufferManager;
 
 import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.nio.ByteBuffer;
 
 import static org.lwjgl.opengl.GL21.*;
 
@@ -27,37 +25,36 @@ public class Texture {
      */
 
     public Texture(String filepath) {
-        BufferedImage bufferedImage;
-
         try {
-            bufferedImage = ImageIO.read(new File(filepath));
-            int width = bufferedImage.getWidth();
-            int height = bufferedImage.getHeight();
+            BufferManager.bufferedImage = ImageIO.read(new File(filepath));
+            int width = BufferManager.bufferedImage.getWidth();
+            int height = BufferManager.bufferedImage.getHeight();
 
             int[] pixels_raw;
-            pixels_raw = bufferedImage.getRGB(0, 0, width, height, null, 0, width);
+            pixels_raw = BufferManager.bufferedImage.getRGB(0, 0, width, height, null, 0, width);
 
             // Create the pixel buffer
-            ByteBuffer pixels = BufferUtils.createByteBuffer(width * height * 4);
+            BufferManager.byteBuffer.clear();
+            BufferManager.byteBuffer.limit(width * height * 4);
 
             for (int i = 0; i < width; i++) {
                 for (int j = 0; j < height; j++) {
                     int pixel = pixels_raw[i * width + j];
-                    pixels.put((byte) ((pixel >> 16) & 0xFF));  // Red
-                    pixels.put((byte) ((pixel >> 8) & 0xFF));   // Green
-                    pixels.put((byte) (pixel & 0xFF));          // Blue
-                    pixels.put((byte) ((pixel >> 24) & 0xFF));  // Alpha
+                    BufferManager.byteBuffer.put((byte) ((pixel >> 16) & 0xFF));  // Red
+                    BufferManager.byteBuffer.put((byte) ((pixel >> 8) & 0xFF));   // Green
+                    BufferManager.byteBuffer.put((byte) (pixel & 0xFF));          // Blue
+                    BufferManager.byteBuffer.put((byte) ((pixel >> 24) & 0xFF));  // Alpha
                 }
             }
 
-            pixels.flip();
+            BufferManager.byteBuffer.flip();
             id = glGenTextures();
             glBindTexture(GL_TEXTURE_2D, id);
 
             glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
             glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels);
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, BufferManager.byteBuffer);
 
         } catch (IOException e) {
             e.printStackTrace();
