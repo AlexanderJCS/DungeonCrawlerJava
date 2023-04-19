@@ -1,6 +1,7 @@
 package game.gameobjects;
 
 import game.Game;
+import game.gameobjects.health.DrawableHealthContainer;
 import game.inventory.Inventory;
 import game.inventory.items.Heart;
 import game.inventory.items.Item;

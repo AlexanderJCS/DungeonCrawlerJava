@@ -1,5 +1,6 @@
-package game.gameobjects;
+package game.gameobjects.health;
 
+import game.gameobjects.Image;
 import helper.coords.GridCoords;
 import helper.coords.PixelCoords;
 import helper.coords.ScreenCoords;

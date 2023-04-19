@@ -1,4 +1,4 @@
-package game.gameobjects;
+package game.gameobjects.health;
 
 import helper.time.Clock;
 

@@ -1,6 +1,7 @@
 package game.gameobjects;
 
 import game.Game;
+import game.gameobjects.health.HealthContainer;
 import helper.coords.GridCoords;
 import helper.coords.PixelCoords;
 import helper.coords.ScreenCoords;
