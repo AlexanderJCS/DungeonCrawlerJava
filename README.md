@@ -10,7 +10,8 @@ This project was made using LWJGL, which is a lightweight and low level way to c
 You can install the game by:
 1. Download the source code from the latest release in the [releases section](https://github.com/AlexanderJCS/DungeonCrawlerJava/releases).
 2. Extract the file and create a new IntelliJ project from the source code.
-3. Run [Game.java](src/main/java/game/Game.java) to run the game. Refer to the "Game Information" section of this README to learn about controls, items, and objects in the game.
+3. On Mac (and possibly Linux): In IntelliJ, navigate to `Run -> Edit Configurations...`. Then, click "Modify Options" -> "Add VM options" then input `XstartOnFirstThread`.
+4. Run [Game.java](src/main/java/game/Game.java) to run the game. Refer to the "Game Information" section of this README to learn about controls, items, and objects in the game.
 
 # Configuring the game
 To configure the game, modify the [Consts.java file](src/main/java/helper/Consts.java). This file contains information such as the world seed, screen dimensions, and FPS limiter.
