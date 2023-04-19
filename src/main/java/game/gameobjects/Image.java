@@ -1,13 +1,14 @@
 package game.gameobjects;
 
 import helper.coords.ScreenCoords;
+import helper.interfaces.Drawable;
 import lwjgl.graphics.Rect;
 import lwjgl.graphics.texture.TextureMap;
 
 /**
  * An image that can be displayed to the screen.
  */
-public class Image {
+public class Image implements Drawable {
     protected final Rect rect;
     /**
      * The texture name. A list of texture names can be found in the graphics.texture.TextureMap object.
@@ -28,6 +29,7 @@ public class Image {
     /**
      * Draws the image (including its texture) to the screen.
      */
+    @Override
     public void draw() {
         TextureMap.get(this.textureName).bind();
         this.rect.drawModel();

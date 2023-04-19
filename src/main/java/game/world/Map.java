@@ -1,6 +1,8 @@
 package game.world;
 
 import helper.Consts;
+import helper.interfaces.Drawable;
+import helper.interfaces.Updatable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +11,7 @@ import java.util.Random;
 /**
  * Contains multiple rooms that the player can travel to.
  */
-public class Map {
+public class Map implements Drawable, Updatable {
     private final List<Room> rooms;
     private final Random random;
     private Room shownRoom;
@@ -28,10 +30,12 @@ public class Map {
     /**
      * Draws the shown room.
      */
+    @Override
     public void draw() {
         this.shownRoom.draw();
     }
 
+    @Override
     public void update() {
         this.shownRoom.update();
     }

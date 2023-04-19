@@ -2,13 +2,14 @@ package game.gameobjects;
 
 import helper.coords.PixelCoords;
 import helper.coords.ScreenCoords;
+import helper.interfaces.Updatable;
 import helper.time.Clock;
 import lwjgl.graphics.Rect;
 
 /**
  * The GameObject class, which is used to hold everything "physical" (i.e. everything except items).
  */
-public class GameObject extends Image {
+public class GameObject extends Image implements Updatable {
     /**
      * @param coords      The bottom left coordinate of the GameObject
      * @param width       The width of the game object in ScreenCoords
@@ -73,6 +74,6 @@ public class GameObject extends Image {
     /**
      * Update method that will be called once every frame. Empty by default.
      */
-    public void update() {
-    }
+    @Override
+    public void update() {}
 }

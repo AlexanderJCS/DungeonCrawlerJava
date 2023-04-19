@@ -23,12 +23,8 @@ public class Game {
     public static Player player = null;
 
     public static void init() throws IllegalStateException {
-        Game.reset();
-    }
-
-    public static void reset() {
         map = new Map();
-        player = new Player(new ScreenCoords(0, 0), 9f);
+        player = new Player(new ScreenCoords(0, 0), 8);
     }
 
     private static void update() {
@@ -47,10 +43,8 @@ public class Game {
 
     /**
      * The main game loop.
-     *
-     * @return Whether the player wants to exit the application.
      */
-    public static boolean run() {
+    public static void run() {
         while (!glfwWindowShouldClose(Window.window)) {
             glfwPollEvents();
             glClear(GL_COLOR_BUFFER_BIT);  // make the screen black
@@ -60,14 +54,12 @@ public class Game {
 
             // Do not exit the current game if the player lost
             if (player.healthContainer.getHealth() <= 0) {
-                return false;
+                break;
             }
 
             glfwSwapBuffers(Window.window);
             Clock.busyTick(Consts.FPS_LIMIT);
         }
-
-        return true;
     }
 
     /**
@@ -81,11 +73,6 @@ public class Game {
 
         // While the player wants to play the game
         Game.run();
-
-        // The below code is commented out until Game.reset() clears memory effectively.
-//        while (!Game.run()) {
-//            Game.reset();
-//        }
 
         glfwTerminate();
     }

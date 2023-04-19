@@ -1,12 +1,13 @@
 package game.gameobjects.health;
 
+import helper.interfaces.Updatable;
 import helper.time.Clock;
 
 /**
  * Contains health and has the ability to draw it to the screen. Useful for GameObjects that have health, such as
  * Player and Enemy.
  */
-public class HealthContainer {
+public class HealthContainer implements Updatable {
     private final int MAX_HEALTH;
     private final double MAX_INVINCIBILITY_TIME;
 
@@ -51,6 +52,7 @@ public class HealthContainer {
         this.health = Math.max(this.health, 0);
     }
 
+    @Override
     public void update() {
         this.invincibilityTime = Math.max(
                 this.invincibilityTime - Clock.getTimeDelta(), 0

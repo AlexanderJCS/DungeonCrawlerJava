@@ -3,6 +3,8 @@ package game.world;
 import game.gameobjects.Enemy;
 import game.gameobjects.GameObject;
 import game.gameobjects.Wall;
+import helper.interfaces.Drawable;
+import helper.interfaces.Updatable;
 import lwjgl.graphics.Rect;
 
 import java.util.ArrayList;
@@ -11,7 +13,7 @@ import java.util.List;
 /**
  * A room that the player is in.
  */
-public class Room {
+public class Room implements Drawable, Updatable {
     public final int x;
     public final int y;
 
@@ -61,6 +63,7 @@ public class Room {
         return returnArray;
     }
 
+    @Override
     public void draw() {
         for (Wall wall : walls) {
             wall.draw();
@@ -74,6 +77,7 @@ public class Room {
     /**
      * Update all GameObjects inside
      */
+    @Override
     public void update() {
         for (int i = this.gameObjects.size() - 1; i >= 0; i--) {
             GameObject gameObject = this.gameObjects.get(i);

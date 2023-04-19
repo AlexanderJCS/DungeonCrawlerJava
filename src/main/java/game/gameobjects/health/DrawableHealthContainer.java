@@ -4,11 +4,12 @@ import game.gameobjects.Image;
 import helper.coords.GridCoords;
 import helper.coords.PixelCoords;
 import helper.coords.ScreenCoords;
+import helper.interfaces.Drawable;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DrawableHealthContainer extends HealthContainer {
+public class DrawableHealthContainer extends HealthContainer implements Drawable {
     private List<Image> heartImages;
 
     /**
@@ -45,6 +46,7 @@ public class DrawableHealthContainer extends HealthContainer {
     /**
      * Draws the health container to the bottom left of the screen.
      */
+    @Override
     public void draw() {
         int healthNum = this.getHealth();
 
