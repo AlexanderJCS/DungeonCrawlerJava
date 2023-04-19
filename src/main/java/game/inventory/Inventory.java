@@ -72,6 +72,9 @@ public class Inventory {
         }
     }
 
+    /**
+     * Precondition: selected item is not null
+     */
     private void drawSelectedItem() {
         this.selectedItem.setPos(new GridCoords(1, 16).toScreenCoords());
         this.selectedItem.draw();

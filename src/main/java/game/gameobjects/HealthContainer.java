@@ -1,8 +1,5 @@
 package game.gameobjects;
 
-import helper.coords.GridCoords;
-import helper.coords.PixelCoords;
-import helper.coords.ScreenCoords;
 import helper.time.Clock;
 
 /**
@@ -52,43 +49,6 @@ public class HealthContainer {
         // Make sure health doesn't go below 0 or above this.MAX_HEALTH
         this.health = Math.min(this.health, this.MAX_HEALTH);
         this.health = Math.max(this.health, 0);
-    }
-
-    /**
-     * Draws the health container to the bottom left of the screen.
-     */
-    public void draw() {
-        ScreenCoords origin = new PixelCoords(10, 10).toScreenCoords();
-
-        int healthNum = this.health;
-        float width = GridCoords.distXToScreenDist(1);
-        float height = GridCoords.distYToScreenDist(1);
-
-        Image image = new Image(new ScreenCoords(0, 0), width, height, "heart");
-        // Draw the moving right from the origin
-        for (int i = 0; i < this.MAX_HEALTH / 2; i++) {
-
-            // The coordinates of the heart to draw
-            ScreenCoords coords = new ScreenCoords(
-                    origin.x + GridCoords.distXToScreenDist(1.1f * i), origin.y
-            );
-
-            // Determine if it is a full heart, half heart, etc. and draw it
-            if (healthNum >= 2) {
-                healthNum -= 2;
-                image.textureName = "heart";
-            } else if (healthNum == 1) {
-                healthNum -= 1;
-                image.textureName = "halfHeart";
-            } else {  // healthNum == 0
-                image.textureName = "emptyHeart";
-            }
-
-            image.getRect().setPos(coords);
-            image.draw();
-        }
-
-        image.getRect().cleanup();
     }
 
     public void update() {

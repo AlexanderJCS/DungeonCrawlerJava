@@ -20,7 +20,7 @@ public class Player extends GameObject {
     private final float speedX;
     private final float speedY;
     private final Inventory inventory;
-    public final HealthContainer healthContainer;
+    public final DrawableHealthContainer healthContainer;
     /**
      * Used for sword
      */
@@ -53,7 +53,7 @@ public class Player extends GameObject {
         this.inventory = new Inventory();
         this.inventory.addItem(new Heart());
 
-        this.healthContainer = new HealthContainer(10, 0.5);
+        this.healthContainer = new DrawableHealthContainer(10, 0.5);
     }
 
     /**
