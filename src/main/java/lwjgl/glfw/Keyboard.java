@@ -24,7 +24,7 @@ public class Keyboard {
     }
 
     public static boolean getKeyDown(int glfwKey) {
-        return glfwGetKey(Window.window, glfwKey) == 1;
+        return glfwGetKey(Window.getWindow(), glfwKey) == 1;
     }
 
     /**

@@ -45,7 +45,7 @@ public class Game {
      * The main game loop.
      */
     public static void run() {
-        while (!glfwWindowShouldClose(Window.window)) {
+        while (!glfwWindowShouldClose(Window.getWindow())) {
             glfwPollEvents();
             glClear(GL_COLOR_BUFFER_BIT);  // make the screen black
 
@@ -57,7 +57,7 @@ public class Game {
                 break;
             }
 
-            glfwSwapBuffers(Window.window);
+            glfwSwapBuffers(Window.getWindow());
             Clock.busyTick(Consts.FPS_LIMIT);
         }
     }

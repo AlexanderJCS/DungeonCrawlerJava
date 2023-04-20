@@ -7,7 +7,7 @@ import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
 
 public class Window {
-    public static long window;
+    private static long window;
     private static boolean initialized = false;
 
     public static void init() {
@@ -37,5 +37,9 @@ public class Window {
 
     public static boolean getInit() {
         return initialized;
+    }
+
+    public static long getWindow() {
+        return window;
     }
 }

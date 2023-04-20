@@ -40,7 +40,7 @@ public class Mouse {
      */
     public static ScreenCoords getMousePos() {
         // https://stackoverflow.com/questions/33592499/lwjgl-3-get-cursor-position
-        glfwGetCursorPos(Window.window, BufferManager.mouseBuffer1, BufferManager.mouseBuffer2);
+        glfwGetCursorPos(Window.getWindow(), BufferManager.mouseBuffer1, BufferManager.mouseBuffer2);
         double x = BufferManager.mouseBuffer1.get(0);
         double y = BufferManager.mouseBuffer2.get(0);
 
@@ -52,7 +52,7 @@ public class Mouse {
      * @return returns true if the mouse is down.
      */
     public static boolean mouseDown(int button) {
-        return glfwGetMouseButton(Window.window, button) == GLFW_PRESS;
+        return glfwGetMouseButton(Window.getWindow(), button) == GLFW_PRESS;
     }
 
     /**
