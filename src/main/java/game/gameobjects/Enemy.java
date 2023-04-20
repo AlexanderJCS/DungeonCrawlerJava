@@ -32,7 +32,7 @@ public class Enemy extends GameObject {
         this.speedY = GridCoords.distYToScreenDist(speed);
 
         this.moveAwayTime = 0;
-        this.healthContainer = new HealthContainer(6, 0.3);
+        this.healthContainer = new HealthContainer(4, 0.3);
     }
 
     /**

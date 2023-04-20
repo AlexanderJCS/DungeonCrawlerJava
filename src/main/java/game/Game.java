@@ -24,7 +24,7 @@ public class Game {
 
     public static void init() throws IllegalStateException {
         map = new Map();
-        player = new Player(new ScreenCoords(0, 0), 8);
+        player = new Player(new ScreenCoords(0, 0), 9f);
     }
 
     private static void update() {
