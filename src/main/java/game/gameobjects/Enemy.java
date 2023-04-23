@@ -7,6 +7,7 @@ import helper.coords.PixelCoords;
 import helper.coords.ScreenCoords;
 import helper.time.Clock;
 import lwjgl.graphics.Rect;
+import lwjgl.graphics.texture.TextureType;
 
 public class Enemy extends GameObject {
     /**
@@ -26,7 +27,7 @@ public class Enemy extends GameObject {
      * @param speed  The speed of the enemy in grid coords per frame.
      */
     public Enemy(ScreenCoords coords, float speed) {
-        super(coords, GridCoords.distXToScreenDist(1), GridCoords.distYToScreenDist(1), "enemy");
+        super(coords, GridCoords.distXToScreenDist(1), GridCoords.distYToScreenDist(1), TextureType.ENEMY);
 
         this.speedX = GridCoords.distXToScreenDist(speed);
         this.speedY = GridCoords.distYToScreenDist(speed);

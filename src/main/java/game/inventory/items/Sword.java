@@ -7,13 +7,14 @@ import helper.coords.Cardinal;
 import helper.coords.GridCoords;
 import helper.coords.ScreenCoords;
 import lwjgl.graphics.Rect;
+import lwjgl.graphics.texture.TextureType;
 
 /**
  * Damages an enemy upon hitting it.
  */
 public class Sword extends UsableItem {
     public Sword() {
-        super(ItemType.WEAPON, "sword", 3);
+        super(ItemType.WEAPON, TextureType.SWORD, 3);
     }
 
     @Override

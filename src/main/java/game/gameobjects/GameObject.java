@@ -5,6 +5,7 @@ import helper.coords.ScreenCoords;
 import helper.interfaces.Updatable;
 import helper.time.Clock;
 import lwjgl.graphics.Rect;
+import lwjgl.graphics.texture.TextureType;
 
 /**
  * The GameObject class, which is used to hold everything "physical" (i.e. everything except items).
@@ -14,10 +15,10 @@ public class GameObject extends Image implements Updatable {
      * @param coords      The bottom left coordinate of the GameObject
      * @param width       The width of the game object in ScreenCoords
      * @param height      The height of the game object in ScreenCoords
-     * @param textureName The texture name. This is not the same as the texture path. See graphics.texture.TextureMap.
+     * @param textureType The texture's type. See graphics.texture.TextureMap and graphics.texture.TextureType.
      */
-    public GameObject(ScreenCoords coords, float width, float height, String textureName) {
-        super(coords, width, height, textureName);
+    public GameObject(ScreenCoords coords, float width, float height, TextureType textureType) {
+        super(coords, width, height, textureType);
     }
 
     /**

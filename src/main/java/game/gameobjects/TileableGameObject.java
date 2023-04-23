@@ -4,6 +4,7 @@ import helper.coords.GridCoords;
 import helper.coords.ScreenCoords;
 import lwjgl.graphics.Rect;
 import lwjgl.graphics.texture.TextureMap;
+import lwjgl.graphics.texture.TextureType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ public class TileableGameObject extends GameObject {
      * @param width  The width in ScreenCoords
      * @param height The height in ScreenCoords
      */
-    public TileableGameObject(ScreenCoords coords, float width, float height, String texture) {
+    public TileableGameObject(ScreenCoords coords, float width, float height, TextureType texture) {
         super(coords, width, height, texture);
 
         this.textureRects = new ArrayList<>();
@@ -46,7 +47,7 @@ public class TileableGameObject extends GameObject {
     public void draw() {
         // Draw each rect manually
         for (Rect rect : textureRects) {
-            TextureMap.get(this.textureName).bind();
+            TextureMap.get(this.textureType).bind();
             rect.drawModel();
         }
     }

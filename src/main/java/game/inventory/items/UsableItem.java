@@ -3,6 +3,7 @@ package game.inventory.items;
 import game.gameobjects.Image;
 import helper.coords.GridCoords;
 import helper.coords.ScreenCoords;
+import lwjgl.graphics.texture.TextureType;
 
 /**
  * An Item that can has a use() method.
@@ -12,13 +13,13 @@ public class UsableItem extends Item {
     private final Image barImage;
     protected int durability;
 
-    public UsableItem(ItemType type, String texture, int durability) {
+    public UsableItem(ItemType type, TextureType texture, int durability) {
         super(type, texture);
 
         this.maxDurability = durability;
         this.durability = durability;
         this.barImage = new Image(new ScreenCoords(-1, -1),
-                GridCoords.distXToScreenDist(1), GridCoords.distYToScreenDist(0.1f), "green");
+                GridCoords.distXToScreenDist(1), GridCoords.distYToScreenDist(0.1f), TextureType.GREEN);
     }
 
     public int getDurability() {
@@ -45,11 +46,11 @@ public class UsableItem extends Item {
         );
 
         if (durabilityLevel >= 0.667) {
-            this.barImage.textureName = "green";
+            this.barImage.textureType = TextureType.GREEN;
         } else if (durabilityLevel >= 0.334) {
-            this.barImage.textureName = "yellow";
+            this.barImage.textureType = TextureType.YELLOW;
         } else {
-            this.barImage.textureName = "red";
+            this.barImage.textureType = TextureType.RED;
         }
 
         // The item should be deleted before then next frame is drawn

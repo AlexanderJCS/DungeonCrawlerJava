@@ -1,6 +1,7 @@
 package game.gameobjects;
 
 import helper.coords.ScreenCoords;
+import lwjgl.graphics.texture.TextureType;
 
 public class Wall extends TileableGameObject {
     /**
@@ -9,6 +10,6 @@ public class Wall extends TileableGameObject {
      * @param height The height in ScreenCoords
      */
     public Wall(ScreenCoords coords, float width, float height) {
-        super(coords, width, height, "brick");
+        super(coords, width, height, TextureType.BRICK);
     }
 }

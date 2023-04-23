@@ -4,6 +4,7 @@ import helper.coords.ScreenCoords;
 import helper.interfaces.Drawable;
 import lwjgl.graphics.Rect;
 import lwjgl.graphics.texture.TextureMap;
+import lwjgl.graphics.texture.TextureType;
 
 /**
  * An image that can be displayed to the screen.
@@ -13,17 +14,17 @@ public class Image implements Drawable {
     /**
      * The texture name. A list of texture names can be found in the graphics.texture.TextureMap object.
      */
-    public String textureName;
+    public TextureType textureType;
 
     /**
      * @param coords      The bottom left coordinate of the image
      * @param width       The width of the image in ScreenCoords
      * @param height      The height of the image in ScreenCoords
-     * @param textureName The texture name. This is not the same as the texture path. See graphics.texture.TextureMap.
+     * @param textureType The texture's type. See graphics.texture.TextureMap and graphics.texture.TextureType.
      */
-    public Image(ScreenCoords coords, float width, float height, String textureName) {
+    public Image(ScreenCoords coords, float width, float height, TextureType textureType) {
         this.rect = new Rect(coords, width, height);
-        this.textureName = textureName;
+        this.textureType = textureType;
     }
 
     /**
@@ -31,7 +32,7 @@ public class Image implements Drawable {
      */
     @Override
     public void draw() {
-        TextureMap.get(this.textureName).bind();
+        TextureMap.get(this.textureType).bind();
         this.rect.drawModel();
     }
 

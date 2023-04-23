@@ -47,7 +47,7 @@ To modify the world seed, set `SEED` to any integer. This will create a differen
 
 The last direction key that you pressed is the place where your attack will be executed. For example, if the last movement was "D", the attack will be executed to the right (since D moves the player to the right).
 
-Press the space bar to attack an enemy. When the enemy is near enough, it will move backwards and take damage. Three hits are needed to kill an enemy.
+Press the space bar to attack an ENEMY. When the enemy is near enough, it will move backwards and take damage. Three hits are needed to kill an enemy.
 
 ![](src/main/resources/textures/items/sword.png)
 

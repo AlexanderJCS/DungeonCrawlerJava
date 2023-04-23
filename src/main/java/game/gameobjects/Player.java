@@ -12,6 +12,7 @@ import helper.coords.PixelCoords;
 import helper.coords.ScreenCoords;
 import lwjgl.glfw.Keyboard;
 import lwjgl.graphics.Rect;
+import lwjgl.graphics.texture.TextureType;
 
 import static org.lwjgl.glfw.GLFW.*;
 
@@ -22,18 +23,14 @@ public class Player extends GameObject {
     private final float speedY;
     private final Inventory inventory;
     public final DrawableHealthContainer healthContainer;
-    /**
-     * Used for sword
-     */
+
+    /** Used for sword */
     private Cardinal lastDir;
 
-    /**
-     * Used for rendering the player direction.
-     */
+    /** Used for rendering the player direction. */
     private short lastX;
-    /**
-     * Used for rendering the player direction.
-     */
+
+    /** Used for rendering the player direction. */
     private short lastY;
 
     /**
@@ -43,7 +40,7 @@ public class Player extends GameObject {
     public Player(ScreenCoords coords, float speed) {
         super(coords, PixelCoords.distXToScreenDist(Consts.GRID_PIXELS),
                 PixelCoords.distYToScreenDist(Consts.GRID_PIXELS),
-                "playerNortheast");
+                TextureType.PLAYER_NORTHWEST);
 
         this.lastY = 1;
         this.lastX = 1;
@@ -125,8 +122,15 @@ public class Player extends GameObject {
 
     @Override
     public void draw() {
-        this.textureName = "player" + (this.lastY == 1 ? "North" : "South") +
-                (this.lastX == 1 ? "east" : "west");
+        if (this.lastX == 1 && this.lastY == 1) {
+            this.textureType = TextureType.PLAYER_NORTHEAST;
+        } else if (this.lastX == -1 && this.lastY == 1) {
+            this.textureType = TextureType.PLAYER_NORTHWEST;
+        } else if (this.lastX == 1 && this.lastY == -1) {
+            this.textureType = TextureType.PLAYER_SOUTHEAST;
+        } else {
+            this.textureType = TextureType.PLAYER_SOUTHWEST;
+        }
 
         super.draw();
         this.inventory.draw();

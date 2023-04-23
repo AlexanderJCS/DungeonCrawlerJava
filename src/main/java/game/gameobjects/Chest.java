@@ -4,6 +4,7 @@ import game.Game;
 import game.inventory.items.Item;
 import helper.coords.GridCoords;
 import helper.coords.ScreenCoords;
+import lwjgl.graphics.texture.TextureType;
 
 public class Chest extends GameObject {
     private Item item;
@@ -13,7 +14,7 @@ public class Chest extends GameObject {
      * @param item   The item the chest should hold
      */
     public Chest(ScreenCoords coords, Item item) {
-        super(coords, GridCoords.distXToScreenDist(1), GridCoords.distYToScreenDist(1), "chestClosed");
+        super(coords, GridCoords.distXToScreenDist(1), GridCoords.distYToScreenDist(1), TextureType.CHEST_CLOSED);
         this.item = item;
     }
 
@@ -35,7 +36,7 @@ public class Chest extends GameObject {
         if (dist < 1.5) {
             Game.player.addToInventory(this.item);
             this.item = null;
-            this.textureName = "chestOpen";
+            this.textureType = TextureType.CHEST_OPEN;
         }
     }
 }

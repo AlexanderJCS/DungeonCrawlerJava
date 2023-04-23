@@ -5,6 +5,7 @@ import helper.coords.GridCoords;
 import helper.coords.PixelCoords;
 import helper.coords.ScreenCoords;
 import helper.interfaces.Drawable;
+import lwjgl.graphics.texture.TextureType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +38,7 @@ public class DrawableHealthContainer extends HealthContainer implements Drawable
                     new Image(
                             coords,
                             GridCoords.distXToScreenDist(1), GridCoords.distYToScreenDist(1),
-                            "heart"
+                            TextureType.HEART
                     )
             );
         }
@@ -54,12 +55,12 @@ public class DrawableHealthContainer extends HealthContainer implements Drawable
             // Determine if it is a full heart, half heart, etc. and draw it
             if (healthNum >= 2) {
                 healthNum -= 2;
-                heartImage.textureName = "heart";
+                heartImage.textureType = TextureType.HEART;
             } else if (healthNum == 1) {
                 healthNum -= 1;
-                heartImage.textureName = "halfHeart";
+                heartImage.textureType = TextureType.HALF_HEART;
             } else {  // healthNum == 0
-                heartImage.textureName = "emptyHeart";
+                heartImage.textureType = TextureType.EMPTY_HEART;
             }
 
             heartImage.draw();

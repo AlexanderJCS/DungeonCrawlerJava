@@ -1,7 +1,7 @@
 package lwjgl.graphics.texture;
 
 import java.util.HashMap;
-
+import static lwjgl.graphics.texture.TextureType.*;
 
 /**
  * This class is important because:
@@ -11,37 +11,37 @@ import java.util.HashMap;
 public class TextureMap {
     private static final String texturePath = "src/main/resources/textures/";
 
-    private static final HashMap<String, Texture> textureMap = new HashMap<>() {{
+    private static final HashMap<TextureType, Texture> textureMap = new HashMap<>() {{
         // -- GAME OBJECTS --
-        put("playerNortheast", new Texture(texturePath + "gameObjects/player/northeast.png"));
-        put("playerNorthwest", new Texture(texturePath + "gameObjects/player/northwest.png"));
-        put("playerSoutheast", new Texture(texturePath + "gameObjects/player/southeast.png"));
-        put("playerSouthwest", new Texture(texturePath + "gameObjects/player/southwest.png"));
+        put(PLAYER_NORTHEAST, new Texture(texturePath + "gameObjects/player/northeast.png"));
+        put(PLAYER_NORTHWEST, new Texture(texturePath + "gameObjects/player/northwest.png"));
+        put(PLAYER_SOUTHEAST, new Texture(texturePath + "gameObjects/player/southeast.png"));
+        put(PLAYER_SOUTHWEST, new Texture(texturePath + "gameObjects/player/southwest.png"));
 
-        put("brick", new Texture(texturePath + "gameObjects/brick.png"));
+        put(BRICK, new Texture(texturePath + "gameObjects/BRICK.png"));
 
-        put("chestClosed", new Texture(texturePath + "gameObjects/chestClosed.png"));
-        put("chestOpen", new Texture(texturePath + "gameObjects/chestOpen.png"));
+        put(CHEST_CLOSED, new Texture(texturePath + "gameObjects/chestClosed.png"));
+        put(CHEST_OPEN, new Texture(texturePath + "gameObjects/chestOpen.png"));
 
-        put("enemy", new Texture(texturePath + "gameObjects/enemy.png"));
+        put(ENEMY, new Texture(texturePath + "gameObjects/enemy.png"));
 
         // -- ITEMS --
-        put("heart", new Texture(texturePath + "items/heart.png"));
-        put("halfHeart", new Texture(texturePath + "items/halfHeart.png"));
-        put("emptyHeart", new Texture(texturePath + "items/emptyHeart.png"));
+        put(HEART, new Texture(texturePath + "items/heart.png"));
+        put(HALF_HEART, new Texture(texturePath + "items/halfHeart.png"));
+        put(EMPTY_HEART, new Texture(texturePath + "items/emptyHeart.png"));
 
-        put("sword", new Texture(texturePath + "items/sword.png"));
+        put(SWORD, new Texture(texturePath + "items/sword.png"));
 
         // -- COLORS --
-        put("white", new Texture(texturePath + "white.png"));
-        put("red", new Texture(texturePath + "red.png"));
-        put("yellow", new Texture(texturePath + "yellow.png"));
-        put("green", new Texture(texturePath + "green.png"));
+        put(WHITE, new Texture(texturePath + "white.png"));
+        put(RED, new Texture(texturePath + "red.png"));
+        put(YELLOW, new Texture(texturePath + "yellow.png"));
+        put(GREEN, new Texture(texturePath + "green.png"));
 
-        put("transparent", new Texture(texturePath + "transparent.png"));
+        put(TRANSPARENT, new Texture(texturePath + "transparent.png"));
     }};
 
-    public static Texture get(String key) throws IllegalArgumentException {
+    public static Texture get(TextureType key) throws IllegalArgumentException {
         Texture returnTexture = textureMap.get(key);
 
         if (returnTexture == null) {

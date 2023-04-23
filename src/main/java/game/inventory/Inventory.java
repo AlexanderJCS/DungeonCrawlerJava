@@ -10,6 +10,7 @@ import helper.coords.PixelCoords;
 import helper.coords.ScreenCoords;
 import lwjgl.glfw.Keyboard;
 import lwjgl.glfw.Mouse;
+import lwjgl.graphics.texture.TextureType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,9 +19,9 @@ import static org.lwjgl.glfw.GLFW.GLFW_KEY_TAB;
 
 public class Inventory {
     private static final Image transparent = new Image(new ScreenCoords(-1, -1), 2, 2,
-            "transparent");
+            TextureType.TRANSPARENT);
     private static final Image selectedItemBg = new Image(new GridCoords(0.75f, 15f).toScreenCoords(),
-            GridCoords.distXToScreenDist(1.5f), GridCoords.distYToScreenDist(2.5f), "transparent");
+            GridCoords.distXToScreenDist(1.5f), GridCoords.distYToScreenDist(2.5f), TextureType.TRANSPARENT);
 
     private static final int OPEN_INVENTORY_KEY = GLFW_KEY_TAB;
 
