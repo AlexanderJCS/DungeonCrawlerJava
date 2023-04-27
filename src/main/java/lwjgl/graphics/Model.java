@@ -1,6 +1,7 @@
 package lwjgl.graphics;
 
 import helper.BufferManager;
+
 import static org.lwjgl.opengl.GL21.*;
 
 /**

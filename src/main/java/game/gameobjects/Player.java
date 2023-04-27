@@ -17,13 +17,12 @@ import lwjgl.graphics.texture.TextureType;
 import static org.lwjgl.glfw.GLFW.*;
 
 public class Player extends GameObject {
+    public final DrawableHealthContainer healthContainer;
     // SpeedX and SpeedY need to be different because one ScreenCoord in the x direction is not always the same distance
     // as one ScreenCoord in the y direction.
     private final float speedX;
     private final float speedY;
     private final Inventory inventory;
-    public final DrawableHealthContainer healthContainer;
-
     /** Used for sword */
     private Cardinal lastDir;
 

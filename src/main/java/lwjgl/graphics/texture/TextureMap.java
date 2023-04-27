@@ -1,6 +1,7 @@
 package lwjgl.graphics.texture;
 
 import java.util.HashMap;
+
 import static lwjgl.graphics.texture.TextureType.*;
 
 /**
