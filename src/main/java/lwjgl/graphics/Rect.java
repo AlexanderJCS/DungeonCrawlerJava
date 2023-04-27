@@ -7,7 +7,7 @@ import lwjgl.graphics.texture.TexturedModel;
 /**
  * The "base" of every other rectangular object. Used for collision and conversion to a Model or TexturedModel class.
  */
-public class Rect {
+public class Rect implements AutoCloseable {
     private final TexturedModel model;
     public float x1, y1, x2, y2;
     public float width, height;
@@ -174,9 +174,10 @@ public class Rect {
     }
 
     /**
-     * Calls the cleanup method of the model class.
+     * The close model needs to be closed at the end of a Rect's usage to prevent a memory leak
      */
-    public void cleanup() {
-        this.model.cleanup();
+    @Override
+    public void close() {
+        this.model.close();
     }
 }

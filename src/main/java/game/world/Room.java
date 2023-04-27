@@ -88,7 +88,7 @@ public class Room implements Drawable, Updatable {
                 Enemy enemy = (Enemy) gameObject;
 
                 if (enemy.healthContainer.getHealth() == 0) {
-                    this.gameObjects.get(i).getRect().cleanup();
+                    this.gameObjects.get(i).getRect().close();
                     this.gameObjects.remove(i);
                 }
             }

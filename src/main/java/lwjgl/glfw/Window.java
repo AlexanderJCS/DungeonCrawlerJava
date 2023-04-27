@@ -27,7 +27,6 @@ public class Window {
         glfwShowWindow(window);
 
         glfwMakeContextCurrent(window);
-
         GL.createCapabilities();
 
         glEnable(GL_TEXTURE_2D);

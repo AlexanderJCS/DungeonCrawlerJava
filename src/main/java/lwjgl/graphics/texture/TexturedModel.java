@@ -29,12 +29,6 @@ public class TexturedModel extends Model {
         glBindBuffer(GL_ARRAY_BUFFER, 0);
     }
 
-    @Override
-    public void cleanup() {
-        super.cleanup();
-        glDeleteBuffers(tId);
-    }
-
     /**
      * Bind the texture then run this method. The texture will be placed on top of this model.
      */
@@ -57,5 +51,11 @@ public class TexturedModel extends Model {
 
         glDisableClientState(GL_TEXTURE_COORD_ARRAY);
         glDisableClientState(GL_VERTEX_ARRAY);
+    }
+
+    @Override
+    public void close() {
+        super.close();
+        glDeleteBuffers(tId);
     }
 }

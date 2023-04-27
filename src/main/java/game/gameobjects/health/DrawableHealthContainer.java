@@ -10,7 +10,7 @@ import lwjgl.graphics.texture.TextureType;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DrawableHealthContainer extends HealthContainer implements Drawable {
+public class DrawableHealthContainer extends HealthContainer implements Drawable, AutoCloseable {
     private List<Image> heartImages;
 
     /**
@@ -65,5 +65,17 @@ public class DrawableHealthContainer extends HealthContainer implements Drawable
 
             heartImage.draw();
         }
+    }
+
+    /**
+     * Needs to be called when a drawable health container is not used anymore to prevent a memory leak.
+     */
+    @Override
+    public void close() {
+        for (Image heartImage : heartImages) {
+            heartImage.getRect().close();
+        }
+
+        this.heartImages.clear();
     }
 }
